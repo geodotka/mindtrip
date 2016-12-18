@@ -1,3 +1,9 @@
-from django.shortcuts import render
+#!/usr/bin/env python
+# encoding: utf-8
 
-# Create your views here.
+from annoying.decorators import render_to
+
+
+@render_to('trips/home.html')
+def home(request):
+    return {}
