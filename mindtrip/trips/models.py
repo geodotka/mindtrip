@@ -4,7 +4,8 @@
 from __builtin__ import super
 
 from django.db import models
-from mindtrip.trips.helpers import slugify
+
+from .helpers import slugify
 
 
 class Trip(models.Model):
@@ -50,13 +51,12 @@ class Day(models.Model):
         return u'{0} ({1})'.format(self.trip, self.date)
 
 
-class Tag(models.Model):
+class SlugifyModel(models.Model):
     name = models.CharField(unique=True, max_length=255, verbose_name=u'Nazwa')
-    slug = models.CharField(max_length=255, verbose_name=u'Slug')
+    slug = models.CharField(max_length=255, blank=True, verbose_name=u'Slug')
 
     class Meta:
-        verbose_name = u'Tag'
-        verbose_name_plural = u'Tagi'
+        abstract = True
 
     def __unicode__(self):
         return self.name
@@ -65,18 +65,22 @@ class Tag(models.Model):
              update_fields=None):
         if not self.slug:
             self.slug = slugify(self.name)
-        super(Tag, self).save(
+        super(SlugifyModel, self).save(
             force_insert=force_insert, force_update=force_update,
             using=using, update_fields=update_fields)
 
 
-class Country(models.Model):
-    name = models.CharField(unique=True, max_length=255, verbose_name=u'Nazwa')
-    slug = models.CharField(max_length=255, verbose_name=u'Slug')
+class Tag(SlugifyModel):
 
     class Meta:
+        abstract = False
+        verbose_name = u'Tag'
+        verbose_name_plural = u'Tagi'
+
+
+class Country(SlugifyModel):
+
+    class Meta:
+        abstract = False
         verbose_name = u'Kraj'
         verbose_name_plural = u'Kraje'
-
-    def __unicode__(self):
-        return self.name
