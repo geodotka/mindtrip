@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Mindtrip</title>
+	<link href="https://fonts.googleapis.com/css?family=Caveat|Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/main.css" charset="utf-8">
+</head>
+<body>
+
+	<header>
+		<nav>
+			<a href="{% url 'home' %}">Strona główna</a>
+			<a href="{% url 'home' %}">Podróże</a>
+			<a href="{% url 'home' %}">Kontakt</a>
+		</nav>
+	</header>
+
+	<main>
+		<div class="logo">
+			geodotka w podróży <i class="material-icons">flight_takeoff</i>
+		</div>
+		{% block content %}
+			<div class="trips">
+			</div>
+		{% endblock %}
+	</main>
+
+	<footer>
+		<span>copyright by geodotka 2016</span>
+	</footer>
+</body>
+</html>
