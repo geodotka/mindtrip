@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='trip',
             name='tags',
-            field=models.ManyToManyField(blank=True, null=True, to='trips.Tag', verbose_name='Tagi'),
+            field=models.ManyToManyField(blank=True, to='trips.Tag', verbose_name='Tagi'),
         ),
     ]

@@ -115,3 +115,5 @@ STATICFILES_FINDERS = (
 
 STATIC_URL = '/static/'
 STATIC_ROOT = join(_current_dir, 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = join(_current_dir, 'media')

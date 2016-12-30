@@ -1,15 +1,24 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from __builtin__ import super
+import os
 
 from django.db import models
 
 from .helpers import slugify
 
 
+def upload_to(instance, filename):
+    parts = [
+        str(instance.id),
+        filename,
+    ]
+    return os.sep.join(parts)
+
+
 class Trip(models.Model):
     destination = models.CharField(max_length=255, verbose_name=u'Cel podróży')
+    picture = models.ImageField(upload_to=upload_to, null=True, blank=True)
     country = models.ForeignKey('Country', verbose_name=u'Kraj')
     summary = models.TextField(verbose_name=u'Podsumowanie')
     start_at = models.DateField(verbose_name=u'Data początku')
@@ -22,8 +31,7 @@ class Trip(models.Model):
         max_length=255, verbose_name=u'Cena dojazdu')
     tips = models.TextField(blank=True, null=True, verbose_name=u'Wskazówki')
 
-    tags = models.ManyToManyField(
-        'Tag', null=True, blank=True, verbose_name=u'Tagi')
+    tags = models.ManyToManyField('Tag', blank=True, verbose_name=u'Tagi')
 
     class Meta:
         verbose_name = u'Wycieczka'
