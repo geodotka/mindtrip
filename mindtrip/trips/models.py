@@ -9,6 +9,7 @@ from mindtrip.trips.helpers import slugify
 
 class Trip(models.Model):
     destination = models.CharField(max_length=255, verbose_name=u'Cel podróży')
+    country = models.ForeignKey('Country', verbose_name=u'Kraj')
     summary = models.TextField(verbose_name=u'Podsumowanie')
     start_at = models.DateField(verbose_name=u'Data początku')
     end_at = models.DateField(verbose_name=u'Data końca')
@@ -17,7 +18,7 @@ class Trip(models.Model):
         max_length=255, verbose_name=u'Cena noclegów')
     travel = models.CharField(max_length=500, verbose_name=u'Dojazd')
     travel_price = models.CharField(
-        max_length=255, verbose_name=u'Cena noclegów')
+        max_length=255, verbose_name=u'Cena dojazdu')
     tips = models.TextField(blank=True, null=True, verbose_name=u'Wskazówki')
 
     tags = models.ManyToManyField('Tag', verbose_name=u'Tagi')
@@ -66,3 +67,15 @@ class Tag(models.Model):
         super(Tag, self).save(
             force_insert=force_insert, force_update=force_update,
             using=using, update_fields=update_fields)
+
+
+class Country(models.Model):
+    name = models.CharField(unique=True, max_length=255, verbose_name=u'Nazwa')
+    slug = models.CharField(max_length=255, verbose_name=u'Slug')
+
+    class Meta:
+        verbose_name = u'Kraj'
+        verbose_name_plural = u'Kraje'
+
+    def __unicode__(self):
+        return self.name
