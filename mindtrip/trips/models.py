@@ -21,7 +21,8 @@ class Trip(models.Model):
         max_length=255, verbose_name=u'Cena dojazdu')
     tips = models.TextField(blank=True, null=True, verbose_name=u'Wskazówki')
 
-    tags = models.ManyToManyField('Tag', verbose_name=u'Tagi')
+    tags = models.ManyToManyField(
+        'Tag', null=True, blank=True, verbose_name=u'Tagi')
 
     class Meta:
         verbose_name = u'Wycieczka'
