@@ -66,13 +66,52 @@ footer span {
 	font-size: 50px;
 }
 
-.trips {
-	height: 400px;
-	width: 98%;
+.gallery {
+	height: 300px;
 	border: dashed 8px rgba(76, 12, 73, 0.71);
+	display: inline-flex;
+    justify-content: center;
+}
+
+.gallery div {
+	height: 280px;
+	width: 373px;
+	margin: 10px;
+	position: relative;
+}
+
+.gallery div img {
+	height: 280px;
+	width: 373px;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+}
+
+.gallery div img:hover {
+	opacity: 1.0;
+	filter: alpha(opacity=100);
+}
+
+.gallery div span {
+	color: #fff;
+	font-family: 'Caveat', cursive;
+	position: absolute;
+}
+
+.gallery div .destination {
+	font-size: 46px;
+	right: 10px;
+	top: 2px;
+}
+
+.gallery div .dates {
+	font-size: 26px;
+	left: 10px;
+	bottom: 2px;
 }
 
 .contact {
+	padding: 0 100px;
 	min-height: 370px;
 	text-align: justify;
 }

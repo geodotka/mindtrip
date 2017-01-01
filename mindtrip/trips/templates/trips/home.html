@@ -1,9 +1,12 @@
 {% extends "trips/base.html" %}
 
 {% block content %}
-	<div class="trips">
-		{{ trips }}
+	<div class="gallery js-gallery">
 	</div>
 
 	<script src="{{ STATIC_URL }}js/show_gallery.js"></script>
+	<script>
+		var gallery = new Gallery({{ trips|safe }})
+		gallery.draw()
+	</script>
 {% endblock %}
