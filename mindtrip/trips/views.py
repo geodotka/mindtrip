@@ -5,6 +5,7 @@ import json
 
 from annoying.decorators import render_to
 from django.core import serializers
+from django.shortcuts import get_object_or_404
 
 from .models import Trip
 
@@ -19,3 +20,10 @@ def home(request):
 @render_to('trips/contact.html')
 def contact(request):
     return {}
+
+
+@render_to('trips/trip.html')
+def trip(request, trip_id):
+    trip_ = get_object_or_404(
+        Trip.objects.select_related('country'), id=trip_id)
+    return {'trip': trip_}

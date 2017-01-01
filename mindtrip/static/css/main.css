@@ -37,7 +37,6 @@ nav a i {
 
 main {
 	padding: 20px;
-	text-align: center;
 	background-color: rgba(227, 209, 7, 0.04);
 }
 
@@ -64,6 +63,10 @@ footer span {
 
 .logo i {
 	font-size: 50px;
+}
+
+.gallery-content {
+	text-align: center;
 }
 
 .gallery {
@@ -111,7 +114,31 @@ footer span {
 }
 
 .contact {
-	padding: 0 100px;
+	padding: 0 80px;
 	min-height: 370px;
 	text-align: justify;
+}
+
+.trip {
+	padding: 0 80px;
+	display: inline-flex;
+}
+
+.trip img {
+	width: 300px;
+}
+
+.trip .description {
+	margin-left: 50px;
+	font-size: 44px;
+	font-family: 'Caveat', cursive;
+}
+
+.trip .description p {
+	margin: 0 auto;
+}
+
+.trip .description span {
+	font-size: 32px;
+	margin-right: 5px;
 }

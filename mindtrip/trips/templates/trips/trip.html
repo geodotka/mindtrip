@@ -1,0 +1,10 @@
+{% extends "trips/base.html" %}
+
+{% block content %}
+	<div class="trip">
+		<img src="{{ trip.picture.url }}">
+		<div class="description">
+			<p><span>Miejsce:</span>{{ trip.destination }} ({{ trip.country.name }})</p>
+		</div>
+	</div>
+{% endblock %}

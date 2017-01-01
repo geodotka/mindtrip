@@ -34,6 +34,8 @@ var Trip = function(trip){
 
 
 Trip.prototype.drawTripWidget = function(){
+    var link = document.createElement('a');
+    link.href = '/podroze/' + this.id;
     var tripContainer = document.createElement('div');
 
     var img = document.createElement('img');
@@ -50,5 +52,6 @@ Trip.prototype.drawTripWidget = function(){
     dates.className = 'dates';
     tripContainer.appendChild(dates);
 
-    return tripContainer
+    link.appendChild(tripContainer);
+    return link
 };
