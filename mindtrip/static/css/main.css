@@ -67,6 +67,7 @@ footer span {
 
 .gallery-content {
 	text-align: center;
+	position: relative;
 }
 
 .gallery {
@@ -74,6 +75,7 @@ footer span {
 	border: dashed 8px rgba(76, 12, 73, 0.71);
 	display: inline-flex;
     justify-content: center;
+	position: relative;
 }
 
 .gallery div {
@@ -141,4 +143,25 @@ footer span {
 .trip .description span {
 	font-size: 32px;
 	margin-right: 5px;
+}
+
+.arrow {
+	cursor: pointer;
+	font-size: 100px;
+	position: absolute;
+	top: 108px;
+}
+
+.arrow-left {
+	font-size: 100px;
+	left: -100px;
+	position: absolute;
+	top: 108px;
+	filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=0.5);
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+	display: inline-block;
 }

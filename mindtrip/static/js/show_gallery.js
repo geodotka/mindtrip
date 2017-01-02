@@ -1,12 +1,11 @@
 
 var Gallery = function(tripsJson){
     this.trips = this.getTrips(tripsJson);
-    this.firstTripIndex = 0;
+    this.firstTripIndex = 1;
     this.tripsNumberInGallery = 2;
     this.tripsInGallery = [];
-    this.hasPrevTrip = false;
-    this.hasNextTrip = this.tripsNumberInGallery < this.trips.length;
 
+    this.setPrevNextTrip();
     this.getTripsInGallery();
 };
 
@@ -23,7 +22,7 @@ Gallery.prototype.getTrips = function(tripsJson){
 
 Gallery.prototype.getTripsInGallery = function(){
     this.tripsInGallery = [];
-    for (var i=this.firstTripIndex; i < this.firstTripIndex + this.tripsNumberInGallery; i++){
+    for (var i=this.firstTripIndex; i < Math.min(this.firstTripIndex + this.tripsNumberInGallery, this.trips.length); i++){
         if (i <= this.trips.length){
             this.tripsInGallery.push(this.trips[i])
         }
@@ -31,18 +30,45 @@ Gallery.prototype.getTripsInGallery = function(){
 };
 
 
-Gallery.prototype.checkPrevNextTrip = function(){
+Gallery.prototype.setPrevNextTrip = function(){
     this.hasPrevTrip = this.firstTripIndex > 0;
     this.hasNextTrip = this.firstTripIndex + this.tripsNumberInGallery < this.trips.length;
 };
 
 
 Gallery.prototype.draw = function(){
-    var $gallery = $('.js-gallery');
-    $gallery.empty();
-    for (var i=0; i < this.tripsInGallery.length; i++){
-        $gallery.append(this.tripsInGallery[i].drawTripWidget());
+    var $galleryContent = $('.js-gallery-content');
+    $galleryContent.empty();
+    $galleryContent.append(this.drawGallery());
+};
+
+
+Gallery.prototype.drawIcon = function(isPrev){
+    var icon = document.createElement('i');
+    icon.className = 'material-icons arrow';
+    if (isPrev){
+        icon.className += ' arrow-left js-prev'
+    } else {
+        icon.className += ' js-next'
     }
+    icon.innerHTML = 'play_arrow';
+    return icon
+};
+
+
+Gallery.prototype.drawGallery = function(){
+        var gallery = document.createElement('div');
+        gallery.className = 'gallery';
+        if (this.hasPrevTrip){
+            gallery.appendChild(this.drawIcon(true))
+        }
+        for (var i=0; i < this.tripsInGallery.length; i++){
+            gallery.appendChild(this.tripsInGallery[i].drawTripWidget());
+        }
+        if (this.hasNextTrip){
+            gallery.appendChild(this.drawIcon(false))
+        }
+    return gallery
 };
 
 
