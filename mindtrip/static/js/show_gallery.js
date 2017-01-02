@@ -1,8 +1,13 @@
 
 var Gallery = function(tripsJson){
     this.trips = this.getTrips(tripsJson);
-    console.log(this.trips);
     this.firstTripIndex = 0;
+    this.tripsNumberInGallery = 2;
+    this.tripsInGallery = [];
+    this.hasPrevTrip = false;
+    this.hasNextTrip = this.tripsNumberInGallery < this.trips.length;
+
+    this.getTripsInGallery();
 };
 
 
@@ -16,11 +21,28 @@ Gallery.prototype.getTrips = function(tripsJson){
 };
 
 
+Gallery.prototype.getTripsInGallery = function(){
+    this.tripsInGallery = [];
+    for (var i=this.firstTripIndex; i < this.firstTripIndex + this.tripsNumberInGallery; i++){
+        if (i <= this.trips.length){
+            this.tripsInGallery.push(this.trips[i])
+        }
+    }
+};
+
+
+Gallery.prototype.checkPrevNextTrip = function(){
+    this.hasPrevTrip = this.firstTripIndex > 0;
+    this.hasNextTrip = this.firstTripIndex + this.tripsNumberInGallery < this.trips.length;
+};
+
+
 Gallery.prototype.draw = function(){
     var $gallery = $('.js-gallery');
     $gallery.empty();
-    $gallery.append(this.trips[this.firstTripIndex].drawTripWidget());
-    $gallery.append(this.trips[this.firstTripIndex + 1].drawTripWidget())
+    for (var i=0; i < this.tripsInGallery.length; i++){
+        $gallery.append(this.tripsInGallery[i].drawTripWidget());
+    }
 };
 
 

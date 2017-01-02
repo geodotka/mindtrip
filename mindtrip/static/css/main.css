@@ -86,8 +86,8 @@ footer span {
 .gallery div img {
 	height: 280px;
 	width: 373px;
-	opacity: 0.7;
-	filter: alpha(opacity=70);
+	opacity: 0.8;
+	filter: alpha(opacity=80);
 }
 
 .gallery div img:hover {
