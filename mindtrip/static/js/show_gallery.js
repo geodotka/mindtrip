@@ -1,7 +1,7 @@
 
 var Gallery = function(tripsJson){
     this.trips = this.getTrips(tripsJson);
-    this.firstTripIndex = 1;
+    this.firstTripIndex = 0;
     this.tripsNumberInGallery = 2;
     this.tripsInGallery = [];
 
@@ -40,6 +40,7 @@ Gallery.prototype.draw = function(){
     var $galleryContent = $('.js-gallery-content');
     $galleryContent.empty();
     $galleryContent.append(this.drawGallery());
+    this.bindArrows()
 };
 
 
@@ -60,7 +61,7 @@ Gallery.prototype.drawGallery = function(){
         var gallery = document.createElement('div');
         gallery.className = 'gallery';
         if (this.hasPrevTrip){
-            gallery.appendChild(this.drawIcon(true))
+            gallery.appendChild(this.drawIcon(true));
         }
         for (var i=0; i < this.tripsInGallery.length; i++){
             gallery.appendChild(this.tripsInGallery[i].drawTripWidget());
@@ -69,6 +70,45 @@ Gallery.prototype.drawGallery = function(){
             gallery.appendChild(this.drawIcon(false))
         }
     return gallery
+};
+
+
+Gallery.prototype.bindArrows = function () {
+    if (this.hasPrevTrip){
+        this.bindLeftArrow();
+    }
+    if (this.hasNextTrip){
+        this.bindRightArrow();
+    }
+};
+
+
+Gallery.prototype.refresh = function () {
+    this.setPrevNextTrip();
+    this.getTripsInGallery();
+    this.draw();
+};
+
+
+Gallery.prototype.bindLeftArrow = function () {
+    var this_ = this;
+    $('.js-prev').on('click', function(){
+        if (this_.firstTripIndex > 0){
+            this_.firstTripIndex -= 1
+        }
+        this_.refresh()
+    })
+};
+
+
+Gallery.prototype.bindRightArrow = function () {
+    var this_ = this;
+    $('.js-next').on('click', function(){
+        if (this_.firstTripIndex < this_.trips.length){
+            this_.firstTripIndex += 1
+        }
+        this_.refresh()
+    })
 };
 
 
