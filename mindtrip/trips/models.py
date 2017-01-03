@@ -30,6 +30,8 @@ class Trip(models.Model):
     travel_price = models.CharField(
         max_length=255, verbose_name=u'Cena dojazdu')
     tips = models.TextField(blank=True, null=True, verbose_name=u'Wskazówki')
+    views_counter = models.IntegerField(
+        default=0, verbose_name=u'Licznik odwiedzin')
 
     tags = models.ManyToManyField('Tag', blank=True, verbose_name=u'Tagi')
 

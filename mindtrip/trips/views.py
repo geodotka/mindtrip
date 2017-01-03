@@ -26,4 +26,6 @@ def contact(request):
 def trip(request, trip_id):
     trip_ = get_object_or_404(
         Trip.objects.select_related('country'), id=trip_id)
+    trip_.views_counter += 1
+    trip_.save()
     return {'trip': trip_}
