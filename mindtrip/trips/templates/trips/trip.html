@@ -1,10 +1,31 @@
 {% extends "trips/base.html" %}
 
 {% block content %}
-	<div class="trip">
-		<img src="{{ trip.picture.url }}">
-		<div class="description">
-			<p><span>Miejsce:</span>{{ trip.destination }} ({{ trip.country.name }})</p>
+	<div class="content">
+		<div class="trip">
+			<div class="basic-details">
+				<div class="trip-picture">
+					<img src="{{ trip.picture.url }}">
+				</div>
+				<div class="description">
+					<p>Miejsce:<label>{{ trip.destination }} ({{ trip.country.name }})</label></p>
+					<p>Początek:<label>{{ trip.start_at }}</label>
+					<p>Koniec:<label>{{ trip.end_at }}</label>
+					<p class="summary">{{ trip.summary }}</p>
+				</div>
+			</div>
+			<label>Dojazd</label>
+			<p><span class="long">{{ trip.travel }}</span></p>
+			<label>Koszty dojazdu</label>
+			<p><span class="long">{{ trip.travel_price }}</span></p>
+			<label>Noclegi</label>
+			<p><span class="long">{{ trip.hotel }}</span></p>
+			<label>Koszty noclegów</label>
+			<p><span class="long">{{ trip.hotel_price }}</span></p>
+			{% if trip.tips %}
+				<label>Wskazówki</label>
+				<p><span class="long">{{ trip.tips|linebreaks }}</span></p>
+			{% endif %}
 		</div>
 	</div>
 {% endblock %}

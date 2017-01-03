@@ -10,6 +10,12 @@ a {
 	outline: none;
 }
 
+label {
+	font-family: 'Caveat', cursive;
+	font-size: 32px;
+	margin-left: 5px;
+}
+
 header {
 	background-color: rgba(0, 0, 0, 0.04);
 	height: 40px;
@@ -115,36 +121,6 @@ footer span {
 	bottom: 2px;
 }
 
-.contact {
-	padding: 0 80px;
-	min-height: 370px;
-	text-align: justify;
-}
-
-.trip {
-	padding: 0 80px;
-	display: inline-flex;
-}
-
-.trip img {
-	width: 300px;
-}
-
-.trip .description {
-	margin-left: 50px;
-	font-size: 44px;
-	font-family: 'Caveat', cursive;
-}
-
-.trip .description p {
-	margin: 0 auto;
-}
-
-.trip .description span {
-	font-size: 32px;
-	margin-right: 5px;
-}
-
 .arrow {
 	cursor: pointer;
 	font-size: 100px;
@@ -164,4 +140,39 @@ footer span {
 	-o-transform: rotate(180deg);
 	transform: rotate(180deg);
 	display: inline-block;
+}
+
+.content {
+	padding: 0 80px;
+	min-height: 370px;
+	text-align: justify;
+}
+
+.trip p {
+	margin: 0 auto;
+}
+
+.trip .basic-details {
+	display: inline-flex;
+}
+
+.trip .basic-details .trip-picture {
+	justify-content: center;
+}
+
+.trip .basic-details .trip-picture img {
+	width: 300px;
+}
+
+.trip .basic-details .description {
+	margin-left: 50px;
+}
+
+.trip .basic-details .description p {
+	font-family: 'Caveat', cursive;
+	font-size: 22px;
+}
+
+.trip .basic-details .summary {
+	margin-top: 10px;
 }
