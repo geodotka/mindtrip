@@ -3,7 +3,7 @@
 {% block content %}
 	<div class="content">
 		<div class="trip">
-			<div class="basic-details">
+			<section class="basic-details">
 				<div class="trip-picture">
 					<img src="{{ trip.picture.url }}">
 				</div>
@@ -13,7 +13,7 @@
 					<p>Koniec:<label>{{ trip.end_at }}</label>
 					<p class="summary">{{ trip.summary }}</p>
 				</div>
-			</div>
+			</section>
 			<label>Dojazd</label>
 			<p><span class="long">{{ trip.travel }}</span></p>
 			<label>Koszty dojazdu</label>
@@ -25,6 +25,19 @@
 			{% if trip.tips %}
 				<label>Wskazówki</label>
 				<p><span class="long">{{ trip.tips|linebreaks }}</span></p>
+			{% endif %}
+			{% if trip.days.all %}
+				<section class="days">
+					{% for day in trip.days.all %}
+						<article>
+							<label>{{ day.name }} <span>({{ day.date }})</span></label>
+							<p>{{ day.description }}</p>
+							{% if day.tips %}
+								<p><span>Wskazówki:</span>{{ day.tips }}</p>
+							{% endif %}
+						</article>
+					{% endfor %}
+				</section>
 			{% endif %}
 		</div>
 	</div>

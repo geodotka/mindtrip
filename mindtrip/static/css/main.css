@@ -176,3 +176,9 @@ footer span {
 .trip .basic-details .summary {
 	margin-top: 10px;
 }
+
+.trip .days p span, .trip .days label span {
+	font-family: 'Caveat', cursive;
+	font-size: 22px;
+	margin-right: 10px;
+}
