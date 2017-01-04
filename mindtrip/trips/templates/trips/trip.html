@@ -36,6 +36,18 @@
 								<p><span>Wskazówki:</span>{{ day.tips }}</p>
 							{% endif %}
 						</article>
+						<section class="trip-gallery">
+							{% for photo in day.photos.all %}
+								<div class="photo-container">
+									<div class="trip-photo">
+										<img src="{{ photo.photo.url }}">
+									</div>
+									<div class="photo-description">
+										<p>{{ photo.description }}</p>
+									</div>
+								</div>
+							{% endfor %}
+						</section>
 					{% endfor %}
 				</section>
 			{% endif %}

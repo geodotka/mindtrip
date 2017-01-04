@@ -143,9 +143,10 @@ footer span {
 }
 
 .content {
-	padding: 0 80px;
 	min-height: 370px;
 	text-align: justify;
+	margin: 0 auto;
+	width: 80%;
 }
 
 .trip p {
@@ -181,4 +182,47 @@ footer span {
 	font-family: 'Caveat', cursive;
 	font-size: 22px;
 	margin-right: 10px;
+}
+
+.trip .days .trip-gallery {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 828px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.trip .photo-container {
+	position: relative;
+	margin: 5px;
+	height: 343px;
+	width: 400px;
+	border: solid 2px rgba(76, 12, 73, 0.71);
+}
+
+.trip .trip-photo {
+	height: 302px;
+	width: 400px;
+	padding: 5px;
+	box-sizing: border-box;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.trip .trip-photo img {
+	display: inline-block;
+	height: 100%;
+}
+
+.trip .photo-description {
+	background-color: rgba(0, 0, 0, 0.04);
+	font-size: 14px;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 0 3px;
+	height: 40px;
+	width: 400px;
+	bottom: 0;
+	position: absolute;
 }
