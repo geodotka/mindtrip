@@ -16,6 +16,14 @@ def upload_to(instance, filename):
     return os.sep.join(parts)
 
 
+def photo_upload_to(instance, filename):
+    parts = [
+        str(instance.id),
+        filename,
+    ]
+    return os.sep.join(parts)
+
+
 class Trip(models.Model):
     destination = models.CharField(max_length=255, verbose_name=u'Cel podróży')
     picture = models.ImageField(upload_to=upload_to, null=True, blank=True)
@@ -94,3 +102,16 @@ class Country(SlugifyModel):
         abstract = False
         verbose_name = u'Kraj'
         verbose_name_plural = u'Kraje'
+
+
+class Photo(models.Model):
+    photo = models.ImageField(
+        upload_to=photo_upload_to, verbose_name=u'Zdjęcie')
+    trip_day = models.ForeignKey(
+        Day, verbose_name=u'Dzień wycieczki', related_name='photos')
+    description = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name=u'Opis')
+
+    class Meta:
+        verbose_name = u'Zdjęcie'
+        verbose_name_plural = u'Zdjęcia'
