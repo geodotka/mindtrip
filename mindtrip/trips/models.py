@@ -48,6 +48,10 @@ class Trip(models.Model):
     tips = models.TextField(blank=True, null=True, verbose_name=u'Wskazówki')
     views_counter = models.IntegerField(
         default=0, verbose_name=u'Licznik odwiedzin')
+    guidebook = models.CharField(
+        max_length=500, null=True, blank=True, verbose_name=u'Przewodniki/mapy')
+    planned_at = models.CharField(
+        max_length=500, null=True, blank=True, verbose_name=u'Planowana w')
 
     tags = models.ManyToManyField('Tag', blank=True, verbose_name=u'Tagi')
 

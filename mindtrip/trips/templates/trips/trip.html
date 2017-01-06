@@ -15,16 +15,24 @@
 				</div>
 			</section>
 			<label>Dojazd</label>
-			<p><span class="long">{{ trip.travel }}</span></p>
+			<p><span>{{ trip.travel }}</span></p>
 			<label>Koszty dojazdu</label>
-			<p><span class="long">{{ trip.travel_price }}</span></p>
+			<p><span >{{ trip.travel_price }}</span></p>
 			<label>Noclegi</label>
-			<p><span class="long">{{ trip.hotel }}</span></p>
+			<p><span>{{ trip.hotel }}</span></p>
 			<label>Koszty noclegów</label>
-			<p><span class="long">{{ trip.hotel_price }}</span></p>
+			<p><span>{{ trip.hotel_price }}</span></p>
+			{% if trip.planned_at %}
+				<label>Wyjazd planowany</label>
+				<p><span>{{ trip.planned_at }}</span></p>
+			{% endif %}
+			{% if trip.guidebook %}
+				<label>Przewodniki / mapy</label>
+				<p><span>{{ trip.guidebook }}</span></p>
+			{% endif %}
 			{% if trip.tips %}
 				<label>Wskazówki</label>
-				<p><span class="long">{{ trip.tips|linebreaks }}</span></p>
+				<p><span>{{ trip.tips|linebreaks }}</span></p>
 			{% endif %}
 			{% if trip.days.all %}
 				<section class="days">
