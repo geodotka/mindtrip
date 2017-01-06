@@ -118,3 +118,17 @@ class Photo(models.Model):
 
     def __unicode__(self):
         return u'{0} ({1})'.format(self.trip_day, self.photo.url)
+
+
+class News(models.Model):
+    title = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name=u'Tytył')
+    text = models.TextField(verbose_name=u'Tekst')
+    created_at = models.DateField(verbose_name=u'Data wpisu')
+
+    class Meta:
+        verbose_name = u'Wpis'
+        verbose_name_plural = u'Wpisy'
+
+    def __unicode__(self):
+        return self.created_at
