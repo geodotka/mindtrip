@@ -2,7 +2,7 @@
 var Gallery = function(tripsJson){
     this.trips = this.getTrips(tripsJson);
     this.firstTripIndex = 0;
-    this.tripsNumberInGallery = 2;
+    this.tripsNumberInGallery = 3;
     this.tripsInGallery = [];
 
     this.setPrevNextTrip();
