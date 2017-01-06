@@ -3,7 +3,7 @@
 
 from django.contrib import admin
 
-from .models import Trip, Day, Tag, Country, Photo, News
+from .models import Trip, Day, Tag, Country, Photo, News, Post
 
 
 admin.site.register(Trip)
@@ -12,3 +12,4 @@ admin.site.register(Tag)
 admin.site.register(Country)
 admin.site.register(Photo)
 admin.site.register(News)
+admin.site.register(Post)

@@ -8,6 +8,7 @@ from django.core import serializers
 from django.shortcuts import get_object_or_404
 
 from .models import Trip, News
+from .forms import AddPost
 
 
 @render_to('trips/home.html')
@@ -32,4 +33,7 @@ def trip(request, trip_id):
         Trip.objects.select_related('country'), id=trip_id)
     trip_.views_counter += 1
     trip_.save()
-    return {'trip': trip_}
+    return {
+        'trip': trip_,
+        'form': AddPost(),
+    }

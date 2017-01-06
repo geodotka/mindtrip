@@ -18,7 +18,7 @@ label {
 	margin-left: 5px;
 }
 
-h1 {
+h1, h2 {
 	text-align: center;
 }
 
@@ -236,4 +236,9 @@ footer span {
 	width: 400px;
 	bottom: 0;
 	position: absolute;
+}
+
+.posts label {
+	font-size: 24px;
+	margin-right: 5px;
 }

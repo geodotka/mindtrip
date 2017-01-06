@@ -63,5 +63,16 @@
 				</section>
 			{% endif %}
 		</div>
+		<h2>Komentarze</h2>
+		{% for post in trip.posts.all %}
+			<section class="posts">
+				<label>{{ post.author }} ({{ post.created_at }}):</label>{{ post.content }}
+			</section>
+		{% endfor %}
+		<h2>Dodaj komentarz</h2>
+		<form>
+			Autor: {{ form.author }}<br>
+			Treść: {{ form.content }}
+		</form>
 	</div>
 {% endblock %}
