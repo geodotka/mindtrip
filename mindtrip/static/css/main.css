@@ -2,7 +2,9 @@ body {
 	margin: 0 auto;
 	padding: 0;
 	font-family: 'Quicksand', sans-serif;
+	font-size: 18px;
 	color: rgba(76, 12, 73, 0.71);
+	background-color: rgba(227, 209, 7, 0.04);
 }
 
 a {
@@ -16,6 +18,10 @@ label {
 	margin-left: 5px;
 }
 
+h1 {
+	text-align: center;
+}
+
 header {
 	background-color: rgba(0, 0, 0, 0.04);
 	height: 40px;
@@ -27,6 +33,7 @@ header {
 
 nav {
 	padding: 9px;
+	font-size: 16px;
 }
 
 nav a {
@@ -43,7 +50,8 @@ nav a i {
 
 main {
 	padding: 0 20px 20px 20px;
-	background-color: rgba(227, 209, 7, 0.04);
+	width: 80%;
+	margin: 0 auto;
 }
 
 footer {
@@ -64,8 +72,6 @@ footer span {
 	font-size: 80px;
 	font-family: 'Caveat', cursive;
 	text-align: center;
-	margin: 0 auto 20px auto;
-	width: 80%;
 }
 
 .logo i {
@@ -143,11 +149,17 @@ footer span {
 	display: inline-block;
 }
 
+.news {
+	text-align: center;
+}
+
+.news p {
+	text-align: justify;
+}
+
 .content {
 	min-height: 370px;
 	text-align: justify;
-	margin: 0 auto;
-	width: 80%;
 }
 
 .trip p {

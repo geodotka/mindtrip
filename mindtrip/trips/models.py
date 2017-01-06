@@ -131,4 +131,4 @@ class News(models.Model):
         verbose_name_plural = u'Wpisy'
 
     def __unicode__(self):
-        return self.created_at
+        return u'{} {}'.format(self.created_at.strftime('%F'), self.title)
