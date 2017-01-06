@@ -9,8 +9,16 @@ from .helpers import slugify
 
 
 def upload_to(instance, filename):
+    if instance.id:
+        instance_id = instance.id
+    else:
+        trip = Trip.objects.all().last()
+        if trip is not None:
+            instance_id = trip.id + 1
+        else:
+            instance_id = 1
     parts = [
-        str(instance.id),
+        str(instance_id),
         filename,
     ]
     return os.sep.join(parts)
