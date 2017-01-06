@@ -144,3 +144,18 @@ class News(models.Model):
 
     def __unicode__(self):
         return u'{} {}'.format(self.created_at.strftime('%F'), self.title)
+
+
+class Post(models.Model):
+    author = models.CharField(max_length=255, verbose_name=u'Autor')
+    trip = models.ForeignKey(
+        Trip, verbose_name='Wycieczka', related_name='posts')
+    content = models.TextField(verbose_name=u'Treść')
+    created_at = models.DateField(auto_now_add=True, verbose_name=u'Utworzony')
+
+    class Meta:
+        verbose_name = u'Komentarz'
+        verbose_name_plural = u'Komentarze'
+
+    def __unicode__(self):
+        return u'{0} - {1}'.format(self.id, self.author)
