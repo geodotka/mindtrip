@@ -42,7 +42,7 @@ nav a i {
 }
 
 main {
-	padding: 20px;
+	padding: 0 20px 20px 20px;
 	background-color: rgba(227, 209, 7, 0.04);
 }
 
@@ -64,7 +64,8 @@ footer span {
 	font-size: 80px;
 	font-family: 'Caveat', cursive;
 	text-align: center;
-	margin-bottom: 20px;
+	margin: 0 auto 20px auto;
+	width: 80%;
 }
 
 .logo i {
