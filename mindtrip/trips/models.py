@@ -18,7 +18,7 @@ def upload_to(instance, filename):
 
 def photo_upload_to(instance, filename):
     parts = [
-        str(instance.id),
+        str(instance.trip_day.id),
         filename,
     ]
     return os.sep.join(parts)
@@ -115,3 +115,6 @@ class Photo(models.Model):
     class Meta:
         verbose_name = u'Zdjęcie'
         verbose_name_plural = u'Zdjęcia'
+
+    def __unicode__(self):
+        return u'{0} ({1})'.format(self.trip_day, self.photo.url)
