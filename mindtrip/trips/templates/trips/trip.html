@@ -14,27 +14,28 @@
 					<p class="summary">{{ trip.summary }}</p>
 				</div>
 			</section>
-			<label>Dojazd</label>
+			<h3>Dojazd</h3>
 			<p><span>{{ trip.travel }}</span></p>
-			<label>Koszty dojazdu</label>
+			<h3>Koszty dojazdu</h3>
 			<p><span >{{ trip.travel_price }}</span></p>
-			<label>Noclegi</label>
+			<h3>Noclegi</h3>
 			<p><span>{{ trip.hotel }}</span></p>
-			<label>Koszty noclegów</label>
+			<h3>Koszty noclegów</h3>
 			<p><span>{{ trip.hotel_price }}</span></p>
 			{% if trip.planned_at %}
-				<label>Wyjazd planowany</label>
+				<h3>Wyjazd planowany</h3>
 				<p><span>{{ trip.planned_at }}</span></p>
 			{% endif %}
 			{% if trip.guidebook %}
-				<label>Przewodniki / mapy</label>
+				<h3>Przewodniki / mapy</h3>
 				<p><span>{{ trip.guidebook }}</span></p>
 			{% endif %}
 			{% if trip.tips %}
-				<label>Wskazówki</label>
+				<h3>Wskazówki</h3>
 				<p><span>{{ trip.tips|linebreaks }}</span></p>
 			{% endif %}
 			{% if trip.days.all %}
+				<h3>Opis</h3>
 				<section class="days">
 					{% for day in trip.days.all %}
 						<article>
@@ -63,25 +64,24 @@
 				</section>
 			{% endif %}
 		</div>
-		<h2>Komentarze</h2>
+		<h3>Komentarze</h3>
 		{% for post in trip.posts.all %}
-			<section class="posts">
+			<section class="post"{% if forloop.last %} id="last-post"{% endif %}>
 				<label>{{ post.author }} ({{ post.created_at }}):</label>{{ post.content }}
 			</section>
 		{% endfor %}
-		<h2>Dodaj komentarz</h2>
-		<form>
+		<h3>Dodaj komentarz</h3>
+		<form method="post" action="{% url 'trip' trip.id %}#last-post">
+			{% csrf_token %}
 			<div class="form-row">
 				<label for="id_author">Autor</label>
 				<input id="id_author" type="text" required="" name="author" maxlength="255">
 			</div>
-			<span class="error js-author-error"></span>
 			<div class="form-row">
 				<label for="id_content">Treść</label>
 				<textarea id="id_content" required="" rows="6" name="content" cols="40"></textarea>
 			</div>
-			<p class="error js-content-error"></p>
-			<button type="button">Wyślij</button>
+			<button type="submit">Wyślij</button>
 		</form>
 	</div>
 {% endblock %}

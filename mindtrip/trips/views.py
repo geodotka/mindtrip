@@ -33,7 +33,11 @@ def trip(request, trip_id):
         Trip.objects.select_related('country'), id=trip_id)
     trip_.views_counter += 1
     trip_.save()
+    add_post_form = AddPost(request.POST or None)
+    if add_post_form.is_valid():
+        add_post_form.trip_id = trip_.id
+        add_post_form.save()
     return {
         'trip': trip_,
-        'form': AddPost(),
+        'form': add_post_form,
     }

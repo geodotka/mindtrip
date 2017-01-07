@@ -22,10 +22,6 @@ h1{
 	text-align: center;
 }
 
-h2 {
-	margin-left: 10px;
-}
-
 header {
 	background-color: rgba(0, 0, 0, 0.04);
 	height: 40px;
@@ -242,7 +238,7 @@ footer span {
 	position: absolute;
 }
 
-.posts label {
+.post label {
 	font-size: 24px;
 	margin-right: 5px;
 }
@@ -253,6 +249,7 @@ form {
 
 form .form-row {
 	display: table;
+	margin-top: 5px;
 }
 
 form .form-row label {
@@ -273,13 +270,6 @@ form .form-row input, textarea {
 	font-size: 16px;
 	padding: 4px;
 	resize: vertical;
-	width: 300px;
-}
-
-form .error {
-	color: rgba(188, 19, 13, 0.91);
-	font-size: 14px;
-	margin: 0 0 0 90px;
 	width: 300px;
 }
 
