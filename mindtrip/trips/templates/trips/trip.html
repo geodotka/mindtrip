@@ -71,8 +71,17 @@
 		{% endfor %}
 		<h2>Dodaj komentarz</h2>
 		<form>
-			Autor: {{ form.author }}<br>
-			Treść: {{ form.content }}
+			<div class="form-row">
+				<label for="id_author">Autor</label>
+				<input id="id_author" type="text" required="" name="author" maxlength="255">
+			</div>
+			<span class="error js-author-error"></span>
+			<div class="form-row">
+				<label for="id_content">Treść</label>
+				<textarea id="id_content" required="" rows="6" name="content" cols="40"></textarea>
+			</div>
+			<p class="error js-content-error"></p>
+			<button type="button">Wyślij</button>
 		</form>
 	</div>
 {% endblock %}
