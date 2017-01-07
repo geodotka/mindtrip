@@ -37,11 +37,20 @@ nav {
 }
 
 nav a {
-	color: rgba(76, 12, 73, 0.71);
+	color: inherit;
 	font-size: 18px;
 	text-transform: uppercase;
 	min-width: 200px;
 	margin: 0 50px;
+	padding: 2px;
+}
+
+nav a:hover {
+	color: #bc130d;
+}
+
+nav .selected {
+	border-bottom: solid 1px;
 }
 
 nav a i {

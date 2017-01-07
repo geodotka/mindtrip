@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head lang="pl">
 	<meta charset="UTF-8">
 	<title>Mindtrip</title>
 	<link href="https://fonts.googleapis.com/css?family=Caveat|Quicksand" rel="stylesheet">
@@ -13,9 +13,9 @@
 
 	<header>
 		<nav>
-			<a href="{% url 'home' %}">Strona główna</a>
-			<a href="{% url 'trips' %}">Podróże</a>
-			<a href="{% url 'contact' %}">Kontakt</a>
+			<a href="{% url 'home' %}"{% block home_page %}{% endblock %}>Strona główna</a>
+			<a href="{% url 'trips' %}"{% block trips_page %}{% endblock %}>Podróże</a>
+			<a href="{% url 'contact' %}"{% block contact %}{% endblock %}>Kontakt</a>
 		</nav>
 	</header>
 
