@@ -7,7 +7,7 @@ from annoying.decorators import render_to
 from django.core import serializers
 from django.shortcuts import get_object_or_404
 
-from .models import Trip, News
+from .models import Trip, News, Country
 from .forms import AddPost
 
 
@@ -28,7 +28,7 @@ def contact(request):
 
 
 @render_to('trips/trip.html')
-def trip(request, trip_id):
+def get_trip(request, trip_id):
     trip_ = get_object_or_404(
         Trip.objects.select_related('country'), id=trip_id)
     trip_.views_counter += 1
@@ -41,3 +41,9 @@ def trip(request, trip_id):
         'trip': trip_,
         'form': add_post_form,
     }
+
+
+@render_to('trips/trips.html')
+def get_trips(request):
+    countries = Country.objects.all().order_by('name')
+    return {'countries': countries}

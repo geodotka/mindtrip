@@ -9,5 +9,6 @@ from . import views
 urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^kontakt$', views.contact, name='contact'),
-    url(r'^podroze/(?P<trip_id>\d+)$', views.trip, name='trip'),
+    url(r'^podroze$', views.get_trips, name='trips'),
+    url(r'^podroze/(?P<trip_id>\d+)$', views.get_trip, name='trip'),
 ]

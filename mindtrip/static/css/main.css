@@ -160,6 +160,18 @@ footer span {
 	text-align: justify;
 }
 
+.content a {
+	color: inherit;
+}
+
+.content a:hover {
+	color: #bc130d;
+}
+
+.content .trip-by-country {
+	margin-left: 50px;
+}
+
 .trip p {
 	margin: 0 auto;
 }

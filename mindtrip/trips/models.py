@@ -35,7 +35,8 @@ def photo_upload_to(instance, filename):
 class Trip(models.Model):
     destination = models.CharField(max_length=255, verbose_name=u'Cel podróży')
     picture = models.ImageField(upload_to=upload_to, null=True, blank=True)
-    country = models.ForeignKey('Country', verbose_name=u'Kraj')
+    country = models.ForeignKey(
+        'Country', verbose_name=u'Kraj', related_name='trips')
     summary = models.TextField(verbose_name=u'Podsumowanie')
     start_at = models.DateField(verbose_name=u'Data początku')
     end_at = models.DateField(verbose_name=u'Data końca')
@@ -114,6 +115,10 @@ class Country(SlugifyModel):
         abstract = False
         verbose_name = u'Kraj'
         verbose_name_plural = u'Kraje'
+
+    @property
+    def sorted_posts(self):
+        return self.posts.order_by('destination')
 
 
 class Photo(models.Model):
