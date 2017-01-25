@@ -3,7 +3,7 @@ body {
 	padding: 0;
 	font-family: 'Quicksand', sans-serif;
 	font-size: 18px;
-	color: rgba(76, 12, 73, 0.71);
+	color: rgba(56, 9, 53, 0.71);
 	background-color: rgba(227, 209, 7, 0.04);
 }
 
@@ -73,7 +73,7 @@ footer {
 }
 
 footer span {
-	color: rgba(76, 12, 73, 0.71);
+	color: rgba(56, 9, 53, 0.71);
 	font-size: 14px;
 }
 
@@ -95,7 +95,7 @@ footer span {
 
 .gallery {
 	height: 200px;
-	border: dashed 8px rgba(76, 12, 73, 0.71);
+	border: dashed 8px rgba(56, 9, 53, 0.71);
 	display: inline-flex;
     justify-content: center;
 	position: relative;
@@ -191,10 +191,51 @@ footer span {
 
 .trip .basic-details .trip-picture {
 	justify-content: center;
+	position: relative;
 }
 
 .trip .basic-details .trip-picture img {
 	width: 300px;
+}
+
+.trip .basic-details .trip-picture::after {
+	content: "";
+	width: 100%;
+	height: 20px;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.trip .basic-details .trip-picture::before {
+	content: "";
+	width: 100%;
+	height: 20px;
+	background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.trip .basic-details .trip-picture .fog-left {
+	content: "";
+	width: 20px;
+	height: 100%;
+	background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.trip .basic-details .trip-picture .fog-right {
+	content: "";
+	width: 20px;
+	height: 100%;
+	background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 .trip .basic-details .description {
@@ -229,7 +270,7 @@ footer span {
 	margin: 5px;
 	height: 343px;
 	width: 400px;
-	border: solid 2px rgba(76, 12, 73, 0.71);
+	border: solid 2px rgba(56, 9, 53, 0.71);
 }
 
 .trip .trip-photo {
@@ -285,7 +326,7 @@ form .form-row label {
 
 form .form-row input, textarea {
 	background-color: #fff;
-	border: solid 1px rgba(76, 12, 73, 0.71);
+	border: solid 1px rgba(56, 9, 53, 0.71);
 	float: right;
 	font-family: 'Quicksand', sans-serif;
 	font-size: 16px;
@@ -295,7 +336,7 @@ form .form-row input, textarea {
 }
 
 form button {
-	background-color: rgba(76, 12, 73, 0.71);
+	background-color: rgba(56, 9, 53, 0.71);
 	border: none;
 	border-radius: 3px;
 	color: #fff;

@@ -5,7 +5,9 @@
 		<div class="trip">
 			<section class="basic-details">
 				<div class="trip-picture">
+					<span class="fog-left"></span>
 					<img src="{{ trip.picture.url }}">
+					<span class="fog-right"></span>
 				</div>
 				<div class="description">
 					<p>Miejsce:<label>{{ trip.destination }} ({{ trip.country.name }})</label></p>
@@ -40,12 +42,12 @@
 					{% for day in trip.days.all %}
 						<article>
 							<label>{{ day.name }} <span>({{ day.date }})</span></label>
-							<p>{{ day.description }}</p>
+							<p>{{ day.description|linebreaks }}</p>
 							{% if day.tips %}
 								<p><span>Wskazówki:</span>{{ day.tips }}</p>
 							{% endif %}
 						</article>
-						{% if day.photos %}
+						{% if day.photos.count %}
 							<p><span>Zdjęcia:</span></p>
 							<section class="trip-gallery">
 								{% for photo in day.photos.all %}
