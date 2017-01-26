@@ -140,6 +140,10 @@ Trip.prototype.drawTripWidget = function(){
     dates.className = 'dates';
     tripContainer.appendChild(dates);
 
+    var shadow = document.createElement('div');
+    shadow.className = 'shadow';
+    tripContainer.appendChild(shadow);
+
     link.appendChild(tripContainer);
     return link
 };
