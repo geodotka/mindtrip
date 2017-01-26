@@ -190,52 +190,21 @@ footer span {
 }
 
 .trip .basic-details .trip-picture {
-	justify-content: center;
 	position: relative;
+	display: inline-block;
 }
 
 .trip .basic-details .trip-picture img {
 	width: 300px;
 }
 
-.trip .basic-details .trip-picture::after {
-	content: "";
-	width: 100%;
-	height: 20px;
-	background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+.trip .basic-details .trip-picture .shadow {
 	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.trip .basic-details .trip-picture::before {
-	content: "";
-	width: 100%;
-	height: 20px;
-	background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-	position: absolute;
-	bottom: 0;
-	left: 0;
-}
-
-.trip .basic-details .trip-picture .fog-left {
-	content: "";
-	width: 20px;
-	height: 100%;
-	background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.trip .basic-details .trip-picture .fog-right {
-	content: "";
-	width: 20px;
-	height: 100%;
-	background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-	position: absolute;
-	top: 0;
-	right: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 10px 20px #fff;
+    top: 0;
+    left: 0;
 }
 
 .trip .basic-details .description {

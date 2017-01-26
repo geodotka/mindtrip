@@ -4,10 +4,11 @@
 	<div class="content">
 		<div class="trip">
 			<section class="basic-details">
-				<div class="trip-picture">
-					<span class="fog-left"></span>
-					<img src="{{ trip.picture.url }}">
-					<span class="fog-right"></span>
+				<div>
+					<div class="trip-picture">
+						<img src="{{ trip.picture.url }}">
+						<div class="shadow"></div>
+					</div>
 				</div>
 				<div class="description">
 					<p>Miejsce:<label>{{ trip.destination }} ({{ trip.country.name }})</label></p>
