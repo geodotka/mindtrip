@@ -108,49 +108,44 @@ footer span {
 	font-size: 40px;
 }
 
-.logo .arrow {
-	cursor: pointer;
-	font-size: 40px;
-}
-
 .gallery-content {
 	text-align: center;
 	position: relative;
 	height: 200px;
 }
 
-.gallery {
+.gallery-content .gallery {
 	height: 200px;
 	display: inline-flex;
     justify-content: center;
 	position: relative;
 }
 
-.gallery div {
+.gallery-content .gallery div {
 	height: 180px;
 	width: 240px;
 	margin: 10px;
 	position: relative;
 }
 
-.gallery div img {
+.gallery-content .gallery div img {
 	height: 180px;
 	width: 240px;
 }
 
-.gallery div span {
+.gallery-content .gallery div span {
 	color: #fff;
 	font-family: 'Caveat', cursive;
 	position: absolute;
 }
 
-.gallery div .destination {
+.gallery-content .gallery div .destination {
 	font-size: 32px;
 	right: 15px;
 	top: 2px;
 }
 
-.gallery div .dates {
+.gallery-content .gallery div .dates {
 	font-size: 20px;
 	left: 12px;
 	bottom: 7px;
@@ -342,4 +337,60 @@ form button {
 	height: 30px;
 	margin: 10px 0 10px 90px;
 	width: 100px;
+}
+
+.big-gallery {
+	background-color: #fcfcfc;
+	opacity: 0.9;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+.big-gallery .image-container {
+	margin: 30px auto;
+	display: inline-flex;
+	position: relative;
+}
+
+.big-gallery .image-container .photo-container {
+	position: relative;
+}
+
+.big-gallery .image-container .photo-container img {
+	max-height: 80vh;
+	max-width: 80vh;
+}
+
+.big-gallery .image-container .photo-container .shadow {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 10px 20px #fcfcfc;
+    top: 0;
+    left: 0;
+}
+
+.big-gallery .image-container .arrow {
+	cursor: pointer;
+	font-size: 60px;
+	bottom: 0;
+	position: absolute;
+}
+
+.big-gallery .image-container .arrow-left{
+	left: -50px;
+}
+
+.big-gallery .description {
+	background-color: #fcfcfc;
+	font-size: 14px;
+	height: 10%;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	position: absolute;
 }

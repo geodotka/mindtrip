@@ -47,6 +47,7 @@ def get_trip(request, trip_id):
         'form': add_post_form,
         'prev_trip': prev_trip.id if prev_trip is not None else None,
         'next_trip': next_trip.id if next_trip is not None else None,
+        'photos_json': json.dumps(trip_.get_photo_list_for_gallery())
     }
 
 

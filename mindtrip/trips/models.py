@@ -64,6 +64,10 @@ class Trip(models.Model):
         return u'{0}: {1} - {2}'.format(
             self.destination, self.start_at, self.end_at)
 
+    def get_photo_list_for_gallery(self):
+        photos = Photo.objects.filter(trip_day__trip_id=self.id).order_by('id')
+        return [photo.get_data_for_trip_gallery() for photo in photos]
+
 
 class Day(models.Model):
     name = models.CharField(
@@ -135,6 +139,13 @@ class Photo(models.Model):
 
     def __unicode__(self):
         return u'{0} ({1})'.format(self.trip_day, self.photo.url)
+
+    def get_data_for_trip_gallery(self):
+        return {
+            'url': self.photo.url,
+            'trip_day': self.trip_day.name,
+            'description': self.description,
+        }
 
 
 class News(models.Model):
