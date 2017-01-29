@@ -91,6 +91,7 @@ footer span {
 .gallery-content {
 	text-align: center;
 	position: relative;
+	height: 200px;
 }
 
 .gallery {
