@@ -21,7 +21,9 @@
 
 	<main>
 		<div class="logo">
-			geodotka w podróży <i class="material-icons">flight_takeoff</i>
+			geodotka w podróży <i class="material-icons flight-takeoff">flight_takeoff</i>
+			{% block prev_trip %}{% endblock %}
+			{% block next_trip %}{% endblock %}
 		</div>
 		{% block content %}{% endblock %}
 	</main>

@@ -37,9 +37,16 @@ def get_trip(request, trip_id):
     if add_post_form.is_valid():
         add_post_form.trip_id = trip_.id
         add_post_form.save()
+
+    prev_trip = Trip.objects.filter(start_at__gt=trip_.start_at) \
+        .order_by('start_at').first()
+    next_trip = Trip.objects.filter(start_at__lt=trip_.start_at) \
+        .order_by('-start_at').first()
     return {
         'trip': trip_,
         'form': add_post_form,
+        'prev_trip': prev_trip.id if prev_trip is not None else None,
+        'next_trip': next_trip.id if next_trip is not None else None,
     }
 
 

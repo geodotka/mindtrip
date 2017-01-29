@@ -1,5 +1,21 @@
 {% extends "trips/base.html" %}
 
+{% block prev_trip %}
+	{% if prev_trip %}
+		<a href="{% url 'trip' prev_trip %}" class="trip-link prev-trip-link">
+			<i class="material-icons arrow arrow-left">play_arrow</i>
+		</a>
+	{% endif %}
+{% endblock %}
+
+{% block next_trip %}
+	{% if next_trip %}
+		<a href="{% url 'trip' next_trip %}" class="trip-link next-trip-link">
+			<i class="material-icons arrow">play_arrow</i>
+		</a>
+	{% endif %}
+{% endblock %}
+
 {% block content %}
 	<div class="content">
 		<div class="trip">
