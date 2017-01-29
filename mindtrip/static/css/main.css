@@ -263,38 +263,39 @@ footer span {
 }
 
 .trip .photo-container {
-	position: relative;
-	margin: 5px;
-	height: 343px;
+	text-align: center;
 	width: 400px;
-	border: solid 2px rgba(56, 9, 53, 0.71);
 }
 
 .trip .trip-photo {
-	height: 302px;
-	width: 400px;
-	padding: 5px;
-	box-sizing: border-box;
-	text-align: center;
 	display: inline-block;
-	vertical-align: middle;
+	height: 302px;
+	position: relative;
 }
 
 .trip .trip-photo img {
-	display: inline-block;
 	height: 100%;
 }
 
-.trip .photo-description {
-	background-color: rgba(0, 0, 0, 0.04);
-	font-size: 14px;
-	text-align: center;
-	box-sizing: border-box;
-	padding: 0 3px;
-	height: 40px;
-	width: 400px;
-	bottom: 0;
+.trip .trip-photo .shadow {
 	position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 10px 20px #fcfcfc;
+    top: 0;
+    left: 0;
+}
+
+.trip .photo-description {
+	background-color: #fcfcfc;
+	opacity: 0.8;
+	font-size: 14px;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	padding: 0 20px 20px 20px;
+	box-sizing: border-box;
 }
 
 .post label {

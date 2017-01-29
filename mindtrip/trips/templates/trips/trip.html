@@ -64,16 +64,17 @@
 								<p><span>Wskazówki:</span>{{ day.tips }}</p>
 							{% endif %}
 						</article>
-						{% if day.photos.count %}
+						{% if day.photos %}
 							<p><span>Zdjęcia:</span></p>
 							<section class="trip-gallery">
 								{% for photo in day.photos.all %}
 									<div class="photo-container">
 										<div class="trip-photo">
 											<img src="{{ photo.photo.url }}">
-										</div>
-										<div class="photo-description">
-											<p>{{ photo.description }}</p>
+											<div class="shadow"></div>
+											<span class="photo-description">
+												{{ photo.description }}
+											</span>
 										</div>
 									</div>
 								{% endfor %}
