@@ -64,12 +64,12 @@
 								<p><span>Wskazówki:</span>{{ day.tips }}</p>
 							{% endif %}
 						</article>
-						{% if day.photos %}
+						{% if day.photos.all %}
 							<p><span>Zdjęcia:</span></p>
 							<section class="trip-gallery">
 								{% for photo in day.photos.all %}
 									<div class="photo-container">
-										<div class="trip-photo">
+										<div class="trip-photo js-show-gallery">
 											<img src="{{ photo.photo.url }}">
 											<div class="shadow"></div>
 											<span class="photo-description">
@@ -109,10 +109,22 @@
 {% endblock %}
 
 {% block gallery %}
-	<div class="big-gallery js-gallery-content"></div>
+	<div class="full-screen-gallery hidden js-gallery-content">
+		<div class="text description js-description"></div>
+		<div class="image-container">
+			<div class="image-box">
+				<img class="js-image" src="">
+				<div class="shadow"></div>
+				<i class="material-icons close js-close-gallery">clear</i>
+				<i class="material-icons hidden arrow arrow-left js-left-arrow">play_arrow</i>
+				<i class="material-icons arrow arrow-right js-right-arrow">play_arrow</i>
+			</div>
+		</div>
+		<div class="text counter js-counter"></div>
+
+	</div>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/trips/photos_gallery.js"></script>
 	<script>
 		var gallery = new Gallery({{ photos_json|safe }});
-		gallery.draw()
 	</script>
 {% endblock %}

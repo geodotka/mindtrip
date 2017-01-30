@@ -1,18 +1,24 @@
 
 var Gallery = function(photos){
-    this.photos = this.getPhotos(photos);
+    this.photos = photos;
     this.photoIndex = 0;
+    this.leftArrow = $('.js-left-arrow');
+    this.rightArrow = $('.js-right-arrow');
 
     this.setPrevNextPhoto();
+    this.draw();
+    this.bind();
 };
 
 
-Gallery.prototype.getPhotos = function(photos){
-    var photoList = [];
-    for (var i= 0; i < photos.length; i++) {
-        photoList.push(new Photo(photos[i]))
+Gallery.prototype.setIndexBySrc = function(src){
+    src = '/' + src.split('/').splice(3).join('/');
+    for (var i=0; i < this.photos.length; i++){
+        if (this.photos[i].url == src){
+            this.photoIndex = i;
+            break;
+        }
     }
-    return photoList
 };
 
 
@@ -23,42 +29,44 @@ Gallery.prototype.setPrevNextPhoto = function(){
 
 
 Gallery.prototype.draw = function(){
-    var $galleryContent = $('.js-gallery-content');
-    $galleryContent.empty();
-    $galleryContent.append(this.drawImageContainer());
-    $galleryContent.append(this.photos[this.photoIndex].drawPhotoDescription());
+    var photo = this.photos[this.photoIndex];
+    $('.js-description').html(photo.description);
+    $('.js-image').attr('src', photo.url);
+    $('.js-counter').html(String(this.photoIndex + 1) + '/' + this.photos.length );
+    this.drawArrows();
+};
+
+
+Gallery.prototype.drawArrows = function(){
+    if (this.hasPrevPhoto){
+        this.leftArrow.removeClass('hidden')
+    } else {
+        this.leftArrow.addClass('hidden')
+    }
+    if (this.hasNextPhoto){
+        this.rightArrow.removeClass('hidden')
+    } else {
+        this.rightArrow.addClass('hidden')
+    }
     this.bindArrows()
 };
 
+Gallery.prototype.bind = function(){
+    var this_ = this;
+    $('.js-show-gallery').on('click', function(){
+        $('.js-gallery-content').removeClass('hidden');
+        this_.setIndexBySrc($(this).children('img')[0].src);
+        this_.setPrevNextPhoto();
+        this_.draw()
+    });
 
-Gallery.prototype.drawIcon = function(isPrev){
-    var icon = document.createElement('i');
-    icon.className = 'material-icons arrow';
-    if (isPrev){
-        icon.className += ' arrow-left js-prev'
-    } else {
-        icon.className += ' js-next'
-    }
-    icon.innerHTML = 'play_arrow';
-    return icon
+    $('.js-close-gallery').on('click', function(ev){
+        $('.js-gallery-content').addClass('hidden')
+    });
 };
 
 
-Gallery.prototype.drawImageContainer = function(){
-    var gallery = document.createElement('div');
-    gallery.className = 'image-container';
-    if (this.hasPrevPhoto){
-        gallery.appendChild(this.drawIcon(true));
-    }
-    gallery.appendChild(this.photos[this.photoIndex].drawPhotoImage());
-    if (this.hasNextPhoto){
-        gallery.appendChild(this.drawIcon(false))
-    }
-    return gallery
-};
-
-
-Gallery.prototype.bindArrows = function () {
+Gallery.prototype.bindArrows = function(){
     if (this.hasPrevPhoto){
         this.bindLeftArrow();
     }
@@ -68,60 +76,27 @@ Gallery.prototype.bindArrows = function () {
 };
 
 
-Gallery.prototype.refresh = function () {
-    this.setPrevNextPhoto();
-    this.draw();
-};
-
-
-Gallery.prototype.bindLeftArrow = function () {
+Gallery.prototype.bindLeftArrow = function(){
     var this_ = this;
-    $('.js-prev').on('click', function(){
+    this_.leftArrow.off();
+    this_.leftArrow.on('click', function(){
         if (this_.photoIndex > 0){
             this_.photoIndex -= 1
         }
-        this_.refresh()
+        this_.setPrevNextPhoto();
+        this_.draw()
     })
 };
 
 
 Gallery.prototype.bindRightArrow = function () {
     var this_ = this;
-    $('.js-next').on('click', function(){
+    this_.rightArrow.off();
+    this_.rightArrow.on('click', function(){
         if (this_.photoIndex < this_.photos.length){
             this_.photoIndex += 1
         }
-        this_.refresh()
+        this_.setPrevNextPhoto();
+        this_.draw()
     })
-};
-
-
-var Photo = function(photo){
-    this.url = photo.url;
-    this.day = photo.trip_day;
-    this.description = photo.description;
-};
-
-
-Photo.prototype.drawPhotoImage = function(){
-    var photoContainer = document.createElement('div');
-    photoContainer.className = 'photo-container';
-
-    var img = document.createElement('img');
-    img.src = this.url;
-    photoContainer.appendChild(img);
-
-
-    var shadow = document.createElement('div');
-    shadow.className = 'shadow';
-    photoContainer.appendChild(shadow);
-
-    return photoContainer
-};
-
-Photo.prototype.drawPhotoDescription = function(){
-    var description = document.createElement('span');
-    description.innerHTML = this.description;
-    description.className = 'description';
-    return description
 };
