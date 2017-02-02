@@ -93,6 +93,7 @@
 			Nikt jeszcze nie skomentował tej wycieczki. Zachęcam do dodania komentarza.
 		{% endfor %}
 		<h3>Dodaj komentarz</h3>
+		<p>Będzie mi bardzo miło, jeśli zostawisz w komentarzu jakikolwiek najdrobniejszy ślad po sobie, że tu jesteś.</p>
 		<form method="post" action="{% url 'trip' trip.id %}#last-post">
 			{% csrf_token %}
 			<div class="form-row">
