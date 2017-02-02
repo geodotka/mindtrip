@@ -243,13 +243,40 @@ footer span {
 	margin-top: 10px;
 }
 
-.trip .days p span, .trip .days label span {
-	font-family: 'Caveat', cursive;
-	font-size: 22px;
+.trip .trip-box,
+.trip .days-box,
+.trip .posts-box {
+	padding: 20px;
+}
+
+.trip .trip-box .trip-small-box,
+.trip .days-box .days-small-box,
+.trip .posts-box {
+	margin-bottom: 15px;
+	display: flex;
+}
+
+.trip .trip-box .trip-small-box .icons,
+.trip .posts-box .icons {
+	width: 80px;
+}
+
+.trip .days-box .days-small-box .label {
+	font-size: 16px;
+	width: 80px;
+}
+
+.trip .days-box .days-small-box .tips,
+.trip .days-box .days-small-box .photos {
+	display: flex;
+	margin-top: 10px;
+}
+
+.trip .days-box .days-small-box .tips i {
 	margin-right: 10px;
 }
 
-.trip .days .trip-gallery {
+.trip .days-box .trip-gallery {
 	display: flex;
 	flex-wrap: wrap;
 	max-width: 828px;
@@ -299,8 +326,19 @@ footer span {
 	margin-right: 5px;
 }
 
+.trip .posts-box h4 {
+	margin-bottom: 10px;
+	margin-top: 0;
+}
+
+.trip .posts-box .add-post {
+	margin-bottom: 10px;
+	margin-top: 30px;
+}
+
 form {
 	width: 400px;
+	margin-top: 30px;
 }
 
 form .form-row {
@@ -330,6 +368,7 @@ form .form-row input, textarea {
 }
 
 form button {
+	cursor: pointer;
 	background-color: rgba(56, 9, 53, 0.71);
 	border: none;
 	border-radius: 3px;

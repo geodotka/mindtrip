@@ -33,79 +33,134 @@
 					<p class="summary">{{ trip.summary }}</p>
 				</div>
 			</section>
-			<h3>Dojazd</h3>
-			<p><span>{{ trip.travel }}</span></p>
-			<h3>Koszty dojazdu</h3>
-			<p><span >{{ trip.travel_price }}</span></p>
-			<h3>Noclegi</h3>
-			<p><span>{{ trip.hotel }}</span></p>
-			<h3>Koszty noclegów</h3>
-			<p><span>{{ trip.hotel_price }}</span></p>
-			{% if trip.planned_at %}
-				<h3>Wyjazd planowany</h3>
-				<p><span>{{ trip.planned_at }}</span></p>
-			{% endif %}
-			{% if trip.guidebook %}
-				<h3>Przewodniki / mapy</h3>
-				<p><span>{{ trip.guidebook }}</span></p>
-			{% endif %}
-			{% if trip.tips %}
-				<h3>Wskazówki</h3>
-				<p><span>{{ trip.tips|linebreaks }}</span></p>
-			{% endif %}
+			<section class="trip-box">
+				<div class="trip-small-box">
+					<div class="icons">
+						<i class="material-icons" title="Dojazd">directions_bus</i>
+					</div>
+					<span>{{ trip.travel }}</span>
+				</div>
+				<div class="trip-small-box">
+					<div class="icons">
+						<i class="material-icons" title="Koszty dojazdu">directions_bus</i>
+						<i class="material-icons">euro_symbol</i>
+					</div>
+					<span class="euro">{{ trip.travel_price }}</span>
+				</div>
+				<div class="trip-small-box">
+					<div class="icons">
+						<i class="material-icons" title="Noclegi">local_hotel</i>
+					</div>
+					<span>{{ trip.hotel }}</span>
+				</div>
+				<div class="trip-small-box">
+					<div class="icons">
+						<i class="material-icons" title="Koszty noclegów">local_hotel</i>
+						<i class="material-icons">euro_symbol</i>
+					</div>
+					<span class="euro">{{ trip.hotel_price }}</span>
+				</div>
+				{% if trip.planned_at %}
+					<div class="trip-small-box">
+						<div class="icons">
+							<i class="material-icons" title="Wyjazd planowany">watch_later</i>
+						</div>
+						<span>{{ trip.planned_at }}</span>
+					</div>
+				{% endif %}
+				{% if trip.guidebook %}
+					<div class="trip-small-box">
+						<div class="icons">
+							<i class="material-icons" title="Przwodniki, mapy">map</i>
+						</div>
+						<span>{{ trip.guidebook }}</span>
+					</div>
+				{% endif %}
+				{% if trip.tips %}
+					<div class="trip-small-box">
+						<div class="icons">
+							<i class="material-icons" title="Wskazówki">warning</i>
+						</div>
+						<span>{{ trip.tips|linebreaks }}</span>
+					</div>
+				{% endif %}
+			</section>
 			{% if trip.days.all %}
-				<h3>Opis</h3>
-				<section class="days">
+				<section class="days-box">
 					{% for day in trip.days.all %}
-						<article>
-							<label>{{ day.name }} <span>({{ day.date }})</span></label>
-							<p>{{ day.description|linebreaks }}</p>
-							{% if day.tips %}
-								<p><span>Wskazówki:</span>{{ day.tips }}</p>
-							{% endif %}
-						</article>
-						{% if day.photos.all %}
-							<p><span>Zdjęcia:</span></p>
-							<section class="trip-gallery">
-								{% for photo in day.photos.all %}
-									<div class="photo-container">
-										<div class="trip-photo js-show-gallery">
-											<img src="{{ photo.photo.url }}">
-											<div class="shadow"></div>
-											<span class="photo-description">
-												{{ photo.description }}
-											</span>
+						<div class="days-small-box">
+							<div class="label">
+								<i class="material-icons">today</i>
+								<p>{{ day.name }}</p><span>{{ day.date|date:'d-m-Y' }}</span>
+							</div>
+							<div>
+								<p>{{ day.description|linebreaks }}</p>
+								{% if day.tips %}
+									<p class="tips">
+										<i class="material-icons" title="Wskazówki">warning</i>
+										{{ day.tips }}
+									</p>
+								{% endif %}
+
+								{% if day.photos.all %}
+									<div class="days-small-box">
+										<div class="photos">
+											<i class="material-icons">camera_alt</i>
+											<div class="trip-gallery">
+												{% for photo in day.photos.all %}
+													<div class="photo-container">
+														<div class="trip-photo js-show-gallery">
+															<img src="{{ photo.photo.url }}">
+															<div class="shadow"></div>
+															<span class="photo-description">
+																{{ photo.description }}
+															</span>
+														</div>
+													</div>
+												{% endfor %}
+											</div>
 										</div>
 									</div>
-								{% endfor %}
-							</section>
-						{% endif %}
+								{% endif %}
+							</div>
+						</div>
 					{% endfor %}
 				</section>
 			{% endif %}
-		</div>
-		<h3>Komentarze</h3>
-		{% for post in trip.posts.all %}
-			<section class="post"{% if forloop.last %} id="last-post"{% endif %}>
-				<label>{{ post.author }} ({{ post.created_at }}):</label>{{ post.content }}
+			<section class="posts-box">
+				<div class="icons">
+					<i class="material-icons" title="Komentarze">comment</i>
+				</div>
+				<div>
+					<div>
+						<h4>Komentarze</h4>
+						{% for post in trip.posts.all %}
+							<section class="post"{% if forloop.last %} id="last-post"{% endif %}>
+								<label>{{ post.author }} ({{ post.created_at }}):</label>{{ post.content }}
+							</section>
+						{% empty %}
+							Nikt jeszcze nie skomentował tej wycieczki. Zachęcam do dodania komentarza.
+						{% endfor %}
+					</div>
+					<div class="add-post">
+						<h4>Dodaj komentarz</h4>
+						<p>Będzie mi bardzo miło, jeśli zostawisz w komentarzu jakikolwiek ślad po tym, że tu byłaś/byłeś.</p>
+						<form method="post" action="{% url 'trip' trip.id %}#last-post">
+							{% csrf_token %}
+							<div class="form-row">
+								<label for="id_author">Autor</label>
+								<input id="id_author" type="text" required="" name="author" maxlength="255">
+							</div>
+							<div class="form-row">
+								<label for="id_content">Treść</label>
+								<textarea id="id_content" required="" rows="6" name="content" cols="40"></textarea>
+							</div>
+							<button type="submit">Wyślij</button>
+						</form>
+					</div>
+				</div>
 			</section>
-		{% empty %}
-			Nikt jeszcze nie skomentował tej wycieczki. Zachęcam do dodania komentarza.
-		{% endfor %}
-		<h3>Dodaj komentarz</h3>
-		<p>Będzie mi bardzo miło, jeśli zostawisz w komentarzu jakikolwiek najdrobniejszy ślad po sobie, że tu jesteś.</p>
-		<form method="post" action="{% url 'trip' trip.id %}#last-post">
-			{% csrf_token %}
-			<div class="form-row">
-				<label for="id_author">Autor</label>
-				<input id="id_author" type="text" required="" name="author" maxlength="255">
-			</div>
-			<div class="form-row">
-				<label for="id_content">Treść</label>
-				<textarea id="id_content" required="" rows="6" name="content" cols="40"></textarea>
-			</div>
-			<button type="submit">Wyślij</button>
-		</form>
+		</div>
 	</div>
 {% endblock %}
 
