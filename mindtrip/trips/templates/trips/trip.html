@@ -19,14 +19,14 @@
 {% block content %}
 	<div class="content">
 		<div class="trip">
-			<section class="basic-details">
+			<section class="trip-basic-details">
 				<div>
 					<div class="trip-picture">
 						<img src="{{ trip.picture.url }}">
 						<div class="shadow"></div>
 					</div>
 				</div>
-				<div class="description">
+				<div class="trip-description">
 					<p>Miejsce:<label>{{ trip.destination }} ({{ trip.country.name }})</label></p>
 					<p>Początek:<label>{{ trip.start_at }}</label>
 					<p>Koniec:<label>{{ trip.end_at }}</label>
@@ -88,76 +88,61 @@
 			{% if trip.days.all %}
 				<section class="days-box">
 					{% for day in trip.days.all %}
-						<div class="days-small-box">
-							<div class="label">
-								<i class="material-icons">today</i>
-								<p>{{ day.name }}</p><span>{{ day.date|date:'d-m-Y' }}</span>
-							</div>
-							<div>
-								<p>{{ day.description|linebreaks }}</p>
-								{% if day.tips %}
-									<p class="tips">
-										<i class="material-icons" title="Wskazówki">warning</i>
-										{{ day.tips }}
-									</p>
-								{% endif %}
+						<h3 class="days-box-label">{{ day.name }} ({{ day.date|date:'d-m-Y' }})</h3>
+						<div>
+							<p>{{ day.description|linebreaks }}</p>
+							{% if day.tips %}
+								<p class="tips">
+									<i class="material-icons" title="Wskazówki">warning</i>
+									<span>{{ day.tips }}</span>
+								</p>
+							{% endif %}
 
-								{% if day.photos.all %}
-									<div class="days-small-box">
-										<div class="photos">
-											<i class="material-icons">camera_alt</i>
-											<div class="trip-gallery">
-												{% for photo in day.photos.all %}
-													<div class="photo-container">
-														<div class="trip-photo js-show-gallery">
-															<img src="{{ photo.photo.url }}">
-															<div class="shadow"></div>
-															<span class="photo-description">
-																{{ photo.description }}
-															</span>
-														</div>
-													</div>
-												{% endfor %}
+							{% if day.photos.all %}
+								<div class="days-small-box">
+									<div class="trip-gallery">
+										{% for photo in day.photos.all %}
+											<div class="photo-container">
+												<div class="trip-photo js-show-gallery">
+													<img src="{{ photo.photo.url }}">
+													<div class="shadow"></div>
+													<span class="photo-description">
+														{{ photo.description }}
+													</span>
+												</div>
 											</div>
-										</div>
+										{% endfor %}
 									</div>
-								{% endif %}
-							</div>
+								</div>
+							{% endif %}
 						</div>
 					{% endfor %}
 				</section>
 			{% endif %}
 			<section class="posts-box">
-				<div class="icons">
-					<i class="material-icons" title="Komentarze">comment</i>
-				</div>
-				<div>
-					<div>
-						<h4>Komentarze</h4>
-						{% for post in trip.posts.all %}
-							<section class="post"{% if forloop.last %} id="last-post"{% endif %}>
-								<label>{{ post.author }} ({{ post.created_at }}):</label>{{ post.content }}
-							</section>
-						{% empty %}
-							Nikt jeszcze nie skomentował tej wycieczki. Zachęcam do dodania komentarza.
-						{% endfor %}
-					</div>
-					<div class="add-post">
-						<h4>Dodaj komentarz</h4>
-						<p>Będzie mi bardzo miło, jeśli zostawisz w komentarzu jakikolwiek ślad po tym, że tu byłaś/byłeś.</p>
-						<form method="post" action="{% url 'trip' trip.id %}#last-post">
-							{% csrf_token %}
-							<div class="form-row">
-								<label for="id_author">Autor</label>
-								<input id="id_author" type="text" required="" name="author" maxlength="255">
-							</div>
-							<div class="form-row">
-								<label for="id_content">Treść</label>
-								<textarea id="id_content" required="" rows="6" name="content" cols="40"></textarea>
-							</div>
-							<button type="submit">Wyślij</button>
-						</form>
-					</div>
+				<h3 class="posts-box-label">Komentarze</h3>
+				{% for post in trip.posts.all %}
+					<section class="post"{% if forloop.last %} id="last-post"{% endif %}>
+						<label>{{ post.author }} ({{ post.created_at }}):</label>{{ post.content }}
+					</section>
+				{% empty %}
+					Nikt jeszcze nie skomentował tej wycieczki. Zachęcam do dodania komentarza.
+				{% endfor %}
+				<div class="add-post">
+					<h4>Dodaj komentarz</h4>
+					<p>Będzie mi bardzo miło, jeśli zostawisz w komentarzu jakikolwiek ślad po tym, że tu byłaś/byłeś.</p>
+					<form method="post" action="{% url 'trip' trip.id %}#last-post">
+						{% csrf_token %}
+						<div class="form-row">
+							<label for="id_author">Autor</label>
+							<input id="id_author" type="text" required="" name="author" maxlength="255">
+						</div>
+						<div class="form-row">
+							<label for="id_content">Treść</label>
+							<textarea id="id_content" required="" rows="6" name="content" cols="40"></textarea>
+						</div>
+						<button type="submit">Wyślij</button>
+					</form>
 				</div>
 			</section>
 		</div>

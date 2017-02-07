@@ -204,24 +204,27 @@ footer span {
 	margin-left: 50px;
 }
 
-.trip p {
-	margin: 0 auto;
-}
-
-.trip .basic-details {
+.trip-basic-details {
 	display: inline-flex;
+	margin-left: 50px;
 }
 
-.trip .basic-details .trip-picture {
+.trip-basic-details p {
+	margin: 0 auto;
+	font-family: 'Caveat', cursive;
+	font-size: 22px;
+}
+
+.trip-picture {
 	position: relative;
 	display: inline-block;
 }
 
-.trip .basic-details .trip-picture img {
+.trip-picture img {
 	width: 300px;
 }
 
-.trip .basic-details .trip-picture .shadow {
+.trip-picture .shadow {
 	position: absolute;
     width: 100%;
     height: 100%;
@@ -230,53 +233,58 @@ footer span {
     left: 0;
 }
 
-.trip .basic-details .description {
-	margin-left: 50px;
+.trip-description {
+	padding-left: 10px;
 }
 
-.trip .basic-details .description p {
-	font-family: 'Caveat', cursive;
-	font-size: 22px;
-}
-
-.trip .basic-details .summary {
+.trip-description .summary {
 	margin-top: 10px;
 }
 
-.trip .trip-box,
-.trip .days-box,
-.trip .posts-box {
+.trip-box,
+.posts-box {
 	padding: 20px;
 }
 
-.trip .trip-box .trip-small-box,
-.trip .days-box .days-small-box,
-.trip .posts-box {
+.days-box {
+	padding: 0 20px;
+}
+
+.trip-small-box,
+.days-small-box {
 	margin-bottom: 15px;
 	display: flex;
 }
 
-.trip .trip-box .trip-small-box .icons,
-.trip .posts-box .icons {
+.trip-small-box .icons,
+.posts-box .icons {
 	width: 80px;
 }
-
-.trip .days-box .days-small-box .label {
-	font-size: 16px;
-	width: 80px;
+.trip-small-box p{
+	margin: 0 auto;
 }
 
-.trip .days-box .days-small-box .tips,
-.trip .days-box .days-small-box .photos {
+.days-small-box .trip-gallery {
 	display: flex;
 	margin-top: 10px;
+	position: relative;
 }
 
-.trip .days-box .days-small-box .tips i {
+.tips {
+	margin-top: 10px;
+	display: flex;
+}
+
+.tips i {
 	margin-right: 10px;
 }
 
-.trip .days-box .trip-gallery {
+.days-box-label,
+.posts-box-label {
+	text-align: center;
+}
+
+.days-box .trip-gallery {
 	display: flex;
 	flex-wrap: wrap;
 	max-width: 828px;
@@ -284,23 +292,23 @@ footer span {
 	margin-right: auto;
 }
 
-.trip .photo-container {
+.days-box .photo-container {
 	text-align: center;
 	width: 400px;
 }
 
-.trip .trip-photo {
+.days-box .trip-photo {
 	cursor: pointer;
 	display: inline-block;
 	height: 302px;
 	position: relative;
 }
 
-.trip .trip-photo img {
+.days-box .trip-photo img {
 	height: 100%;
 }
 
-.trip .trip-photo .shadow {
+.days-box .trip-photo .shadow {
 	position: absolute;
     width: 100%;
     height: 100%;
@@ -309,7 +317,7 @@ footer span {
     left: 0;
 }
 
-.trip .photo-description {
+.days-box .photo-description {
 	background-color: #fcfcfc;
 	opacity: 0.8;
 	font-size: 14px;
@@ -326,12 +334,12 @@ footer span {
 	margin-right: 5px;
 }
 
-.trip .posts-box h4 {
+.posts-box h3 {
 	margin-bottom: 10px;
 	margin-top: 0;
 }
 
-.trip .posts-box .add-post {
+.posts-box .add-post {
 	margin-bottom: 10px;
 	margin-top: 30px;
 }
