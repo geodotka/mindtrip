@@ -72,7 +72,7 @@ class Trip(models.Model):
 class Day(models.Model):
     name = models.CharField(
         blank=True, null=True, max_length=255, verbose_name=u'Nazwa')
-    date = models.DateField(verbose_name=u'Data')
+    date = models.DateField(blank=True, null=True, verbose_name=u'Data')
     description = models.TextField(verbose_name=u'Opis')
     tips = models.TextField(blank=True, null=True, verbose_name=u'Wskazówki')
     trip = models.ForeignKey(
