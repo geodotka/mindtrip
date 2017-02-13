@@ -88,7 +88,7 @@
 			{% if trip.days.all %}
 				<section class="days-box">
 					{% for day in trip.days.all %}
-						<h3 class="days-box-label">{{ day.name }} ({{ day.date|date:'d-m-Y' }})</h3>
+						<h3 class="days-box-label">{{ day.name }}{% if day.date %} ({{ day.date|date:'d-m-Y' }}){% endif %}</h3>
 						<div>
 							<p>{{ day.description|linebreaks }}</p>
 							{% if day.tips %}
