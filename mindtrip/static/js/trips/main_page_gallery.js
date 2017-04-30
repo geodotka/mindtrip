@@ -39,7 +39,13 @@ Gallery.prototype.setPrevNextTrip = function(){
 Gallery.prototype.draw = function(){
     var $galleryContent = $('.js-gallery-content');
     $galleryContent.empty();
+    if (this.hasPrevTrip) {
+        $galleryContent.append(this.drawIcon(true))
+    }
     $galleryContent.append(this.drawGallery());
+    if (this.hasNextTrip){
+        $galleryContent.append(this.drawIcon(false))
+    }
     this.bindArrows()
 };
 
@@ -60,14 +66,8 @@ Gallery.prototype.drawIcon = function(isPrev){
 Gallery.prototype.drawGallery = function(){
         var gallery = document.createElement('div');
         gallery.className = 'gallery';
-        if (this.hasPrevTrip){
-            gallery.appendChild(this.drawIcon(true));
-        }
         for (var i=0; i < this.tripsInGallery.length; i++){
             gallery.appendChild(this.tripsInGallery[i].drawTripWidget());
-        }
-        if (this.hasNextTrip){
-            gallery.appendChild(this.drawIcon(false))
         }
     return gallery
 };

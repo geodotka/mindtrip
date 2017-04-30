@@ -158,15 +158,15 @@ footer span {
 	top: -10px;
 }
 
-.gallery .arrow {
+.gallery-content .arrow {
 	cursor: pointer;
 	font-size: 80px;
 	position: absolute;
 	top: 64px;
 }
 
-.gallery .arrow-left {
-	left: -80px;
+.gallery-content .arrow-left {
+	left: 70px;
 	display: inline-block;
 }
 
