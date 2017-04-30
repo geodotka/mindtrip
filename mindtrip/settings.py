@@ -1,4 +1,5 @@
 
+from .settings_local import *
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -6,12 +7,6 @@ from os.path import join
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _current_dir = os.path.dirname(os.path.realpath(__file__))
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'd9i39mz9fk42p9mi0*z^bzij!05+d!%%t!kha6*2#y7%z6xq*o'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
