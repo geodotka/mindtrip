@@ -1,3 +1,4 @@
 media
 
 settings_local.py
+db.sqlite3
