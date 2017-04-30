@@ -6,8 +6,10 @@ var Gallery = function(photos){
     this.rightArrow = $('.js-right-arrow');
 
     this.setPrevNextPhoto();
-    this.draw();
-    this.bind();
+    if (this.photos.length) {
+        this.draw();
+        this.bind();
+    }
 };
 
 
