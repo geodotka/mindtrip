@@ -22,11 +22,6 @@ def home(request):
     }
 
 
-@render_to('trips/contact.html')
-def contact(request):
-    return {}
-
-
 @render_to('trips/trip.html')
 def get_trip(request, trip_id):
     trip_ = get_object_or_404(
