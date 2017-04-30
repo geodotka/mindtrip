@@ -2,7 +2,7 @@
 
 {% block prev_trip %}
 	{% if prev_trip %}
-		<a href="{% url 'trip' prev_trip %}" class="trip-link prev-trip-link">
+		<a href="{% url 'trip' prev_trip.id %}" class="trip-link prev-trip-link" title="{{ prev_trip.destination }}">
 			<i class="material-icons arrow arrow-left">play_arrow</i>
 		</a>
 	{% endif %}
@@ -10,7 +10,7 @@
 
 {% block next_trip %}
 	{% if next_trip %}
-		<a href="{% url 'trip' next_trip %}" class="trip-link next-trip-link">
+		<a href="{% url 'trip' next_trip.id %}" class="trip-link next-trip-link" title="{{ next_trip.destination }}">
 			<i class="material-icons arrow">play_arrow</i>
 		</a>
 	{% endif %}
