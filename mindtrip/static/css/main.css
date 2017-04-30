@@ -217,6 +217,11 @@ footer span {
 	margin-left: 50px;
 }
 
+.content .trip-by-country img {
+	height: 75px;
+	width: 100px;
+}
+
 .trip-basic-details {
 	display: inline-flex;
 	margin-left: 50px;

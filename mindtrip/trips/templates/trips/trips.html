@@ -7,7 +7,10 @@
 		{% for country in countries %}
 			<h3>{{ country.name }}</h3>
 			{% for trip in country.trips.all %}
-				<p class="trip-by-country"><a href="{% url 'trip' trip.id %}">{{ trip.destination }} ({{ trip.start_at }} - {{ trip.end_at }})</a></p>
+				<p class="trip-by-country">
+					<img src="{{ trip.picture.url }}">
+					<a href="{% url 'trip' trip.id %}">{{ trip.destination }} ({{ trip.start_at }} - {{ trip.end_at }})</a>
+				</p>
 			{% endfor %}
 		{% endfor %}
 	</div>
