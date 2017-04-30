@@ -27,7 +27,7 @@
 					</div>
 				</div>
 				<div class="trip-description">
-					<p>Miejsce:<label>{{ trip.destination }} ({{ trip.country.name }})</label></p>
+					<p>Miejsce:<label>{{ trip.destination }}{% if trip.destination != trip.country.name %} ({{ trip.country.name }}){% endif %}</label></p>
 					<p>Początek:<label>{{ trip.start_at }}</label>
 					<p>Koniec:<label>{{ trip.end_at }}</label>
 					<p class="summary">{{ trip.summary }}</p>
