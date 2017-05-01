@@ -2,8 +2,11 @@
 from .settings_local import *
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# Build paths inside the project like this: os.path.join(CURRENT_DIR, ...)
 from os.path import join
+
+CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
+
 
 ALLOWED_HOSTS = ['*']
 
