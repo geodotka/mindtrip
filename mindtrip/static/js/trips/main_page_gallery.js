@@ -118,6 +118,7 @@ var Trip = function(trip){
     this.pictureUrl = '/media/' + trip.fields.picture;
     this.startAt = trip.fields.start_at;
     this.endAt = trip.fields.end_at;
+    this.isComplete = trip.fields.is_complete;
 };
 
 
@@ -139,6 +140,13 @@ Trip.prototype.drawTripWidget = function(){
     dates.innerHTML = this.startAt + ' - ' + this.endAt;
     dates.className = 'dates';
     tripContainer.appendChild(dates);
+
+    if (!this.isComplete) {
+        var underConstruction = document.createElement('span');
+        underConstruction.innerHTML = 'W przygotowaniu';
+        underConstruction.className = 'under-construction';
+        tripContainer.appendChild(underConstruction);
+    }
 
     var shadow = document.createElement('div');
     shadow.className = 'shadow';

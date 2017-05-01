@@ -170,6 +170,17 @@ footer span {
 	bottom: 7px;
 }
 
+.gallery-content .gallery div .under-construction {
+	font-size: 30px;
+	left: 35px;
+	top: 60px;
+	-webkit-transform: rotate(26deg);
+	-moz-transform: rotate(26deg);
+	-ms-transform: rotate(26deg);
+	-o-transform: rotate(26deg);
+	transform: rotate(26deg);
+}
+
 .gallery a:hover {
 	margin: 10px 0;
 }
