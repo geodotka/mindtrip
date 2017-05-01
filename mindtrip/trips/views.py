@@ -15,7 +15,7 @@ from .forms import AddPost
 def home(request):
     trips = serializers.serialize('json', Trip.objects.all().order_by(
         '-start_at'), fields=('destination', 'picture', 'start_at', 'end_at'))
-    news = News.objects.all().order_by('-created_at')
+    news = News.objects.all().order_by('-created_at', '-id')
     return {
         'trips': json.dumps(trips),
         'news': news,
