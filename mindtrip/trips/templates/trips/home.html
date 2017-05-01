@@ -11,7 +11,7 @@
 		{% for news_ in news %}
 			<section class="news">
 				<label>{{ news_.created_at }} {% if news_.title %}- {{ news_.title }}{% endif %}</label>
-				<p>{{ news_.text }}</p>
+				<p>{{ news_.text|safe }}</p>
 			</section>
 		{% endfor %}
 	{% endif %}
