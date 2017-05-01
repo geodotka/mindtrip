@@ -93,12 +93,6 @@
 						<h3 class="days-box-label">{{ day.name }}{% if day.date %} ({{ day.date|date:'d-m-Y' }}){% endif %}</h3>
 						<div>
 							<p>{{ day.description|linebreaks }}</p>
-							{% if day.tips %}
-								<p class="tips">
-									<i class="material-icons" title="Wskazówki">warning</i>
-									<span>{{ day.tips|linebreaks }}</span>
-								</p>
-							{% endif %}
 
 							{% if day.photos.all %}
 								<div class="days-small-box">
@@ -116,6 +110,13 @@
 										{% endfor %}
 									</div>
 								</div>
+							{% endif %}
+
+							{% if day.tips %}
+								<p class="tips">
+									<i class="material-icons" title="Wskazówki">warning</i>
+									<span>{{ day.tips|linebreaks }}</span>
+								</p>
 							{% endif %}
 						</div>
 					{% endfor %}
