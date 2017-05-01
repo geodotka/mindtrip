@@ -5,8 +5,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from os.path import join
 
-_current_dir = os.path.dirname(os.path.realpath(__file__))
-
 ALLOWED_HOSTS = ['*']
 
 
@@ -97,6 +95,4 @@ STATICFILES_FINDERS = (
 )
 
 STATIC_URL = '/static/'
-STATIC_ROOT = join(_current_dir, 'static')
-MEDIA_URL = '/media/'
-MEDIA_ROOT = join(_current_dir, 'media')
+STATIC_ROOT = join(CURRENT_DIR, 'static')
