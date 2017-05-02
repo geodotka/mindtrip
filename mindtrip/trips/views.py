@@ -27,8 +27,9 @@ def home(request):
 def get_trip(request, trip_id):
     trip_ = get_object_or_404(
         Trip.objects.select_related('country'), id=trip_id)
-    trip_.views_counter += 1
-    trip_.save()
+    if not request.user.is_superuser:
+        trip_.views_counter += 1
+        trip_.save()
     add_post_form = AddPost(request.POST or None)
     if add_post_form.is_valid():
         add_post_form.trip_id = trip_.id
