@@ -66,7 +66,7 @@ class Trip(models.Model):
             self.destination, self.start_at, self.end_at)
 
     def get_photo_list_for_gallery(self):
-        photos = Photo.objects.filter(trip_day__trip_id=self.id).order_by('id')
+        photos = Photo.objects.filter(trip_day__trip_id=self.id).order_by('trip_day', 'id')
         return [photo.get_data_for_trip_gallery() for photo in photos]
 
 
