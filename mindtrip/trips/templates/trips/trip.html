@@ -90,35 +90,42 @@
 			{% if trip.days.all %}
 				<section class="days-box">
 					{% for day in trip.days.all %}
-						<h3 class="days-box-label">{{ day.name }}{% if day.date %} ({{ day.date|date:'d-m-Y' }}){% endif %}</h3>
-						<div>
-							<p>{{ day.description|linebreaks }}</p>
+						<article>
+							<h3 class="day-box-label">
+								{{ day.name }}{% if day.date %} ({{ day.date|date:'d-m-Y' }}){% endif %}
+								<span class="show-more js-show-more">
+									Rozwiń<i class="material-icons">keyboard_arrow_down</i>
+								</span>
+							</h3>
+							<div class="day-box-description js-day-box-description">
+								<p>{{ day.description|linebreaks }}</p>
 
-							{% if day.photos.all %}
-								<div class="days-small-box">
-									<div class="trip-gallery">
-										{% for photo in day.photos.all %}
-											<div class="photo-container">
-												<div class="trip-photo js-show-gallery">
-													<img src="{{ photo.photo.url }}">
-													<div class="shadow"></div>
-													<span class="photo-description">
-														{{ photo.description }}
-													</span>
+								{% if day.photos.all %}
+									<div class="days-small-box">
+										<div class="trip-gallery">
+											{% for photo in day.photos.all %}
+												<div class="photo-container">
+													<div class="trip-photo js-show-gallery">
+														<img src="{{ photo.photo.url }}">
+														<div class="shadow"></div>
+														<span class="photo-description">
+															{{ photo.description }}
+														</span>
+													</div>
 												</div>
-											</div>
-										{% endfor %}
+											{% endfor %}
+										</div>
 									</div>
-								</div>
-							{% endif %}
+								{% endif %}
 
-							{% if day.tips %}
-								<p class="tips">
-									<i class="material-icons" title="Wskazówki">warning</i>
-									<span>{{ day.tips|linebreaks }}</span>
-								</p>
-							{% endif %}
-						</div>
+								{% if day.tips %}
+									<p class="tips">
+										<i class="material-icons" title="Wskazówki">warning</i>
+										<span>{{ day.tips|linebreaks }}</span>
+									</p>
+								{% endif %}
+							</div>
+						</article>
 					{% endfor %}
 				</section>
 			{% endif %}
@@ -150,6 +157,7 @@
 			</section>
 		</div>
 	</div>
+	<script src="{{ STATIC_URL }}js/trips/days.js"></script>
 {% endblock %}
 
 {% block gallery %}
