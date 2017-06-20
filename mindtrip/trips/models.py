@@ -84,7 +84,8 @@ class Day(models.Model):
         verbose_name_plural = u'Dni'
 
     def __unicode__(self):
-        return u'{0} ({1})'.format(self.trip, self.date)
+        return u'{0} - {1} ({2})'.format(
+            self.trip.destination, self.name, self.date)
 
 
 class SlugifyModel(models.Model):
