@@ -334,7 +334,11 @@ footer span {
 	margin-right: 10px;
 }
 
-.day-box-label,
+.day-box-label {
+	cursor: pointer;
+	text-align: center;
+}
+
 .posts-box-label {
 	text-align: center;
 }
@@ -571,14 +575,14 @@ form button {
 	text-align: right;
 }
 
-.show-more {
+.show-more-info {
 	margin-left: 7px;
 	font-size: 15px;
 	position: relative;
 	cursor: pointer;
 }
 
-.show-more i {
+.show-more-info i {
 	position: absolute;
 	bottom: -4px;
 	right: -20px;

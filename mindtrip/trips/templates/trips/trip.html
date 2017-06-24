@@ -91,9 +91,9 @@
 				<section class="days-box">
 					{% for day in trip.days.all %}
 						<article>
-							<h3 class="day-box-label">
+							<h3 class="day-box-label js-show-more">
 								{{ day.name }}{% if day.date %} ({{ day.date|date:'d-m-Y' }}){% endif %}
-								<span class="show-more js-show-more">
+								<span class="show-more-info js-show-more-info">
 									Rozwiń<i class="material-icons">keyboard_arrow_down</i>
 								</span>
 							</h3>

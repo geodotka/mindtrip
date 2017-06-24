@@ -59,11 +59,15 @@ Gallery.prototype.bind = function(){
         $('.js-gallery-content').removeClass('hidden');
         this_.setIndexBySrc($(this).children('img')[0].src);
         this_.setPrevNextPhoto();
-        this_.draw()
+        this_.draw();
+        // hide menu
+        $('header').css('position', 'relative');
     });
 
     $('.js-close-gallery').on('click', function(ev){
-        $('.js-gallery-content').addClass('hidden')
+        $('.js-gallery-content').addClass('hidden');
+        // show menu
+        $('header').css('position', 'fixed');
     });
 };
 
