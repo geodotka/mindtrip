@@ -1,17 +1,22 @@
 {% extends "trips/base.html" %}
 
-{% block trips_page %} class="selected"{% endblock %}
+{% block trips_page %} class="nav-selected"{% endblock %}
 
 {% block content %}
-	<div class="content">
-		{% for country in countries %}
+	{% for country in countries %}
+		<section>
 			<h3>{{ country.name }}</h3>
-			{% for trip in country.trips.all %}
-				<p class="trip-by-country">
-					<img src="{{ trip.picture.url }}">
-					<a href="{% url 'trip' trip.id %}">{{ trip.destination }} ({{ trip.start_at }} - {{ trip.end_at }})</a>
-				</p>
-			{% endfor %}
-		{% endfor %}
-	</div>
+			<section class="country">
+				{% for trip in country.trips.all %}
+					<article>
+						<img src="{{ trip.picture.url }}" />
+						<a href="{% url 'trip' trip.id %}">
+							<p>{{ trip.destination }}</p>
+							<p class="dates">{{ trip.start_at|date:"d-m-Y" }} - {{ trip.end_at|date:"d-m-Y" }}</p>
+						</a>
+					</article>
+				{% endfor %}
+			</section>
+		</section>
+	{% endfor %}
 {% endblock %}
