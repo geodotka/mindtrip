@@ -83,6 +83,7 @@ footer {
 .country article {
 	margin: 20px;
 }
+
 .country img {
 	width: 300px;
 	height: auto;
@@ -101,6 +102,102 @@ footer {
 
 .country .dates {
 	font-size: 15px;
+}
+
+
+/*trip page*/
+
+.trip-header {
+	display: flex;
+	font-family: 'Caveat', cursive;
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+.trip-header img {
+	width: auto;
+	height: 200px;
+	box-shadow: 10px 10px 10px #585858;
+	margin-right: 30px;
+}
+
+.trip-destination, .trip-dates {
+	margin: 0;
+}
+
+.trip-summary{
+	font-size: 25px;
+	margin-top: 20px;
+}
+
+.trip-info {
+	display: flex;
+	margin: 20px 0;
+}
+
+.trip-info p {
+	margin-top: 0;
+}
+
+.trip-info br {
+	margin-bottom: 5px;
+}
+
+.trip-icons {
+	width: 60px;
+	margin-right: 20px;
+	text-align: right;
+}
+
+.trip-day h3 {
+	cursor: pointer;
+}
+
+.trip-day span {
+	margin-left: 7px;
+	font-size: 15px;
+	position: relative;
+}
+
+.trip-day span i {
+	position: absolute;
+	bottom: -4px;
+	right: -20px;
+}
+
+.trip-day article {
+	display: none;
+}
+
+.trip-day-photos {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.trip-day-photo {
+	margin: 20px;
+	width: 300px;
+	text-align: center;
+}
+
+.trip-day-photo img {
+	max-height: 225px;
+	max-width: 300px;
+	height: auto;
+	box-shadow: 10px 10px 10px #585858;
+	margin-bottom: 10px;
+}
+
+.trip-day-photo p {
+	font-size: 15px;
+	text-align: center;
+	margin: 0;
+}
+
+.trip-day-tips {
+	text-align: center;
 }
 
 

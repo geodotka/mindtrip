@@ -19,164 +19,133 @@
 {% endblock %}
 
 {% block content %}
-	<div class="content">
-		<div class="trip">
-			<section class="trip-basic-details">
-				<div>
-					<div class="trip-picture">
-						<img src="{{ trip.picture.url }}">
-						<div class="shadow"></div>
-					</div>
-				</div>
-				<div class="trip-description">
-					<p>Miejsce:<label>{{ trip.destination }}{% if trip.destination != trip.country.name %} ({{ trip.country.name }}){% endif %}</label></p>
-					<p>Początek:<label>{{ trip.start_at }}</label>
-					<p>Koniec:<label>{{ trip.end_at }}</label>
-					<p class="summary">{{ trip.summary }}</p>
-				</div>
-			</section>
-			<section class="trip-box">
-				<div class="trip-small-box">
-					<div class="icons">
-						<i class="material-icons" title="Dojazd">directions_bus</i>
-					</div>
-					<span>{{ trip.travel }}</span>
-				</div>
-				<div class="trip-small-box">
-					<div class="icons">
-						<i class="material-icons" title="Koszty dojazdu">directions_bus</i>
-						<i class="material-icons">euro_symbol</i>
-					</div>
-					<span class="euro">{{ trip.travel_price }}</span>
-				</div>
-				<div class="trip-small-box">
-					<div class="icons">
-						<i class="material-icons" title="Noclegi">local_hotel</i>
-					</div>
-					<span>{{ trip.hotel }}</span>
-				</div>
-				<div class="trip-small-box">
-					<div class="icons">
-						<i class="material-icons" title="Koszty noclegów">local_hotel</i>
-						<i class="material-icons">euro_symbol</i>
-					</div>
-					<span class="euro">{{ trip.hotel_price }}</span>
-				</div>
-				{% if trip.planned_at %}
-					<div class="trip-small-box">
-						<div class="icons">
-							<i class="material-icons" title="Wyjazd planowany">watch_later</i>
-						</div>
-						<span>{{ trip.planned_at }}</span>
-					</div>
-				{% endif %}
-				{% if trip.guidebook %}
-					<div class="trip-small-box">
-						<div class="icons">
-							<i class="material-icons" title="Przwodniki, mapy">map</i>
-						</div>
-						<span>{{ trip.guidebook }}</span>
-					</div>
-				{% endif %}
-				{% if trip.tips %}
-					<div class="trip-small-box">
-						<div class="icons">
-							<i class="material-icons" title="Wskazówki">warning</i>
-						</div>
-						<span>{{ trip.tips|linebreaks }}</span>
-					</div>
-				{% endif %}
-			</section>
-			{% if trip.days.all %}
-				<section class="days-box">
-					{% for day in trip.days.all %}
-						<article>
-							<h3 class="day-box-label js-show-more">
-								{{ day.name }}{% if day.date %} ({{ day.date|date:'d-m-Y' }}){% endif %}
-								<span class="show-more-info js-show-more-info">
-									Rozwiń<i class="material-icons">keyboard_arrow_down</i>
-								</span>
-							</h3>
-							<div class="day-box-description js-day-box-description">
-								<p>{{ day.description|linebreaks }}</p>
-
-								{% if day.photos.all %}
-									<div class="days-small-box">
-										<div class="trip-gallery">
-											{% for photo in day.photos.all %}
-												<div class="photo-container">
-													<div class="trip-photo js-show-gallery">
-														<img src="{{ photo.photo.url }}">
-														<div class="shadow"></div>
-														<span class="photo-description">
-															{{ photo.description }}
-														</span>
-													</div>
-												</div>
-											{% endfor %}
-										</div>
-									</div>
-								{% endif %}
-
-								{% if day.tips %}
-									<p class="tips">
-										<i class="material-icons" title="Wskazówki">warning</i>
-										<span>{{ day.tips|linebreaks }}</span>
-									</p>
-								{% endif %}
-							</div>
-						</article>
-					{% endfor %}
-				</section>
-			{% endif %}
-			<section class="posts-box">
-				<h3 class="posts-box-label">Komentarze</h3>
-				{% for post in trip.posts.all %}
-					<section class="post"{% if forloop.last %} id="last-post"{% endif %}>
-						<label>{{ post.author }} ({{ post.created_at }}):</label>{{ post.content }}
-					</section>
-				{% empty %}
-					Nikt jeszcze nie skomentował tej wycieczki. Zachęcam do dodania komentarza.
-				{% endfor %}
-				<div class="add-post">
-					<h4>Dodaj komentarz</h4>
-					<p>Będzie mi bardzo miło, jeśli zostawisz w komentarzu jakikolwiek ślad po tym, że tu byłaś/byłeś.</p>
-					<form method="post" action="{% url 'trip' trip.id %}#last-post">
-						{% csrf_token %}
-						<div class="form-row">
-							<label for="id_author">Autor</label>
-							<input id="id_author" type="text" required="" name="author" maxlength="255">
-						</div>
-						<div class="form-row">
-							<label for="id_content">Treść</label>
-							<textarea id="id_content" required="" rows="6" name="content" cols="40"></textarea>
-						</div>
-						<button type="submit">Wyślij</button>
-					</form>
-				</div>
-			</section>
+	<section class="trip-header">
+		<img src="{{ trip.picture.url }}">
+		<div>
+			<p class="trip-destination">{{ trip.destination }}{% if trip.destination != trip.country.name %} ({{ trip.country.name }}){% endif %}</p>
+			<p class="trip-dates">{{ trip.start_at }} - {{ trip.end_at }}</p>
+			<p class="trip-summary">{{ trip.summary }}</p>
 		</div>
-	</div>
+	</section>
+	<section>
+		<div class="trip-info">
+			<div class="trip-icons">
+				<i class="material-icons" title="Dojazd">directions_bus</i>
+			</div>
+			{{ trip.travel }}
+		</div>
+		<div class="trip-info">
+			<div class="trip-icons">
+				<i class="material-icons">euro_symbol</i>
+				<i class="material-icons" title="Koszty dojazdu">directions_bus</i>
+			</div>
+			{{ trip.travel_price }}
+		</div>
+		<div class="trip-info">
+			<div class="trip-icons">
+				<i class="material-icons" title="Noclegi">local_hotel</i>
+			</div>
+			{{ trip.hotel }}
+		</div>
+		<div class="trip-info">
+			<div class="trip-icons">
+				<i class="material-icons">euro_symbol</i>
+				<i class="material-icons" title="Koszty noclegów">local_hotel</i>
+			</div>
+			{{ trip.hotel_price }}
+		</div>
+		{% if trip.planned_at %}
+			<div class="trip-info">
+				<div class="trip-icons">
+					<i class="material-icons" title="Wyjazd planowany">watch_later</i>
+				</div>
+				{{ trip.planned_at }}
+			</div>
+		{% endif %}
+		{% if trip.guidebook %}
+			<div class="trip-info">
+				<div class="trip-icons">
+					<i class="material-icons" title="Przwodniki, mapy">map</i>
+				</div>
+				{{ trip.guidebook }}
+			</div>
+		{% endif %}
+		{% if trip.tips %}
+			<div class="trip-info">
+				<div class="trip-icons">
+					<i class="material-icons" title="Wskazówki">warning</i>
+				</div>
+				{{ trip.tips|linebreaks }}
+			</div>
+		{% endif %}
+	</section>
+	{% if trip.days.all %}
+		<section>
+			{% for day in trip.days.all %}
+				<section class="trip-day">
+					<h3 class="js-show-more">
+						{{ day.name }}{% if day.date %} ({{ day.date|date:'d-m-Y' }}){% endif %}
+						<span class="js-show-more-info">
+							Rozwiń<i class="material-icons">keyboard_arrow_down</i>
+						</span>
+					</h3>
+					<article class="js-day-description">
+						{{ day.description|linebreaks }}
+
+						{% if day.photos.all %}
+							<section class="trip-day-photos">
+								{% for photo in day.photos.all %}
+									<div class="trip-day-photo js-show-gallery">
+										<img src="{{ photo.photo.url }}">
+										<p>{{ photo.description }}</p>
+									</div>
+								{% endfor %}
+							</section>
+						{% endif %}
+
+						{% if day.tips %}
+							<p class="trip-day-tips"><i class="material-icons" title="Wskazówki">warning</i></p>
+							{{ day.tips|linebreaks }}
+						{% endif %}
+					</article>
+				</section>
+			{% endfor %}
+		</section>
+	{% endif %}
+	Komentarze
+	{% for post in trip.posts.all %}
+		<section class="post"{% if forloop.last %} id="last-post"{% endif %}>
+			{{ post.author }} ({{ post.created_at }}):{{ post.content }}
+		</section>
+	{% empty %}
+		Nikt jeszcze nie skomentował tej wycieczki. Zachęcam do dodania komentarza.
+	{% endfor %}
+	Dodaj komentarz
+	<p>Będzie mi bardzo miło, jeśli zostawisz w komentarzu jakikolwiek ślad po tym, że tu byłaś/byłeś.</p>
+	<form method="post" action="{% url 'trip' trip.id %}#last-post">
+		{% csrf_token %}
+		<label for="id_author">Autor</label>
+		<input id="id_author" type="text" required="" name="author" maxlength="255">
+		<label for="id_content">Treść</label>
+		<textarea id="id_content" required="" rows="6" name="content" cols="40"></textarea>
+		<button type="submit">Wyślij</button>
+	</form>
 	<script src="{{ STATIC_URL }}js/trips/days.js"></script>
 {% endblock %}
 
 {% block gallery %}
-	<div class="full-screen-gallery hidden js-gallery-content">
-		<div class="text description js-description"></div>
-		<div class="image-container">
+	<div class="js-gallery-content">
+		<div class="js-description"></div>
 			<div class="image-box">
 				<img class="js-image" src="">
-				<div class="shadow"></div>
-				<i class="material-icons close js-close-gallery">clear</i>
-				<i class="material-icons hidden arrow arrow-left js-left-arrow">play_arrow</i>
-				<i class="material-icons arrow arrow-right js-right-arrow">play_arrow</i>
+				<i class="material-icons js-close-gallery">clear</i>
+				<i class="material-icons js-left-arrow">play_arrow</i>
+				<i class="material-icons js-right-arrow">play_arrow</i>
 			</div>
-		</div>
-		<div class="text counter js-counter"></div>
-
+		<div class="js-counter"></div>
 	</div>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/trips/photos_gallery.js"></script>
 	<script>
-		var gallery = new Gallery({{ photos_json|safe }});
+		new Gallery({{ photos_json|safe }});
 	</script>
 {% endblock %}
