@@ -9,8 +9,8 @@
 			<section class="country">
 				{% for trip in country.trips.all %}
 					<article>
-						<img src="{{ trip.picture.url }}" />
 						<a href="{% url 'trip' trip.id %}">
+							<img src="{{ trip.picture.url }}" />
 							<p>{{ trip.destination }}</p>
 							<p class="dates">{{ trip.start_at|date:"d-m-Y" }} - {{ trip.end_at|date:"d-m-Y" }}</p>
 						</a>
