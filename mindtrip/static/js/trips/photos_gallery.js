@@ -35,22 +35,25 @@ Gallery.prototype.draw = function(){
     $('.js-description').html(photo.description);
     $('.js-image').attr('src', photo.url);
     $('.js-counter').html(String(this.photoIndex + 1) + '/' + this.photos.length );
-    this.drawArrows();
+    this.setArrows();
 };
 
 
-Gallery.prototype.drawArrows = function(){
+Gallery.prototype.setArrows = function(){
     if (this.hasPrevPhoto){
-        this.leftArrow.removeClass('hidden')
+        this.leftArrow.removeClass('inactive-trip-gallery-left-arrow');
+        this.bindLeftArrow();
     } else {
-        this.leftArrow.addClass('hidden')
+        this.leftArrow.addClass('inactive-trip-gallery-left-arrow');
+        this.leftArrow.unbind();
     }
     if (this.hasNextPhoto){
-        this.rightArrow.removeClass('hidden')
+        this.rightArrow.removeClass('inactive-trip-gallery-right-arrow');
+        this.bindRightArrow();
     } else {
-        this.rightArrow.addClass('hidden')
+        this.rightArrow.addClass('inactive-trip-gallery-right-arrow');
+        this.rightArrow.unbind();
     }
-    this.bindArrows()
 };
 
 Gallery.prototype.bind = function(){
@@ -69,16 +72,6 @@ Gallery.prototype.bind = function(){
         // show menu
         $('header').css('position', 'fixed');
     });
-};
-
-
-Gallery.prototype.bindArrows = function(){
-    if (this.hasPrevPhoto){
-        this.bindLeftArrow();
-    }
-    if (this.hasNextPhoto){
-        this.bindRightArrow();
-    }
 };
 
 

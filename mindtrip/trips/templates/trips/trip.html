@@ -134,15 +134,17 @@
 {% endblock %}
 
 {% block gallery %}
-	<div class="js-gallery-content">
-		<div class="js-description"></div>
-			<div class="image-box">
+	<div class="trip-gallery hidden js-gallery-content">
+		<div class="trip-gallery-image-box">
+			<div class="trip-gallery-image">
 				<img class="js-image" src="">
-				<i class="material-icons js-close-gallery">clear</i>
-				<i class="material-icons js-left-arrow">play_arrow</i>
-				<i class="material-icons js-right-arrow">play_arrow</i>
+				<div class="trip-gallery-counter js-counter"></div>
+				<i class="trip-gallery-close material-icons js-close-gallery">clear</i>
 			</div>
-		<div class="js-counter"></div>
+			<div class="trip-gallery-left-arrow js-left-arrow"></div>
+			<div class="trip-gallery-right-arrow js-right-arrow"></div>
+		</div>
+		<p class="trip-gallery-description js-description"></p>
 	</div>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/trips/photos_gallery.js"></script>
 	<script>

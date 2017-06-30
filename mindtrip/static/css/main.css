@@ -200,6 +200,93 @@ footer {
 	text-align: center;
 }
 
+.hidden {
+	display: none;
+}
+
+.trip-gallery {
+	background-color: #fcfcfc;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	display: box;
+}
+
+.trip-gallery-image-box {
+	display: flex;
+	margin-top: 40px;
+	position: relative;
+}
+
+.trip-gallery-image {
+	height: 80vh;
+	margin: auto;
+	position: relative;
+}
+
+.trip-gallery-image img {
+	height: 80vh;
+	box-shadow: 15px 15px 10px #585858;
+}
+
+.trip-gallery-counter {
+	font-size: 20px;
+	color: #fff;
+	padding: 5px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+.trip-gallery-close {
+	font-size: 35px;
+	color: #fff;
+	padding: 5px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	cursor: pointer;
+}
+
+.trip-gallery-description {
+	text-align: center;
+}
+
+.trip-gallery-left-arrow {
+	width: 0;
+	height: 0;
+	border: 50px solid transparent;
+	border-right-color: rgba(56, 9, 53, 0.71);
+	position: absolute;
+	left: 10%;
+	bottom: 0;
+	cursor: pointer;
+}
+
+.trip-gallery-right-arrow {
+	width: 0;
+	height: 0;
+	border: 50px solid transparent;
+	border-left-color: rgba(56, 9, 53, 0.71);
+	position: absolute;
+	right: 10%;
+	bottom: 0;
+	cursor: pointer;
+}
+
+.inactive-trip-gallery-left-arrow {
+	cursor: none;
+	border-right-color: #c0c0c0;
+}
+
+.inactive-trip-gallery-right-arrow {
+	cursor: none;
+	border-left-color: #c0c0c0;
+}
+
 
 /*about me page*/
 
