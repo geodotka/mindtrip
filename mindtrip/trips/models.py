@@ -169,7 +169,8 @@ class Post(models.Model):
     trip = models.ForeignKey(
         Trip, verbose_name='Wycieczka', related_name='posts')
     content = models.TextField(verbose_name=u'Treść')
-    created_at = models.DateField(auto_now_add=True, verbose_name=u'Utworzony')
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name=u'Utworzony')
 
     class Meta:
         verbose_name = u'Komentarz'
