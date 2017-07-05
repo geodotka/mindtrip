@@ -85,6 +85,7 @@ footer {
 	font-family: 'Caveat', cursive;
 	text-align: center;
 	margin-bottom: 10px;
+	position: relative;
 }
 
 .banner .flight-takeoff {
@@ -124,6 +125,40 @@ footer {
 
 
 /*trip page*/
+
+.trip-link {
+	font-size: 25px;
+	width: 200px;
+	position: absolute;
+	bottom: 10px;
+	display: flex;
+}
+
+.trip-link-arrow {
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+}
+
+.prev-trip-link {
+	left: 0;
+}
+
+.prev-trip-link-arrow {
+	border-right-color: rgba(56, 9, 53, 0.71);
+	margin-right: 15px;
+}
+
+.next-trip-link {
+	text-align: right;
+	right: 0;
+	justify-content: right;
+}
+
+.next-trip-link-arrow {
+	border-left-color: rgba(56, 9, 53, 0.71);
+	margin-left: 15px;
+}
 
 .trip-header {
 	display: flex;
