@@ -309,23 +309,20 @@ footer {
 /*post form*/
 
 form {
-	width: 600px;
-	margin-top: 30px;
+	margin-bottom: 40px;
 }
 
 form .form-row {
-	display: table;
+	display: flex;
 	margin-top: 20px;
 }
 
 form .form-row label {
-	display: table-cell;
 	font-family: 'Quicksand', sans-serif;
 	font-size: 18px;
+	width: 200px;
 	text-align: right;
-	width: 80px;
-	vertical-align: top;
-	padding: 3px 10px;
+	margin-right: 20px;
 }
 
 form .form-row input, textarea {
@@ -336,8 +333,7 @@ form .form-row input, textarea {
 	font-size: 16px;
 	padding: 4px;
 	resize: vertical;
-	width: 500px;
-	margin-bottom: 20px;
+	width: 520px;
 }
 
 form button {
@@ -348,7 +344,7 @@ form button {
 	color: #fff;
 	font-size: 16px;
 	height: 30px;
-	margin: 10px 0 10px 90px;
+	margin: 10px 0 10px 220px;
 	width: 100px;
 }
 
@@ -356,6 +352,7 @@ form button {
 	display: flex;
 	margin: 10px 0;
 }
+
 .post-info {
 	width: 200px;
 	text-align: right;
@@ -377,7 +374,7 @@ form button {
 
 .post-content {
 	box-shadow: 1px 1px 2px #585858;
-	width: 100%;
+	width: 500px;
 	padding: 10px;
 }
 
