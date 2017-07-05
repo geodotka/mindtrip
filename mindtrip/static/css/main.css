@@ -563,3 +563,109 @@ form button {
 		width: 60%;
 	}
 }
+
+
+
+.gallery-content {
+	text-align: center;
+	position: relative;
+	height: 200px;
+}
+
+.gallery-content .gallery {
+	height: 200px;
+	display: inline-flex;
+    justify-content: center;
+	position: relative;
+}
+
+.gallery-content .gallery div {
+	height: 180px;
+	width: 240px;
+	margin: 10px;
+	position: relative;
+}
+
+.gallery-content .gallery div img {
+	height: 180px;
+	width: 240px;
+	box-shadow: 10px 10px 10px #585858;
+}
+
+.gallery-content .gallery div span {
+	color: #fff;
+	font-family: 'Caveat', cursive;
+	position: absolute;
+}
+
+.gallery-content .gallery div .destination {
+	font-size: 32px;
+	right: 15px;
+	top: 2px;
+}
+
+.gallery-content .gallery div .dates {
+	font-size: 20px;
+	left: 12px;
+	bottom: 7px;
+}
+
+.gallery-content .gallery div .under-construction {
+	font-size: 30px;
+	left: 35px;
+	top: 60px;
+	-webkit-transform: rotate(26deg);
+	-moz-transform: rotate(26deg);
+	-ms-transform: rotate(26deg);
+	-o-transform: rotate(26deg);
+	transform: rotate(26deg);
+}
+
+.gallery a:hover {
+	margin: 10px 0;
+}
+
+.gallery-content .arrow {
+	cursor: pointer;
+	font-size: 80px;
+	position: absolute;
+	top: 64px;
+}
+
+.gallery-content .arrow:hover {
+	color: #660033;
+}
+
+.gallery-content .arrow-left {
+	left: 70px;
+	display: inline-block;
+}
+
+.arrow-left {
+	filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=0.5);
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.news {
+	text-align: center;
+}
+
+.news label {
+	font-family: 'Caveat', cursive;
+	font-size: 32px;
+	margin-left: 5px;
+
+}
+
+.news p {
+	text-align: justify;
+}
+
+.news a {
+	color: #660033;
+	font-size: 20px;
+}

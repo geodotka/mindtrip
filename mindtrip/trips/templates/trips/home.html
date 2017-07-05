@@ -7,7 +7,7 @@
 		<div class="gallery js-gallery"></div>
 	</div>
 	{% if news %}
-		<h1>Aktualności</h1>
+		<h1 class="news">Aktualności</h1>
 		{% for news_ in news %}
 			<section class="news">
 				<label>{{ news_.created_at }} {% if news_.title %}- {{ news_.title }}{% endif %}</label>
