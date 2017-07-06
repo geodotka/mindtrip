@@ -148,10 +148,6 @@ Trip.prototype.drawTripWidget = function(){
         tripContainer.appendChild(underConstruction);
     }
 
-    var shadow = document.createElement('div');
-    shadow.className = 'shadow';
-    tripContainer.appendChild(shadow);
-
     link.appendChild(tripContainer);
     return link
 };
