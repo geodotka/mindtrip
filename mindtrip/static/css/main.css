@@ -197,9 +197,13 @@ footer {
 }
 
 .trip-icons {
-	width: 60px;
+	width: 10vw;
 	margin-right: 20px;
 	text-align: right;
+}
+
+.trip-info-description {
+	width: 90vw;
 }
 
 .trip-day h3 {
@@ -457,6 +461,15 @@ form button {
 		margin: 5px 0;
 	}
 
+	hr {
+		margin-top: 30px;
+	}
+
+	hr:after {
+		content: ':-)';
+		font-size: 14px;
+	}
+
 	body {
 		font-size: 14px;
 	}
@@ -484,6 +497,10 @@ form button {
 	footer {
 		padding: 5px;
 		font-size: 14px;
+	}
+
+	.material-icons {
+		font-size: 13px;
 	}
 
 	.banner {
@@ -519,6 +536,224 @@ form button {
 	.country .dates {
 		font-size: 12px;
 	}
+
+	/*trip page*/
+
+	.trip-link {
+		font-size: 15px;
+		width: 70px;
+		position: absolute;
+		bottom: -25px;
+		display: flex;
+	}
+
+	.trip-link-arrow {
+		width: 0;
+		height: 0;
+		border: 8px solid transparent;
+	}
+
+	.prev-trip-link {
+		left: -8px;
+	}
+
+	.prev-trip-link-arrow {
+		border-right-color: rgba(56, 9, 53, 0.71);
+		margin-right: 5px;
+	}
+
+	.next-trip-link {
+		text-align: right;
+		right: -8px;
+		justify-content: right;
+	}
+
+	.next-trip-link-arrow {
+		border-left-color: rgba(56, 9, 53, 0.71);
+		margin-left: 5px;
+	}
+
+	.trip-header {
+		display: block;
+		font-family: 'Caveat', cursive;
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+
+	.trip-photo-mobile {
+		display: flex;
+		margin-bottom: 10px;
+		margin-top: 5px;
+	}
+
+	.trip-header img {
+		width: 160px;
+		height: 120px;
+		box-shadow: 5px 5px 5px #585858;
+		margin: 0 auto;
+	}
+
+	.trip-destination, .trip-dates {
+		margin: 0;
+		text-align: center;
+	}
+
+	.trip-summary{
+		font-size: 18px;
+		margin-top: 10px;
+	}
+
+	.trip-info {
+		margin: 10px 0;
+	}
+
+	.trip-icons {
+		padding-right: 0;
+		margin-right: 8px;
+		text-align: right;
+	}
+
+	.trip-day h3 {
+		font-size: 15px;
+	}
+
+	.trip-day span {
+		margin-left: 5px;
+		font-size: 10px;
+	}
+
+	.trip-day span i {
+		font-size: 16px;
+		right: -16px;
+	}
+
+	.trip-day-photo {
+		margin: 5px;
+		width: 120px;
+	}
+
+	.trip-day-photo img {
+		max-height: 100px;
+		max-width: 120px;
+		height: auto;
+		box-shadow: 5px 5px 5px #585858;
+		margin-bottom: 5px;
+	}
+
+	.trip-day-photo p {
+		font-size: 10px;
+	}
+
+	.trip-gallery-image-box {
+		margin-top: 20px;
+	}
+
+	.trip-gallery-image {
+		width: 80vw;
+		height: auto;
+	}
+
+	.trip-gallery-image img {
+		width: 80vw;
+		height: auto;
+		box-shadow: 10px 10px 10px #585858;
+		margin-top: 90px;
+	}
+
+	.trip-gallery-counter {
+		font-size: 16px;
+	}
+
+	.trip-gallery-close {
+		font-size: 30px;
+		color: #fff;
+		padding: 5px;
+		position: absolute;
+		right: 0;
+		top: 90px;
+		cursor: pointer;
+	}
+
+	.trip-gallery-left-arrow {
+		border: 30px solid transparent;
+		border-right-color: rgba(56, 9, 53, 0.71);
+		position: absolute;
+		left: 0;
+		top: 0;
+		cursor: pointer;
+	}
+
+	.trip-gallery-right-arrow {
+		border: 30px solid transparent;
+		border-left-color: rgba(56, 9, 53, 0.71);
+		position: absolute;
+		right: 0;
+		top: 0;
+		cursor: pointer;
+	}
+
+	.inactive-trip-gallery-left-arrow {
+		cursor: none;
+		border-right-color: #c0c0c0;
+	}
+
+	.inactive-trip-gallery-right-arrow {
+		cursor: none;
+		border-left-color: #c0c0c0;
+	}
+
+
+	/*post form*/
+
+	form {
+		margin-bottom: 0;
+	}
+
+	form .form-row {
+		margin-top: 10px;
+	}
+
+	form .form-row label {
+		font-size: 15px;
+		width: 50px;
+		margin-right: 10px;
+	}
+
+	form .form-row input, textarea {
+		font-size: 12px;
+		width: 200px;
+	}
+
+	form button {
+		cursor: pointer;
+		background-color: rgba(56, 9, 53, 0.71);
+		border: none;
+		border-radius: 3px;
+		color: #fff;
+		font-size: 12px;
+		height: 25px;
+		margin: 5px 0 5px 60px;
+		width: 80px;
+	}
+
+	.post-info {
+		width: 50px;
+		text-align: right;
+		margin-right: 10px;
+	}
+
+	.post-author {
+		font-size: 12px;
+	}
+
+	.post-date {
+		font-size: 7px;
+	}
+
+	.post-content {
+		font-size: 12px;
+	}
+
 
 	/*about me page*/
 	.about-me-header img {

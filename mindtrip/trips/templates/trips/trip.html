@@ -20,7 +20,9 @@
 
 {% block content %}
 	<section class="trip-header">
-		<img src="{{ trip.picture.url }}">
+		<div class="trip-photo-mobile">
+			<img src="{{ trip.picture.url }}">
+		</div>
 		<div>
 			<p class="trip-destination">{{ trip.destination }}{% if trip.destination != trip.country.name %} ({{ trip.country.name }}){% endif %}</p>
 			<p class="trip-dates">{{ trip.start_at }} - {{ trip.end_at }}</p>
@@ -32,34 +34,34 @@
 			<div class="trip-icons">
 				<i class="material-icons" title="Dojazd">directions_bus</i>
 			</div>
-			{{ trip.travel }}
+			<div class="trip-info-description">{{ trip.travel }}</div>
 		</div>
 		<div class="trip-info">
 			<div class="trip-icons">
 				<i class="material-icons">euro_symbol</i>
 				<i class="material-icons" title="Koszty dojazdu">directions_bus</i>
 			</div>
-			{{ trip.travel_price }}
+			<div class="trip-info-description">{{ trip.travel_price }}</div>
 		</div>
 		<div class="trip-info">
 			<div class="trip-icons">
 				<i class="material-icons" title="Noclegi">local_hotel</i>
 			</div>
-			{{ trip.hotel }}
+			<div class="trip-info-description">{{ trip.hotel }}</div>
 		</div>
 		<div class="trip-info">
 			<div class="trip-icons">
 				<i class="material-icons">euro_symbol</i>
 				<i class="material-icons" title="Koszty noclegów">local_hotel</i>
 			</div>
-			{{ trip.hotel_price }}
+			<div class="trip-info-description">{{ trip.hotel_price }}</div>
 		</div>
 		{% if trip.planned_at %}
 			<div class="trip-info">
 				<div class="trip-icons">
 					<i class="material-icons" title="Wyjazd planowany">watch_later</i>
 				</div>
-				{{ trip.planned_at }}
+				<div class="trip-info-description">{{ trip.planned_at }}</div>
 			</div>
 		{% endif %}
 		{% if trip.guidebook %}
@@ -67,7 +69,7 @@
 				<div class="trip-icons">
 					<i class="material-icons" title="Przwodniki, mapy">map</i>
 				</div>
-				{{ trip.guidebook }}
+				<div class="trip-info-description">{{ trip.guidebook }}</div>
 			</div>
 		{% endif %}
 		{% if trip.tips %}
@@ -75,7 +77,7 @@
 				<div class="trip-icons">
 					<i class="material-icons" title="Wskazówki">warning</i>
 				</div>
-				{{ trip.tips|linebreaks }}
+				<div class="trip-info-description">{{ trip.tips|linebreaks }}</div>
 			</div>
 		{% endif %}
 	</section>
