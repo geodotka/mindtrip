@@ -14,12 +14,13 @@ from .forms import AddPost
 @render_to('trips/home.html')
 def home(request):
     trips = serializers.serialize(
-        'json', Trip.objects.all().order_by('-start_at'),
+        'json',
+        Trip.objects.all().only('id', 'destination', 'picture', 'start_at',
+                                'end_at', 'is_complete').order_by('-start_at'),
         fields=('destination', 'picture', 'start_at', 'end_at', 'is_complete'))
-    news = News.objects.all().order_by('-created_at', '-id')
     return {
-        'trips': json.dumps(trips),
-        'news': news,
+        'trips': trips,
+        'news': News.objects.all().order_by('-created_at', '-id'),
     }
 
 

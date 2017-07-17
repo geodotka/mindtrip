@@ -3,8 +3,11 @@
 {% block home_page %} class="nav-selected"{% endblock %}
 
 {% block content %}
-	<div class="gallery-content js-gallery-content">
-		<div class="gallery js-gallery"></div>
+	<div class="hp-gallery-container">
+		<div class="hp-gallery-arrow left js-hp-left-arrow"></div>
+		<div class="gallery js-hp-gallery">
+		</div>
+		<div class="hp-gallery-arrow right js-hp-right-arrow"></div>
 	</div>
 	{% if news %}
 		<h1 class="news">Aktualności</h1>
@@ -16,7 +19,7 @@
 		{% endfor %}
 	{% endif %}
 
-	<script src="{{ STATIC_URL }}js/trips/main_page_gallery.js"></script>
+	<script src="{{ STATIC_URL }}js/trips/home_page_gallery.js"></script>
 	<script>
 		var gallery = new Gallery({{ trips|safe }});
 		gallery.draw()

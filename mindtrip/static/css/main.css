@@ -459,51 +459,81 @@ form button {
 /* main page */
 
 
-.gallery-content {
-	text-align: center;
-	position: relative;
+.hp-gallery-container {
+	justify-content: center;
+	display: flex;
 	height: 200px;
 }
 
-.gallery-content .gallery {
+.hp-gallery-arrow {
+	cursor: pointer;
+	height: 0;
+	width: 0;
+	border: 40px solid transparent;
+}
+
+.hp-gallery-arrow.left {
+	border-right-color: rgba(56, 9, 53, 0.71);
+	margin-right: 15px;
+}
+
+.hp-gallery-arrow.right {
+	border-left-color: rgba(56, 9, 53, 0.71);
+	margin-left: 15px;
+}
+
+.hp-gallery-arrow:hover {
+	color: #660033;
+}
+
+.hp-gallery-arrow.left.disabled {
+	cursor: default;
+	border-right-color: #c0c0c0;
+}
+
+.hp-gallery-arrow.right.disabled {
+	cursor: default;
+	border-left-color: #c0c0c0;
+}
+
+.hp-gallery {
 	height: 200px;
 	display: inline-flex;
     justify-content: center;
 	position: relative;
 }
 
-.gallery-content .gallery div {
+.hp-gallery div {
 	height: 180px;
 	width: 240px;
 	margin: 10px;
 	position: relative;
 }
 
-.gallery-content .gallery div img {
+.hp-gallery div img {
 	height: 180px;
 	width: 240px;
-	box-shadow: 10px 10px 10px #585858;
 }
 
-.gallery-content .gallery div span {
+.hp-gallery div span {
 	color: #fff;
 	font-family: 'Caveat', cursive;
 	position: absolute;
 }
 
-.gallery-content .gallery div .destination {
+.hp-gallery div .destination {
 	font-size: 32px;
 	right: 15px;
 	top: 2px;
 }
 
-.gallery-content .gallery div .dates {
+.hp-gallery div .dates {
 	font-size: 20px;
 	left: 12px;
 	bottom: 7px;
 }
 
-.gallery-content .gallery div .under-construction {
+.hp-gallery div .under-construction {
 	font-size: 30px;
 	left: 35px;
 	top: 60px;
@@ -512,35 +542,6 @@ form button {
 	-ms-transform: rotate(26deg);
 	-o-transform: rotate(26deg);
 	transform: rotate(26deg);
-}
-
-.gallery a:hover {
-	margin: 10px 0;
-}
-
-.gallery-content .arrow {
-	cursor: pointer;
-	font-size: 80px;
-	position: absolute;
-	top: 64px;
-}
-
-.gallery-content .arrow:hover {
-	color: #660033;
-}
-
-.gallery-content .arrow-left {
-	left: 70px;
-	display: inline-block;
-}
-
-.arrow-left {
-	filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=0.5);
-	-webkit-transform: rotate(180deg);
-	-moz-transform: rotate(180deg);
-	-ms-transform: rotate(180deg);
-	-o-transform: rotate(180deg);
-	transform: rotate(180deg);
 }
 
 .news {
