@@ -15,7 +15,9 @@
 						<img src="{{ MEDIA_URL }}{{ trip.picture }}">
 						<span class="destination">{{ trip.destination }}</span>
 						<span class="dates">{{ trip.start_at|date:'m-d-Y' }}-{{ trip.end_at|date:'m-d-Y' }}</span>
-						<span class="under-construction">W opracowaniu</span>
+						{% if not trip.is_complete %}
+							<span class="under-construction">W opracowaniu</span>
+						{% endif %}
 					</div>
 				</a>
 			{% endfor %}
