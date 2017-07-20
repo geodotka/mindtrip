@@ -1,94 +1,54 @@
+'use strict';
 
-class Gallery {
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-    constructor(trips) {
-        this.trips = trips;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Gallery = function () {
+    function Gallery(tripIdList) {
+        _classCallCheck(this, Gallery);
+
+        this.tripIdList = tripIdList;
         this.firstTripIndex = 0;
-        this.tripsNumberInGallery = 3;
-        this.hasPrevious = false;
-        this.hasNext = false;
-        this.$leftArrow = $('.js-hp-left-arrow');
-        this.$rightArrow = $('.js-hp-right-arrow');
+        this.$leftArrow = document.querySelector('.js-hp-left-arrow');
+        this.$rightArrow = document.querySelector('.js-hp-right-arrow');
+
+        this.bindArrows();
     }
 
-    setPreviousNext() {
-        this.hasPrevious = this.firstTripIndex > 0;
-        this.hasNext = this.firstTripIndex + this.tripsNumberInGallery < this.trips.length
-    }
+    _createClass(Gallery, [{
+        key: 'bindArrows',
+        value: function bindArrows() {
+            var _this = this;
 
-    draw() {
-        this.setPreviousNext();
-        if (!this.hasPrevious) {
-            this.$leftArrow.addClass('disabled')
-        } else {
-            this.$leftArrow.removeClass('disabled')
+            this.$leftArrow.addEventListener('click', function (ev) {
+                if (_this.firstTripIndex + 2 < _this.tripIdList.length) {
+                    _this.$rightArrow.classList.remove('disabled');
+                }
+                if (_this.firstTripIndex > 0) {
+                    _this.firstTripIndex--;
+                    $('#' + _this.tripIdList[_this.firstTripIndex + 3]).hide(100);
+                    $('#' + _this.tripIdList[_this.firstTripIndex]).show(100);
+                }
+                if (_this.firstTripIndex == 0) {
+                    _this.$leftArrow.classList.add('disabled');
+                }
+            });
+            this.$rightArrow.addEventListener('click', function (ev) {
+                if (_this.firstTripIndex == 0) {
+                    _this.$leftArrow.classList.remove('disabled');
+                }
+                if (_this.firstTripIndex + 3 < _this.tripIdList.length) {
+                    $('#' + _this.tripIdList[_this.firstTripIndex]).hide(100);
+                    $('#' + _this.tripIdList[_this.firstTripIndex + 3]).show(100);
+                    _this.firstTripIndex++;
+                }
+                if (_this.firstTripIndex + 3 == _this.tripIdList.length) {
+                    _this.$rightArrow.classList.add('disabled');
+                }
+            });
         }
+    }]);
 
-        $('.js-hp-gallery').html(this.drawGallery());
-
-        if (!this.hasNext) {
-            this.$rightArrow.addClass('disabled')
-        } else {
-            this.$rightArrow.removeClass('disabled')
-        }
-        this.bindArrows()
-    }
-
-    drawGallery() {
-        var gallery = document.createElement('div');
-        gallery.className = 'hp-gallery';
-        let currentTrips = this.trips.slice(this.firstTripIndex, this.firstTripIndex + 3);
-        for (let trip of currentTrips) {
-            gallery.appendChild(this.drawTrip(trip))
-        }
-        return gallery
-    }
-
-    drawTrip(trip) {
-        let link = document.createElement('a');
-        link.href = `/podroze/${trip.pk}`;
-        let tripContainer = document.createElement('div');
-
-        let img = document.createElement('img');
-        img.src = `/media/${trip.fields.picture}`;
-        tripContainer.appendChild(img);
-
-        let destination = document.createElement('span');
-        destination.innerHTML = trip.fields.destination;
-        destination.className = 'destination';
-        tripContainer.appendChild(destination);
-
-        let dates = document.createElement('span');
-        dates.innerHTML = trip.fields.start_at + ' - ' + trip.fields.end_at;
-        dates.className = 'dates';
-        tripContainer.appendChild(dates);
-
-        if (!trip.fields.is_complete) {
-            var underConstruction = document.createElement('span');
-            underConstruction.innerHTML = 'W przygotowaniu';
-            underConstruction.className = 'under-construction';
-            tripContainer.appendChild(underConstruction);
-        }
-
-        link.appendChild(tripContainer);
-        return link
-    }
-
-    bindArrows() {
-        this.$leftArrow.unbind();
-        this.$rightArrow.unbind();
-        this.$leftArrow.on('click', (ev) => {
-            if (this.hasPrevious) {
-                this.firstTripIndex--;
-                this.draw();
-            }
-        });
-        this.$rightArrow.on('click', (ev) => {
-            if (this.hasNext) {
-                this.firstTripIndex++;
-                this.draw();
-            }
-        });
-    }
- }
-
+    return Gallery;
+}();

@@ -470,6 +470,7 @@ form button {
 	height: 0;
 	width: 0;
 	border: 40px solid transparent;
+	margin-top: 110px;
 }
 
 .hp-gallery-arrow.left {

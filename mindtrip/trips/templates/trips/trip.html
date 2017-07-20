@@ -1,5 +1,9 @@
 {% extends "trips/base.html" %}
 
+{% block javascript %}
+	<script type="text/javascript" src="{{ STATIC_URL }}js/vendor/jquery-3.1.1.min.js"></script>
+{% endblock %}
+
 {% block prev_trip %}
 	{% if prev_trip %}
 		<a href="{% url 'trip' prev_trip.id %}" class="trip-link prev-trip-link">

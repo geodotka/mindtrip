@@ -49,6 +49,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.static',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -99,3 +100,5 @@ STATICFILES_FINDERS = (
 
 STATIC_URL = '/static/'
 STATIC_ROOT = join(CURRENT_DIR, 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = join(CURRENT_DIR, 'media')

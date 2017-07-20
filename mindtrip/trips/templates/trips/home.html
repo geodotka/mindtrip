@@ -1,11 +1,24 @@
 {% extends "trips/base.html" %}
 
 {% block home_page %} class="nav-selected"{% endblock %}
+{% block javascript %}
+	<script type="text/javascript" src="{{ STATIC_URL }}js/vendor/jquery-3.1.1.min.js"></script>
+{% endblock %}
 
 {% block content %}
 	<div class="hp-gallery-container">
-		<div class="hp-gallery-arrow left js-hp-left-arrow"></div>
-		<div class="gallery js-hp-gallery">
+		<div class="hp-gallery-arrow left js-hp-left-arrow disabled"></div>
+		<div class="hp-gallery js-hp-gallery">
+			{% for trip in trips %}
+				<a href="{% url 'trip' trip.id %}" id="{{ trip.id }}"{% if forloop.counter > 3 %} class="hidden"{% endif %}>
+					<div>
+						<img src="{{ MEDIA_URL }}{{ trip.picture }}">
+						<span class="destination">{{ trip.destination }}</span>
+						<span class="dates">{{ trip.start_at|date:'m-d-Y' }}-{{ trip.end_at|date:'m-d-Y' }}</span>
+						<span class="under-construction">W opracowaniu</span>
+					</div>
+				</a>
+			{% endfor %}
 		</div>
 		<div class="hp-gallery-arrow right js-hp-right-arrow"></div>
 	</div>
@@ -19,9 +32,8 @@
 		{% endfor %}
 	{% endif %}
 
-	<script src="{{ STATIC_URL }}js/trips/home_page_gallery.js"></script>
+	<script src="{{ STATIC_URL }}js/trips/home_page_gallery_es6.js"></script>
 	<script>
-		var gallery = new Gallery({{ trips|safe }});
-		gallery.draw()
+		var gallery = new Gallery({{ trip_id_list }});
 	</script>
 {% endblock %}

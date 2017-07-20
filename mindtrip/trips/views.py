@@ -4,7 +4,6 @@
 import json
 
 from annoying.decorators import render_to
-from django.core import serializers
 from django.shortcuts import get_object_or_404
 
 from .models import Trip, News, Country
@@ -13,13 +12,12 @@ from .forms import AddPost
 
 @render_to('trips/home.html')
 def home(request):
-    trips = serializers.serialize(
-        'json',
-        Trip.objects.all().only('id', 'destination', 'picture', 'start_at',
-                                'end_at', 'is_complete').order_by('-start_at'),
-        fields=('destination', 'picture', 'start_at', 'end_at', 'is_complete'))
+    trips = Trip.objects.all().only(
+        'id', 'destination', 'picture', 'start_at', 'end_at', 'is_complete') \
+        .order_by('-start_at')[:]
     return {
         'trips': trips,
+        'trip_id_list': [trip.id for trip in trips],
         'news': News.objects.all().order_by('-created_at', '-id'),
     }
 
