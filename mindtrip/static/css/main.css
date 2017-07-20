@@ -902,57 +902,59 @@ form button {
 
 	/* main page */
 
-	.gallery-content {
-		height: 70px;
+	.hp-gallery-container {
+		height: 75px;
 	}
 
-	.gallery-content .gallery {
-		height: 70px;
+	.hp-gallery-arrow {
+		border: 20px solid transparent;
+		margin-top: 35px;
 	}
 
-	.gallery-content .gallery div {
-		height: 60px;
-		width: 80px;
+	.hp-gallery-arrow.left {
+		margin-right: 5px;
+	}
+
+	.hp-gallery-arrow.right {
+		margin-left: 5px;
+	}
+
+	.hp-gallery {
+		height: 69px;
+	}
+
+	.hp-gallery div {
+		height: 69px;
+		width: 92px;
 		margin: 5px;
-		position: relative;
 	}
 
-	.gallery-content .gallery div img {
-		height: 60px;
-		width: 80px;
-		box-shadow: 5px 5px 5px #585858;
+	.hp-gallery div img {
+		height: 69px;
+		width: 92px;
 	}
 
-	.gallery-content .gallery div .destination {
+	.hp-gallery div .destination {
 		font-size: 15px;
 		right: 4px;
 		top: 2px;
 	}
 
-	.gallery-content .gallery div .dates {
+	.hp-gallery div .dates {
 		font-size: 7px;
 		left: 2px;
 		bottom: 2px;
 	}
 
-	.gallery-content .gallery div .under-construction {
+	.hp-gallery div .under-construction {
 		font-size: 13px;
-		left: 6px;
-		top: 22px;
-		-webkit-transform: rotate(26deg);
-		-moz-transform: rotate(26deg);
-		-ms-transform: rotate(26deg);
-		-o-transform: rotate(26deg);
-		transform: rotate(26deg);
-	}
-
-	.gallery-content .arrow {
-		font-size: 40px;
-		top: 15px;
-	}
-
-	.gallery-content .arrow-left {
-		left: 0;
+		left: 12px;
+		top: 25px;
+		-webkit-transform: rotate(33deg);
+		-moz-transform: rotate(3deg);
+		-ms-transform: rotate(3deg);
+		-o-transform: rotate(3deg);
+		transform: rotate(33deg);
 	}
 
 	.news label {
