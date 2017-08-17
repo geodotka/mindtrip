@@ -17,12 +17,19 @@ def upload_to(instance, filename):
             instance_id = trip.id + 1
         else:
             instance_id = 1
-    return os.sep.join([str(instance_id), filename])
+    parts = [
+        str(instance_id),
+        filename,
+    ]
+    return os.sep.join(parts)
 
 
 def photo_upload_to(instance, filename):
-    return os.sep.join(
-        [str(instance.trip_day.trip_id), str(instance.trip_day_id), filename])
+    parts = [
+        str(instance.trip_day.id),
+        filename,
+    ]
+    return os.sep.join(parts)
 
 
 class Trip(models.Model):
