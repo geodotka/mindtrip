@@ -102,3 +102,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = join(CURRENT_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = join(CURRENT_DIR, 'media')
+
+try:
+    from settings_local import *
+except ImportError:
+    pass
