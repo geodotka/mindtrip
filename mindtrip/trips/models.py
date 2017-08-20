@@ -60,6 +60,7 @@ class Trip(models.Model):
     class Meta:
         verbose_name = u'Wycieczka'
         verbose_name_plural = u'Wycieczki'
+        ordering = ['start_at', ]
 
     def __unicode__(self):
         return u'{0}: {1} - {2}'.format(
