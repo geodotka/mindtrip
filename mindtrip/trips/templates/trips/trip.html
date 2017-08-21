@@ -102,7 +102,7 @@
 							<section class="trip-day-photos">
 								{% for photo in day.photos.all %}
 									<div class="trip-day-photo js-show-gallery">
-										<img src="{{ photo.photo.url }}">
+										<img src="{{ photo.small_photo_url }}">
 										<p>{{ photo.description }}</p>
 									</div>
 								{% endfor %}
@@ -162,6 +162,6 @@
 	</div>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/trips/photos_gallery.js"></script>
 	<script>
-		new Gallery({{ photos_json|safe }});
+		new Gallery({{ photos_json|safe }}, {% if request.user_agent.is_mobile %}true{% else %}false{% endif %});
 	</script>
 {% endblock %}

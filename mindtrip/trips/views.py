@@ -49,7 +49,7 @@ def get_trip(request, trip_id):
             'id': next_trip.id,
             'destination': next_trip.destination,
         } if next_trip is not None else None,
-        'photos_json': json.dumps(trip_.get_photo_list_for_gallery())
+        'photos_json': json.dumps(trip_.get_photo_list_for_gallery()),
     }
 
 

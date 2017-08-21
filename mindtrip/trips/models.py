@@ -63,7 +63,8 @@ class Trip(models.Model):
             self.destination, self.start_at, self.end_at)
 
     def get_photo_list_for_gallery(self):
-        photos = Photo.objects.filter(trip_day__trip_id=self.id).order_by('trip_day', 'id')
+        photos = Photo.objects.filter(
+            trip_day__trip_id=self.id).order_by('trip_day', 'id')
         return [photo.get_data_for_trip_gallery() for photo in photos]
 
 
@@ -142,6 +143,7 @@ class Photo(models.Model):
     def get_data_for_trip_gallery(self):
         return {
             'url': self.photo.url,
+            'mobile_url': self.small_photo_url,
             'trip_day': self.trip_day.name,
             'description': self.description,
         }
@@ -173,6 +175,11 @@ class Photo(models.Model):
         if not os.path.exists(outfile):
             image.thumbnail(size)
             image.save(outfile, "JPEG")
+
+    @property
+    def small_photo_url(self):
+        name = self.photo.name.split('/')[-1]
+        return self.photo.url.replace(name, 'small_' + name)
 
 
 class News(models.Model):

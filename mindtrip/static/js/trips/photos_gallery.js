@@ -1,6 +1,7 @@
 
-var Gallery = function(photos){
+var Gallery = function(photos, isMobile){
     this.photos = photos;
+    this.isMobile = isMobile;
     this.photoIndex = 0;
     this.leftArrow = $('.js-left-arrow');
     this.rightArrow = $('.js-right-arrow');
@@ -16,7 +17,7 @@ var Gallery = function(photos){
 Gallery.prototype.setIndexBySrc = function(src){
     src = '/' + src.split('/').splice(3).join('/');
     for (var i=0; i < this.photos.length; i++){
-        if (this.photos[i].url == src){
+        if (this.photos[i].mobile_url == src){
             this.photoIndex = i;
             break;
         }
@@ -33,7 +34,13 @@ Gallery.prototype.setPrevNextPhoto = function(){
 Gallery.prototype.draw = function(){
     var photo = this.photos[this.photoIndex];
     $('.js-description').html(photo.description);
-    $('.js-image').attr('src', photo.url);
+    var url;
+    if (this.isMobile) {
+        url = photo.mobile_url;
+    } else {
+        url = photo.url;
+    }
+    $('.js-image').attr('src', url);
     $('.js-counter').html(String(this.photoIndex + 1) + '/' + this.photos.length );
     this.setArrows();
 };
