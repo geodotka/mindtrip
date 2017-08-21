@@ -759,11 +759,11 @@ form button {
 	}
 
 	.trip-gallery-image-box {
-		margin-top: 20px;
+		margin-top: 0;
+		height: 400px;
 	}
 
 	.trip-gallery-image {
-		width: 80vw;
 		height: auto;
 	}
 
@@ -771,7 +771,6 @@ form button {
 		width: 80vw;
 		height: auto;
 		box-shadow: 10px 10px 10px #585858;
-		margin-top: 90px;
 	}
 
 	.trip-gallery-counter {
@@ -784,25 +783,24 @@ form button {
 		padding: 5px;
 		position: absolute;
 		right: 0;
-		top: 90px;
 		cursor: pointer;
 	}
 
 	.trip-gallery-left-arrow {
-		border: 30px solid transparent;
+		border: 20px solid transparent;
 		border-right-color: rgba(56, 9, 53, 0.71);
 		position: absolute;
-		left: 0;
-		top: 0;
+		left: -8px;
+		top: 185px;
 		cursor: pointer;
 	}
 
 	.trip-gallery-right-arrow {
-		border: 30px solid transparent;
+		border: 20px solid transparent;
 		border-left-color: rgba(56, 9, 53, 0.71);
 		position: absolute;
-		right: 0;
-		top: 0;
+		right: -8px;
+		top: 185px;
 		cursor: pointer;
 	}
 
