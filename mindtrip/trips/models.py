@@ -2,7 +2,10 @@
 # encoding: utf-8
 
 import os
+from PIL import Image
+import StringIO
 
+from django.conf import settings
 from django.db import models
 
 from .helpers import slugify
@@ -17,19 +20,12 @@ def upload_to(instance, filename):
             instance_id = trip.id + 1
         else:
             instance_id = 1
-    parts = [
-        str(instance_id),
-        filename,
-    ]
-    return os.sep.join(parts)
+    return os.sep.join([str(instance_id), filename])
 
 
 def photo_upload_to(instance, filename):
-    parts = [
-        str(instance.trip_day.id),
-        filename,
-    ]
-    return os.sep.join(parts)
+    return os.sep.join(
+        [str(instance.trip_day.trip_id), str(instance.trip_day_id), filename])
 
 
 class Trip(models.Model):
@@ -149,6 +145,34 @@ class Photo(models.Model):
             'trip_day': self.trip_day.name,
             'description': self.description,
         }
+
+    def save(self, *args, **kwargs):
+        if self.photo:
+            if self.photo.width > self.photo.height:
+                big_size = (800, 600)
+                small_size = (400, 300)
+            else:
+                big_size = (600, 800)
+                small_size = (300, 400)
+            image = Image.open(self.photo.file)
+            self.save_big_photo(image, big_size)
+            self.save_small_photo(image, small_size)
+            image.close()
+        return super(Photo, self).save(*args, **kwargs)
+
+    def save_big_photo(self, image, size):
+        image_file = StringIO.StringIO()
+        image.thumbnail(size)
+        image.save(image_file, 'JPEG')
+        self.photo.file = image_file
+
+    def save_small_photo(self, image, size):
+        name = self.photo.name
+        outfile = os.sep.join(
+            [settings.MEDIA_ROOT, photo_upload_to(self, 'small_' + name)])
+        if not os.path.exists(outfile):
+            image.thumbnail(size)
+            image.save(outfile, "JPEG")
 
 
 class News(models.Model):
