@@ -1313,4 +1313,15 @@ form button {
 	main {
 		width: 60%;
 	}
+
+	.trip-gallery-image {
+		max-height: 600px;
+		margin: auto;
+		position: relative;
+	}
+
+	.trip-gallery-image img {
+		height: 600px;
+		box-shadow: 15px 15px 10px #585858;
+}
 }
