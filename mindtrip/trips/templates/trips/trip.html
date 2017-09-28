@@ -162,6 +162,6 @@
 	</div>
 	<script type="text/javascript" src="{{ STATIC_URL }}js/trips/photos_gallery.js"></script>
 	<script>
-		new Gallery({{ photos_json|safe }}, {% if request.user_agent.is_mobile %}true{% else %}false{% endif %});
+		new Gallery({{ photos_json|safe }}, {% if request.user_agent.is_mobile and not request.user_agent.is_tablet %}true{% else %}false{% endif %});
 	</script>
 {% endblock %}
