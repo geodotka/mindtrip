@@ -91,6 +91,7 @@
 				<section class="trip-day">
 					<h3 class="js-show-more">
 						{{ day.name }}{% if day.date %} ({{ day.date|date:'d-m-Y' }}){% endif %}
+					{% if day.photos.count %}<i class="material-icons">photo_library</i>{% endif %}
 						<span class="js-show-more-info">
 							Rozwiń<i class="material-icons">keyboard_arrow_down</i>
 						</span>
@@ -98,7 +99,7 @@
 					<article class="js-day-description">
 						{{ day.description|linebreaks }}
 
-						{% if day.photos.all %}
+						{% if day.photos.count %}
 							<section class="trip-day-photos">
 								{% for photo in day.photos.all %}
 									<div class="trip-day-photo js-show-gallery">
