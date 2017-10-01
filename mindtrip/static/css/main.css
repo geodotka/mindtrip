@@ -114,6 +114,27 @@ footer {
 	box-shadow: 15px 15px 15px #585858;
 }
 
+.country .photo {
+	position: relative;
+}
+
+.country div .under-construction {
+	position: absolute;
+	font-size: 35px;
+	color: #fff;
+	left: 24px;
+	top: 93px;
+	-webkit-transform: rotate(35deg);
+	-moz-transform: rotate(35deg);
+	-ms-transform: rotate(35deg);
+	-o-transform: rotate(35deg);
+	transform: rotate(35deg);
+}
+
+.not-complete img {
+	opacity: 0.7;
+}
+
 .country p {
 	width: 300px;
 	margin: 2px 0;
@@ -538,11 +559,11 @@ form button {
 	font-size: 30px;
 	left: 35px;
 	top: 60px;
-	-webkit-transform: rotate(26deg);
-	-moz-transform: rotate(26deg);
-	-ms-transform: rotate(26deg);
-	-o-transform: rotate(26deg);
-	transform: rotate(26deg);
+	-webkit-transform: rotate(33deg);
+	-moz-transform: rotate(33deg);
+	-ms-transform: rotate(33deg);
+	-o-transform: rotate(33deg);
+	transform: rotate(33deg);
 }
 
 .news {
@@ -632,6 +653,12 @@ form button {
 
 	.country a:hover img {
 		box-shadow: 10px 10px 10px #585858;
+	}
+
+	.country div .under-construction {
+		font-size: 24px;
+		left: 26px;
+		top: 64px;
 	}
 
 	.country p {
@@ -979,6 +1006,12 @@ form button {
 
 	.country img:hover {
 		box-shadow: 10px 10px 10px #585858;
+	}
+
+	.country div .under-construction {
+		font-size: 15px;
+		left: 15px;
+		top: 47px;
 	}
 
 	.country p {
