@@ -37,5 +37,11 @@ class Gallery {
                 this.$rightArrow.classList.add('disabled');
             }
         });
+        window.addEventListener('keypress', (ev) => {
+            switch (ev.keyCode) {
+                case 37: ev.preventDefault(); this.$leftArrow.click(); break;
+                case 39: ev.preventDefault(); this.$rightArrow.click(); break;
+            }
+        })
     }
  }

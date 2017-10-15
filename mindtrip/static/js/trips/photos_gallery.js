@@ -79,6 +79,14 @@ Gallery.prototype.bind = function(){
         // show menu
         $('header').css('position', 'fixed');
     });
+    window.addEventListener('keypress', function (ev) {
+        switch (ev.keyCode) {
+            case 37:
+                ev.preventDefault();this_.leftArrow.click();break;
+            case 39:
+                ev.preventDefault();this_.rightArrow.click();break;
+        }
+    });
 };
 
 

@@ -47,6 +47,12 @@ var Gallery = function () {
                     _this.$rightArrow.classList.add('disabled');
                 }
             });
+            window.addEventListener('keypress', function (ev) {
+                switch (ev.keyCode) {
+                    case 37: ev.preventDefault();this.$leftArrow.click();break;
+                    case 39: ev.preventDefault();this.$rightArrow.click();break;
+                }
+            });
         }
     }]);
 
