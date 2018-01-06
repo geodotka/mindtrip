@@ -449,6 +449,7 @@ form button {
 	height: 200px;
 	box-shadow: 10px 10px 10px #585858;
 	margin-right: 30px;
+	margin-top: 20px;
 }
 
 .leonardo-sentence {
@@ -459,7 +460,11 @@ form button {
 }
 
 .leonardo-author {
-	float: right;
+	text-align: right;
+}
+
+.backpack {
+	color: #660033;
 }
 
 
@@ -1240,6 +1245,11 @@ form button {
 
 
 	/*about me page*/
+	.about-me-header {
+		text-align: center;
+		display: block;
+	}
+
 	.about-me-header img {
 		height: 80px;
 		margin-right: 10px;
