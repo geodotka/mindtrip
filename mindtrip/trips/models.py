@@ -153,9 +153,9 @@ class Photo(models.Model):
                     size = (400, 300)
                 else:
                     size = (300, 400)
-            image = Image.open(self.photo.file)
-            self.save_photo(image, size)
-            image.close()
+                image = Image.open(self.photo.file)
+                self.save_photo(image, size)
+                image.close()
         return super(Photo, self).save(*args, **kwargs)
 
     def save_photo(self, image, size):
