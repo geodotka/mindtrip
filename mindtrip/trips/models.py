@@ -5,7 +5,6 @@ import os
 from PIL import Image
 import StringIO
 
-from django.conf import settings
 from django.db import models
 
 from .helpers import slugify
@@ -143,43 +142,27 @@ class Photo(models.Model):
     def get_data_for_trip_gallery(self):
         return {
             'url': self.photo.url,
-            'mobile_url': self.small_photo_url,
             'trip_day': self.trip_day.name,
             'description': self.description,
         }
 
     def save(self, *args, **kwargs):
         if self.photo:
-            if self.photo.width > self.photo.height:
-                big_size = (800, 600)
-                small_size = (400, 300)
-            else:
-                big_size = (600, 800)
-                small_size = (300, 400)
+            if self.photo.width > 400 or self.photo.height > 300:
+                if self.photo.width > self.photo.height:
+                    size = (400, 300)
+                else:
+                    size = (300, 400)
             image = Image.open(self.photo.file)
-            self.save_big_photo(image, big_size)
-            self.save_small_photo(image, small_size)
+            self.save_photo(image, size)
             image.close()
         return super(Photo, self).save(*args, **kwargs)
 
-    def save_big_photo(self, image, size):
+    def save_photo(self, image, size):
         image_file = StringIO.StringIO()
         image.thumbnail(size)
         image.save(image_file, 'JPEG')
         self.photo.file = image_file
-
-    def save_small_photo(self, image, size):
-        name = self.photo.name
-        outfile = os.sep.join(
-            [settings.MEDIA_ROOT, photo_upload_to(self, 'small_' + name)])
-        if not os.path.exists(outfile):
-            image.thumbnail(size)
-            image.save(outfile, "JPEG")
-
-    @property
-    def small_photo_url(self):
-        name = self.photo.name.split('/')[-1]
-        return self.photo.url.replace(name, 'small_' + name)
 
 
 class News(models.Model):

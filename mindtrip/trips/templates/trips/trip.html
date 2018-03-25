@@ -102,8 +102,8 @@
 						{% if day.photos.count %}
 							<section class="trip-day-photos">
 								{% for photo in day.photos.all %}
-									<div class="trip-day-photo js-show-gallery">
-										<img src="{{ photo.small_photo_url }}">
+									<div class="trip-day-photo">
+										<img src="{{ photo.photo.url }}">
 										<p>{{ photo.description }}</p>
 									</div>
 								{% endfor %}
@@ -146,23 +146,4 @@
 		{% endfor %}
 	</section>
 	<script src="{{ STATIC_URL }}js/trips/days.js"></script>
-{% endblock %}
-
-{% block gallery %}
-	<div class="trip-gallery hidden js-gallery-content">
-		<div class="trip-gallery-image-box">
-			<div class="trip-gallery-image">
-				<img class="js-image" src="">
-				<div class="trip-gallery-counter js-counter"></div>
-				<i class="trip-gallery-close material-icons js-close-gallery">clear</i>
-			</div>
-			<div class="trip-gallery-left-arrow js-left-arrow"></div>
-			<div class="trip-gallery-right-arrow js-right-arrow"></div>
-		</div>
-		<p class="trip-gallery-description js-description"></p>
-	</div>
-	<script type="text/javascript" src="{{ STATIC_URL }}js/trips/photos_gallery.js"></script>
-	<script>
-		new Gallery({{ photos_json|safe }}, {% if request.user_agent.is_mobile and not request.user_agent.is_tablet %}true{% else %}false{% endif %});
-	</script>
 {% endblock %}

@@ -251,18 +251,17 @@ footer {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	cursor: pointer;
 }
 
 .trip-day-photo {
 	margin: 20px;
-	width: 300px;
+	width: 400px;
 	text-align: center;
 }
 
 .trip-day-photo img {
-	max-height: 225px;
-	max-width: 300px;
+	max-height: 300px;
+	max-width: 400px;
 	height: auto;
 	box-shadow: 10px 10px 10px #585858;
 	margin-bottom: 10px;
@@ -281,90 +280,6 @@ footer {
 .hidden {
 	display: none;
 }
-
-.trip-gallery {
-	background-color: #fcfcfc;
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	text-align: center;
-	display: box;
-}
-
-.trip-gallery-image-box {
-	display: flex;
-	margin-top: 40px;
-	position: relative;
-}
-
-.trip-gallery-image {
-	height: 80vh;
-	margin: auto;
-	position: relative;
-}
-
-.trip-gallery-image img {
-	height: 80vh;
-	box-shadow: 15px 15px 10px #585858;
-}
-
-.trip-gallery-counter {
-	font-size: 20px;
-	color: #fff;
-	padding: 5px;
-	position: absolute;
-	right: 0;
-	bottom: 0;
-}
-
-.trip-gallery-close {
-	font-size: 35px;
-	color: #fff;
-	padding: 5px;
-	position: absolute;
-	right: 0;
-	top: 0;
-	cursor: pointer;
-}
-
-.trip-gallery-description {
-	text-align: center;
-}
-
-.trip-gallery-left-arrow {
-	width: 0;
-	height: 0;
-	border: 50px solid transparent;
-	border-right-color: rgba(56, 9, 53, 0.71);
-	position: absolute;
-	left: 10%;
-	bottom: 0;
-	cursor: pointer;
-}
-
-.trip-gallery-right-arrow {
-	width: 0;
-	height: 0;
-	border: 50px solid transparent;
-	border-left-color: rgba(56, 9, 53, 0.71);
-	position: absolute;
-	right: 10%;
-	bottom: 0;
-	cursor: pointer;
-}
-
-.inactive-trip-gallery-left-arrow {
-	cursor: none;
-	border-right-color: #c0c0c0;
-}
-
-.inactive-trip-gallery-right-arrow {
-	cursor: none;
-	border-left-color: #c0c0c0;
-}
-
 
 /*post form*/
 
@@ -728,12 +643,9 @@ form button {
 
 	.trip-day-photo {
 		margin: 12px;
-		width: 240px;
 	}
 
 	.trip-day-photo img {
-		max-height: 180px;
-		max-width: 240px;
 		height: auto;
 		box-shadow: 7px 7px 7px #585858;
 		margin-bottom: 7px;
@@ -742,63 +654,6 @@ form button {
 	.trip-day-photo p {
 		font-size: 14px;
 	}
-
-	.trip-gallery-image-box {
-		display: flex;
-		margin-top: 25px;
-		position: relative;;
-	}
-
-	.trip-gallery-image img {
-		height: 80vh;
-		box-shadow: 7px 7px 7px #585858;
-	}
-
-	.trip-gallery-counter {
-		font-size: 16px;
-	}
-
-	.trip-gallery-close {
-		font-size: 25px;
-		color: #fff;
-		padding: 5px;
-		position: absolute;
-		right: 0;
-		cursor: pointer;
-	}
-
-	.trip-gallery-left-arrow {
-		width: 0;
-		height: 0;
-		border: 35px solid transparent;
-		border-right-color: rgba(56, 9, 53, 0.71);
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		cursor: pointer;
-	}
-
-	.trip-gallery-right-arrow {
-		width: 0;
-		height: 0;
-		border: 35px solid transparent;
-		border-left-color: rgba(56, 9, 53, 0.71);
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		cursor: pointer;
-	}
-
-	.inactive-trip-gallery-left-arrow {
-		cursor: none;
-		border-right-color: #c0c0c0;
-	}
-
-	.inactive-trip-gallery-right-arrow {
-		cursor: none;
-		border-left-color: #c0c0c0;
-	}
-
 
 	/*post form*/
 
@@ -1120,77 +975,20 @@ form button {
 
 	.trip-day-photo {
 		margin: 5px;
-		width: 120px;
+		width: 3000px;
 	}
 
 	.trip-day-photo img {
-		max-height: 100px;
-		max-width: 120px;
+		max-height: 225px;
+		max-width: 300px;
 		height: auto;
 		box-shadow: 5px 5px 5px #585858;
 		margin-bottom: 5px;
 	}
 
 	.trip-day-photo p {
-		font-size: 10px;
+		font-size: 13px;
 	}
-
-	.trip-gallery-image-box {
-		margin-top: 0;
-		height: 400px;
-	}
-
-	.trip-gallery-image {
-		height: auto;
-	}
-
-	.trip-gallery-image img {
-		width: 80vw;
-		height: auto;
-		box-shadow: 10px 10px 10px #585858;
-	}
-
-	.trip-gallery-counter {
-		font-size: 16px;
-	}
-
-	.trip-gallery-close {
-		font-size: 30px;
-		color: #fff;
-		padding: 5px;
-		position: absolute;
-		right: 0;
-		cursor: pointer;
-	}
-
-	.trip-gallery-left-arrow {
-		border: 20px solid transparent;
-		border-right-color: rgba(56, 9, 53, 0.71);
-		position: absolute;
-		left: -8px;
-		top: 185px;
-		cursor: pointer;
-	}
-
-	.trip-gallery-right-arrow {
-		border: 20px solid transparent;
-		border-left-color: rgba(56, 9, 53, 0.71);
-		position: absolute;
-		right: -8px;
-		top: 185px;
-		cursor: pointer;
-	}
-
-	.inactive-trip-gallery-left-arrow {
-		cursor: none;
-		border-right-color: #c0c0c0;
-	}
-
-	.inactive-trip-gallery-right-arrow {
-		cursor: none;
-		border-left-color: #c0c0c0;
-	}
-
 
 	/*post form*/
 
@@ -1356,15 +1154,4 @@ form button {
 	main {
 		width: 60%;
 	}
-
-	.trip-gallery-image {
-		max-height: 600px;
-		margin: auto;
-		position: relative;
-	}
-
-	.trip-gallery-image img {
-		height: 600px;
-		box-shadow: 15px 15px 10px #585858;
-}
 }
