@@ -467,6 +467,8 @@ form button {
 	font-size: 32px;
 	right: 15px;
 	top: 2px;
+	max-width: 160px;
+	text-align: right;
 }
 
 .hp-gallery div .dates {
@@ -760,7 +762,7 @@ form button {
 	}
 
 	.hp-gallery div .destination {
-		font-size: 24px;
+		font-size: 22px;
 		right: 4px;
 		top: 2px;
 	}
@@ -772,9 +774,9 @@ form button {
 	}
 
 	.hp-gallery div .under-construction {
-		font-size: 25px;
+		font-size: 24px;
 		left: 15px;
-		top: 40px;
+		top: 42px;
 		-webkit-transform: rotate(33deg);
 		-moz-transform: rotate(33deg);
 		-ms-transform: rotate(33deg);
@@ -1127,7 +1129,7 @@ form button {
 	.hp-gallery div .under-construction {
 		font-size: 13px;
 		left: 12px;
-		top: 25px;
+		top: 30px;
 		-webkit-transform: rotate(33deg);
 		-moz-transform: rotate(33deg);
 		-ms-transform: rotate(33deg);
