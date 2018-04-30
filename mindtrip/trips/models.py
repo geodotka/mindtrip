@@ -49,6 +49,8 @@ class Trip(models.Model):
     planned_at = models.CharField(
         max_length=500, null=True, blank=True, verbose_name=u'Planowana w')
     is_complete = models.BooleanField(default=False, verbose_name=u'Gotowa')
+    describe_capitol = models.BooleanField(
+        default=False, verbose_name=u'Opisuje stolicę')
 
     tags = models.ManyToManyField('Tag', blank=True, verbose_name=u'Tagi')
 

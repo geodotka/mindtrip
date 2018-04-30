@@ -131,6 +131,14 @@ footer {
 	transform: rotate(35deg);
 }
 
+.country div .capitol {
+	position: absolute;
+	font-size: 25px;
+	color: #ffffff;
+	left: 5px;
+	bottom: 20px;
+}
+
 .not-complete img {
 	opacity: 0.7;
 }
@@ -583,6 +591,11 @@ form button {
 		top: 64px;
 	}
 
+	.country div .capitol {
+		font-size: 20px;
+		bottom: 15px;
+	}
+
 	.country p {
 		width: 220px;
 		margin: 2px 0;
@@ -874,6 +887,11 @@ form button {
 		font-size: 15px;
 		left: 15px;
 		top: 47px;
+	}
+
+	.country div .capitol {
+		font-size: 16px;
+		bottom: 12px;
 	}
 
 	.country p {
