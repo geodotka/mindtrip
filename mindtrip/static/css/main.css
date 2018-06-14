@@ -25,6 +25,10 @@ hr:after {
 	font-size: 18px;
 }
 
+ul {
+	list-style-type: none;
+}
+
 body {
 	margin: 0 auto;
 	padding: 0;
