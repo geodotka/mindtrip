@@ -28,7 +28,7 @@
 			<img src="{{ trip.picture.url }}">
 		</div>
 		<div>
-			<p class="trip-destination">{{ trip.destination }}{% if trip.destination != trip.country.name %} ({{ trip.country.name }}){% endif %}</p>
+			<p class="trip-destination">{{ trip.destination }}{% if trip.destination not in countries %} ({{ countries }}){% endif %}</p>
 			<p class="trip-dates">{{ trip.start_at }} - {{ trip.end_at }}</p>
 			<p class="trip-summary">{{ trip.summary }}</p>
 		</div>

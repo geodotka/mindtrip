@@ -30,7 +30,7 @@ def photo_upload_to(instance, filename):
 class Trip(models.Model):
     destination = models.CharField(max_length=255, verbose_name=u'Cel podróży')
     picture = models.ImageField(upload_to=upload_to, null=True, blank=True)
-    country = models.ForeignKey(
+    country = models.ManyToManyField(
         'Country', verbose_name=u'Kraj', related_name='trips')
     summary = models.TextField(verbose_name=u'Podsumowanie')
     start_at = models.DateField(verbose_name=u'Data początku')

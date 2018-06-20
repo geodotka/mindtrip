@@ -24,8 +24,7 @@ def home(request):
 
 @render_to('trips/trip.html')
 def get_trip(request, trip_id):
-    trip_ = get_object_or_404(
-        Trip.objects.select_related('country'), id=trip_id)
+    trip_ = get_object_or_404(Trip.objects, id=trip_id)
     if not request.user.is_superuser:
         trip_.views_counter += 1
         trip_.save()
@@ -40,6 +39,7 @@ def get_trip(request, trip_id):
         .order_by('-start_at').first()
     return {
         'trip': trip_,
+        'countries': ', '.join([t.name for t in trip_.country.all()]),
         'form': add_post_form,
         'prev_trip': {
             'id': prev_trip.id,
