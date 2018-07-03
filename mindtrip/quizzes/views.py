@@ -9,7 +9,7 @@ from .models import Quiz
 
 @render_to('quizzes/quizzes.html')
 def get_quizzes(request):
-    return {'quizzes': Quiz.objects.all().order_by('added_at')}
+    return {'quizzes': Quiz.objects.all().order_by('-added_at')}
 
 
 @render_to('quizzes/quiz.html')
