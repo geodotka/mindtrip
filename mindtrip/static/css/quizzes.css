@@ -94,7 +94,7 @@ footer {
 	max-height: 300px;
 	max-width: 400px;
 	height: auto;
-	box-shadow: 10px 10px 10px #585858;
+	box-shadow: 5px 5px 10px #fff;
 	margin-bottom: 10px;
 }
 
@@ -164,7 +164,7 @@ footer {
 
 	.photo img {
 		height: auto;
-		box-shadow: 7px 7px 7px #585858;
+		box-shadow: 4px 4px 7px #fff;
 		margin-bottom: 7px;
 	}
 
@@ -231,7 +231,7 @@ footer {
 		max-height: 225px;
 		max-width: 300px;
 		height: auto;
-		box-shadow: 5px 5px 5px #585858;
+		box-shadow: 3px 3px 5px #fff;
 		margin-bottom: 5px;
 	}
 
