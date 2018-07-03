@@ -1,0 +1,13 @@
+{% extends "quizzes/base.html" %}
+
+
+{% block content %}
+	{% for quiz in quizzes %}
+		<section>
+			<h3><a href="{% url 'quiz' quiz.id %}">{{ quiz.added_at|date:"d.m.Y" }} {{ quiz.name }}</a></h3>
+			<article>
+				{{ quiz.short }}
+			</article>
+		</section>
+	{% endfor %}
+{% endblock %}

@@ -9,5 +9,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^geodotka/', admin.site.urls),
 
+    url(r'^quizy', include('mindtrip.quizzes.urls')),
     url(r'^', include('mindtrip.trips.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,10 @@
+{% extends "quizzes/base.html" %}
+
+
+{% block content %}
+	<section class="quiz">
+		<h2>{{ quiz.name }}</h2>
+		<h3>{{ quiz.short }}</h3>
+		{{ quiz.description|safe }}
+	</section>
+{% endblock %}
