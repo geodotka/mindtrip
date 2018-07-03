@@ -10,6 +10,7 @@ p {
 
 ul {
 	list-style-type: none;
+	padding: 0;
 }
 
 body {
@@ -82,6 +83,7 @@ footer {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	background: #fff;
 }
 
 .photo {
@@ -94,7 +96,7 @@ footer {
 	max-height: 300px;
 	max-width: 400px;
 	height: auto;
-	box-shadow: 5px 5px 10px #fff;
+	box-shadow: 10px 10px 10px #585858;
 	margin-bottom: 10px;
 }
 
@@ -164,7 +166,7 @@ footer {
 
 	.photo img {
 		height: auto;
-		box-shadow: 4px 4px 7px #fff;
+		box-shadow: 7px 7px 7px #585858;
 		margin-bottom: 7px;
 	}
 
@@ -224,14 +226,14 @@ footer {
 
 	.photo {
 		margin: 5px;
-		width: 3000px;
+		width: 300px;
 	}
 
 	.photo img {
 		max-height: 225px;
 		max-width: 300px;
 		height: auto;
-		box-shadow: 3px 3px 5px #fff;
+		box-shadow: 5px 5px 5px #585858;
 		margin-bottom: 5px;
 	}
 
