@@ -92,7 +92,7 @@ footer {
 	position: relative;
 }
 
-.banner .flight-takeoff, .banner .extension {
+.banner .flight-takeoff {
 	font-size: 40px;
 }
 
@@ -520,15 +520,6 @@ form button {
 	font-size: 20px;
 }
 
-.quiz h2, .quiz h3 {
-	text-align: center;
-}
-
-.quiz li {
-	margin: 10px;
-	text-align: justify;
-}
-
 
 @media (max-width: 1025px) {
 
@@ -578,7 +569,7 @@ form button {
 		margin-bottom: 5px;
 	}
 
-	.banner .flight-takeoff, .banner .extension {
+	.banner .flight-takeoff {
 		font-size: 30px;
 	}
 
@@ -876,7 +867,7 @@ form button {
 		margin-bottom: 5px;
 	}
 
-	.banner .flight-takeoff, .banner .extension {
+	.banner .flight-takeoff {
 		font-size: 20px;
 	}
 
