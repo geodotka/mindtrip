@@ -7,6 +7,6 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^$', views.get_quizzes, name='quizzes'),
-    url(r'^/(?P<quiz_id>\d+)$', views.get_quiz, name='quiz'),
+    url(r'^quizy$', views.get_quizzes, name='quizzes'),
+    url(r'^quizy/(?P<quiz_id>\d+)$', views.get_quiz, name='quiz'),
 ]
