@@ -10,7 +10,7 @@
 				{% for trip in country.trips.all %}
 					<article>
 						<a href="{% url 'trip' trip.id %}">
-							<div class="photo{% if not trip.is_complete %} not-complete{% endif %}">
+							<div class="country-photo{% if not trip.is_complete %} not-complete{% endif %}">
 								<img src="{{ trip.picture.url }}" />
 								{% if not trip.is_complete %}
 									<span class="under-construction">W opracowaniu</span>

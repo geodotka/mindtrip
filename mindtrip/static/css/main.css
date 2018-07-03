@@ -118,7 +118,7 @@ footer {
 	box-shadow: 15px 15px 15px #585858;
 }
 
-.country .photo {
+.country-photo {
 	position: relative;
 }
 
@@ -259,19 +259,19 @@ footer {
 	display: none;
 }
 
-.trip-day-photos {
+.photos {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 }
 
-.trip-day-photo {
+.photo {
 	margin: 20px;
 	width: 400px;
 	text-align: center;
 }
 
-.trip-day-photo img {
+.photo img {
 	max-height: 300px;
 	max-width: 400px;
 	height: auto;
@@ -279,7 +279,7 @@ footer {
 	margin-bottom: 10px;
 }
 
-.trip-day-photo p {
+.photo p {
 	font-size: 15px;
 	text-align: center;
 	margin: 0;
@@ -669,17 +669,17 @@ form button {
 		right: -15px;
 	}
 
-	.trip-day-photo {
+	.photo {
 		margin: 12px;
 	}
 
-	.trip-day-photo img {
+	.photo img {
 		height: auto;
 		box-shadow: 7px 7px 7px #585858;
 		margin-bottom: 7px;
 	}
 
-	.trip-day-photo p {
+	.photo p {
 		font-size: 14px;
 	}
 
@@ -1006,12 +1006,12 @@ form button {
 		right: -16px;
 	}
 
-	.trip-day-photo {
+	.photo {
 		margin: 5px;
 		width: 3000px;
 	}
 
-	.trip-day-photo img {
+	.photo img {
 		max-height: 225px;
 		max-width: 300px;
 		height: auto;
@@ -1019,7 +1019,7 @@ form button {
 		margin-bottom: 5px;
 	}
 
-	.trip-day-photo p {
+	.photo p {
 		font-size: 13px;
 	}
 

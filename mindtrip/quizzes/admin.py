@@ -3,6 +3,7 @@
 
 from django.contrib import admin
 
-from .models import Quiz
+from .models import Photo, Quiz
 
 admin.site.register(Quiz)
+admin.site.register(Photo)

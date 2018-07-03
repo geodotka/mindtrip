@@ -100,9 +100,9 @@
 						{{ day.description|linebreaks }}
 
 						{% if day.photos.count %}
-							<section class="trip-day-photos">
+							<section class="photos">
 								{% for photo in day.photos.all %}
-									<div class="trip-day-photo">
+									<div class="photo">
 										<img src="{{ photo.photo.url }}">
 										<p>{{ photo.description }}</p>
 									</div>
