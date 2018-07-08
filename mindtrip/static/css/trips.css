@@ -68,6 +68,15 @@ nav a {
 	border-bottom: solid 1px;
 }
 
+.capitals_counter {
+	position: relative;
+}
+
+.capitals_counter .material-icons{
+	font-size: 20px;
+	position: absolute;
+}
+
 main {
 	width: 80%;
 	margin: 45px auto 0 auto;
@@ -135,7 +144,7 @@ footer {
 	transform: rotate(35deg);
 }
 
-.country div .capitol {
+.country div .capital {
 	position: absolute;
 	font-size: 25px;
 	color: #ffffff;
@@ -550,6 +559,10 @@ form button {
 		margin: 0 30px;
 	}
 
+	.capitals_counter {
+		display: none;
+	}
+
 	main {
 		width: 90%;
 		margin: 35px auto 0 auto;
@@ -595,7 +608,7 @@ form button {
 		top: 64px;
 	}
 
-	.country div .capitol {
+	.country div .capital {
 		font-size: 20px;
 		bottom: 15px;
 	}
@@ -848,6 +861,10 @@ form button {
 		margin: 0 10px;
 	}
 
+	.capitals_counter {
+		display: none;
+	}
+
 	main {
 		width: 90%;
 		margin: 33px auto 0 auto;
@@ -893,7 +910,7 @@ form button {
 		top: 47px;
 	}
 
-	.country div .capitol {
+	.country div .capital {
 		font-size: 16px;
 		bottom: 12px;
 	}
