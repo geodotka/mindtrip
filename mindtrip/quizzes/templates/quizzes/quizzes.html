@@ -2,12 +2,24 @@
 
 
 {% block content %}
-	{% for quiz in quizzes %}
-		<section>
-			<h3><a href="{% url 'quiz' quiz.id %}">{{ quiz.added_at|date:"d.m.Y" }} {{ quiz.name }}</a></h3>
-			<article>
-				{{ quiz.short }}
-			</article>
-		</section>
-	{% endfor %}
+	<section>
+		<p>Strona ta powstała na podstawie gier, które kilkuosobowa grupa organizuje w każdy piątek.
+			Założeniem wyjściowym jest, że w grze bierze udział od 2 do 7 graczy (w zależności od obecności)
+			oraz to, że nie może trwać dłużej niż półtorej godziny. Gra musi wyłonić zwycięzcę.
+			Czasem zdarza się, że zwycięzców może być dwóch.</p>
+		<p>Pojawiają się tu własne pomysły oraz gotowce ze sklepów lub Internetu.</p>
+		<p>Mam nadzieję, że znajdziesz tu inspirację do tego, jak można spędzić czas w gronie znajomych.</p>
+	</section>
+
+	<section class="quizzes">
+		<h2>Quizy</h2>
+		{% for quiz in quizzes %}
+			<section>
+				<h3><a href="{% url 'quiz' quiz.id %}">{{ quiz.added_at|date:"d.m.Y" }} {{ quiz.name }}</a></h3>
+				<article>
+					{{ quiz.short }}
+				</article>
+			</section>
+		{% endfor %}
+	</section>
 {% endblock %}
