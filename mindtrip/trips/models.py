@@ -63,6 +63,13 @@ class Trip(models.Model):
         return u'{0}: {1} - {2}'.format(
             self.destination, self.start_at, self.end_at)
 
+    @property
+    def dates(self):
+        if self.start_at == self.end_at:
+            return self.start_at.strftime('%d.%m.%Y')
+        return u'{} - {}'.format(self.start_at.strftime('%d.%m.%Y'),
+                                 self.end_at.strftime('%d.%m.%Y'))
+
     def get_photo_list_for_gallery(self):
         photos = Photo.objects.filter(
             trip_day__trip_id=self.id).order_by('trip_day', 'id')

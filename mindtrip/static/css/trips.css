@@ -498,6 +498,12 @@ form button {
 	bottom: 7px;
 }
 
+.hp-gallery div .dates:hover {
+	padding: 0 5px;
+	border-radius: 5px;
+	background-color: rgb(0, 0, 0, 0.4);
+}
+
 .hp-gallery div .under-construction {
 	font-size: 30px;
 	left: 35px;
@@ -801,6 +807,12 @@ form button {
 		font-size: 15px;
 		left: 6px;
 		bottom: 2px;
+	}
+
+	.hp-gallery div .dates:hover {
+		padding: inherit;
+		border-radius: inherit;
+		background-color: inherit;
 	}
 
 	.hp-gallery div .under-construction {
@@ -1163,6 +1175,12 @@ form button {
 		font-size: 7px;
 		left: 2px;
 		bottom: 2px;
+	}
+
+	.hp-gallery div .dates:hover {
+		padding: inherit;
+		border-radius: inherit;
+		background-color: inherit;
 	}
 
 	.hp-gallery div .under-construction {
