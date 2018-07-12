@@ -33,11 +33,11 @@ header {
 	left: 0;
 	z-index: 9999;
 	display: flex;
-	box-shadow: 10px 2px 10px #fff;
+	box-shadow: 0 2px 10px #fff;
 }
 
 nav a:hover {
-	color: #ffff00;
+	color: rgb(208, 171, 245);
 }
 
 nav a {
@@ -113,6 +113,10 @@ footer {
 .quiz li {
 	margin: 10px;
 	text-align: justify;
+}
+
+.quiz a {
+	color: #000000;
 }
 
 
