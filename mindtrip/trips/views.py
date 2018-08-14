@@ -4,6 +4,7 @@
 import json
 
 from annoying.decorators import render_to
+from django.http.response import JsonResponse, Http404
 from django.shortcuts import get_object_or_404
 
 from .models import Trip, News, Country
@@ -57,3 +58,11 @@ def get_trip(request, trip_id):
 def get_trips(request):
     countries = Country.objects.all().order_by('name')
     return {'countries': countries}
+
+
+def get_statistics(request):
+    if not request.user.is_superuser:
+        raise Http404
+    return JsonResponse(
+        [u'{}: {}'.format(t.destination, t.views_counter) for t
+         in Trip.objects.all().order_by('-views_counter')], safe=False)

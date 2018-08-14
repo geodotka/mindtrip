@@ -13,4 +13,5 @@ urlpatterns = [
         name='about_me'),
     url(r'^podroze$', views.get_trips, name='trips'),
     url(r'^podroze/(?P<trip_id>\d+)$', views.get_trip, name='trip'),
+    url(r'^statistics$', views.get_statistics, name='trips'),
 ]
