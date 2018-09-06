@@ -1,0 +1,13 @@
+{% extends "quizzes/base.html" %}
+
+{% block body %} oncopy="return false" oncut="return false" onpaste="return false"{% endblock %}
+
+{% block content %}
+	<section id="quiz" class="quiz">
+		<h2>Klawiatura</h2>
+		<textarea id="keyboard" style="font-size: 20px; background-color: white; color: #000000; width: 800px; min-height: 300px;"></textarea>
+		<div id="result" style="font-size: 20px; background-color: white; color: #000000; width: 800px; min-height: 300px; display: none"></div>
+		<button type="button" id="check">Sprawdź</button>
+	</section>
+	<script src="{{ STATIC_URL }}js/quizzes/keyboard.js"></script>
+{% endblock %}
