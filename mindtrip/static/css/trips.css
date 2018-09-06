@@ -64,15 +64,15 @@ nav a {
 	margin: 0 3vw;
 }
 
-.nav-selected {
+.nav-selected, .home_page_icon .nav-selected {
 	border-bottom: solid 1px;
 }
 
-.capitals_counter {
+.capitals_counter, .home_page_icon {
 	position: relative;
 }
 
-.capitals_counter .material-icons{
+.capitals_counter .material-icons, .home_page_icon .material-icons {
 	font-size: 20px;
 	position: absolute;
 }
@@ -869,6 +869,10 @@ form button {
 	nav a {
 		font-size: 13px;
 		min-width: 70px;
+	}
+
+	.home_page_icon {
+		margin-right: 10vw;
 	}
 
 	.capitals_counter {

@@ -14,7 +14,7 @@
 
 	<header>
 		<nav>
-			<a href="{% url 'home' %}"{% block home_page %}{% endblock %}>Strona główna</a>
+			<a href="{% url 'home' %}" class="home_page_icon"><i class="material-icons{% block home_page %}{% endblock %}">home</i></a>
 			<a href="{% url 'trips' %}"{% block trips_page %}{% endblock %}>Podróże</a>
 			<a href="{% url 'about_me' %}"{% block about_me %}{% endblock %}>O mnie</a>
 			<a href="{% url 'quizzes' %}">Quizy</a>
