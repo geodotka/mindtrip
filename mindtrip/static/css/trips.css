@@ -61,7 +61,7 @@ nav a {
 	font-size: 18px;
 	text-transform: uppercase;
 	min-width: 200px;
-	margin: 0 50px;
+	margin: 0 3vw;
 }
 
 .nav-selected {
@@ -562,7 +562,6 @@ form button {
 	nav a {
 		font-size: 16px;
 		min-width: 120px;
-		margin: 0 30px;
 	}
 
 	.capitals_counter {
@@ -868,9 +867,8 @@ form button {
 	}
 
 	nav a {
-		font-size: 14px;
+		font-size: 13px;
 		min-width: 70px;
-		margin: 0 10px;
 	}
 
 	.capitals_counter {
