@@ -119,6 +119,45 @@ footer {
 	color: #000000;
 }
 
+.gwara {
+	display: flex;
+	margin-bottom: 30px;
+}
+
+.gwara ul {
+	width: 300px;
+}
+
+.gwara li {
+	background-color: #ffffff;
+	color: rgba(56, 9, 53, 0.7);
+	padding: 5px;
+	height: 30px;
+	width: 280px;
+	margin: 10px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#values li, #ready-values li {
+	width: 400px;
+}
+
+.gwara button {
+	width: 290px;
+	height: 50px;
+	margin: 10px;
+	background-color: rgb(208, 171, 245);
+	border-radius: 15px;
+	outline: none;
+}
+
+.gwara button::-moz-focus-inner {
+	border: none;
+}
+
 
 @media (max-width: 1025px) {
 

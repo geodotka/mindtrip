@@ -1,0 +1,25 @@
+{% extends "quizzes/base.html" %}
+
+
+{% block content %}
+	<section id="quiz" class="quiz">
+		<h2>Dopasuj słowa z gwary warszawskiej do ich znaczeń</h2>
+		<div class="gwara">
+			<ul id="keys"></ul>
+			<ul id="values"></ul>
+		</div>
+		<p>Gotowe</p>
+		<div class="gwara">
+			<ul id="ready-keys"></ul>
+			<ul id="ready-values"></ul>
+		</div>
+		<div class="gwara">
+			<button type="button" id="check">Sprawdź</button>
+			<p id="score"></p>
+		</div>
+	</section>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="{{ STATIC_URL }}js/quizzes/jquery-ui.min.js"></script>
+	<script src="{{ STATIC_URL }}js/quizzes/gwara.js"></script>
+
+{% endblock %}
