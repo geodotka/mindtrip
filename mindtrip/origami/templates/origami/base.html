@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="pl">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Geodotkowe origami</title>
+	<link href="https://fonts.googleapis.com/css?family=Caveat|Quicksand" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/origami.css" charset="utf-8">
+
+</head>
+<body>
+
+	<header>
+		<nav>
+			<a href="{% url 'quizzes' %}" class="nav-selected">ORIGAMI</a>
+			<a href="{% url 'home' %}">geodotkawpodróży</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="banner">
+			geodotkowe origami <i class="material-icons stars">stars</i>
+		</section>
+		{% block content %}{% endblock %}
+	</main>
+
+	<footer>
+		copyright by geodotka {% now 'Y' %}
+	</footer>
+</body>
+</html>

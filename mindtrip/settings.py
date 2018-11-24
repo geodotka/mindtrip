@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'mindtrip',
+    'mindtrip.origami',
     'mindtrip.quizzes',
     'mindtrip.trips',
 

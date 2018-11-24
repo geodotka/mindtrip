@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^google7daa94b016bce91b.html',
         TemplateView.as_view(template_name='google.html')),
 
+    url(r'^', include('mindtrip.origami.urls')),
     url(r'^', include('mindtrip.quizzes.urls')),
     url(r'^', include('mindtrip.trips.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
