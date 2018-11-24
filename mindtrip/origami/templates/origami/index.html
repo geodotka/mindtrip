@@ -2,7 +2,14 @@
 
 
 {% block content %}
-	<section class="quiz">
-		Tu będzie origami
+	<section>
+		{% for item in origami %}
+			<a href="{% url 'origami_item' item.id %}">
+				<div class="polaroid">
+					<img src="{{ item.photo1.url }}">
+					<div class="container">{{ item.name }}</div>
+				</div>
+			</a>
+		{% endfor %}
 	</section>
 {% endblock %}

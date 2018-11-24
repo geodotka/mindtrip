@@ -8,5 +8,5 @@ from . import views
 
 urlpatterns = [
     url(r'^origami$', views.index, name='origami'),
-    url(r'^origami$/(?P<item_id>\d+)$', views.get_item, name='origami_item'),
+    url(r'^origami/(?P<item_id>\d+)$', views.get_item, name='origami_item'),
 ]
