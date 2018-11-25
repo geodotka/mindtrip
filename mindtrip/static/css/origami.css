@@ -79,22 +79,48 @@ footer {
 	font-size: 40px;
 }
 
-div.polaroid {
-    width: 30%;
+.origami {
+	margin-top: 30px;
+	padding: 20px;
+	display: flex;
+}
+
+.polaroid-item {
+	width: 30%;
+	margin: 20px;
+}
+
+.polaroid {
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-img {
+.polaroid img {
 	width: 100%;
-	border: 2px solid #fff;
+	border: 2px solid #ffffff;
 	box-sizing: border-box;
 }
 
-div.container {
+.polaroid .container {
     text-align: center;
 	color: #000000;
 	padding: 20px;
+}
+
+.origami .image {
+	width: 60%;
+}
+
+.origami .image img {
+	border: 5px solid #ffffff;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.origami a {
+	color: rgb(179, 224, 163);
 }
 
 
@@ -189,6 +215,26 @@ div.container {
 
 	.banner .stars {
 		font-size: 20px;
+	}
+
+	.origami {
+		margin-top: 10px;
+		padding: 10px;
+		display: block;
+	}
+
+	.polaroid .container {
+		padding: 10px;
+		font-size: 15px;
+	}
+
+	.origami .image {
+		width: 100%;
+	}
+
+	.origami .image img {
+		margin: 0;
+		width: 95%;
 	}
 }
 

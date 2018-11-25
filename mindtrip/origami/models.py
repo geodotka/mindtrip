@@ -7,8 +7,7 @@ from django.db import models
 
 
 def photo_upload_to(instance, filename):
-    return os.sep.join(
-        ['origami', str(instance.id), filename])
+    return os.sep.join(['origami', filename])
 
 
 class Item(models.Model):
@@ -21,6 +20,8 @@ class Item(models.Model):
         verbose_name=u'Zdjęcie 2')
     diagram_url = models.URLField(
         null=True, blank=True, verbose_name=u'Adres diagramu')
+    diagram_file = models.FileField(
+        null=True, blank=True, verbose_name=u'Plik diagramu')
     video_url = models.URLField(
         null=True, blank=True, verbose_name=u'Adres video')
 

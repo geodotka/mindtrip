@@ -2,11 +2,12 @@
 
 
 {% block content %}
-	<section>
+	<h3>Dawno, dawno temu, gdy jeszcze nie umiałam zrobić nic swojego na Internetach, składałam papierowe gwiazdki i inne układanki. Oto i one:</h3>
+	<section class="origami">
 		{% for item in origami %}
-			<a href="{% url 'origami_item' item.id %}">
+			<a href="{% url 'origami_item' item.id %}" class="polaroid-item">
 				<div class="polaroid">
-					<img src="{{ item.photo1.url }}">
+					<img src="{{ item.photo1.url }}" />
 					<div class="container">{{ item.name }}</div>
 				</div>
 			</a>

@@ -14,4 +14,4 @@ def index(request):
 
 @render_to('origami/item.html')
 def get_item(request, item_id):
-    return {'item' : get_object_or_404(Item, id=item_id)}
+    return {'item': get_object_or_404(Item, id=item_id)}

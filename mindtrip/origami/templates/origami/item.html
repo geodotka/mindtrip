@@ -2,7 +2,25 @@
 
 
 {% block content %}
-	<section class="quiz">
-		Tu będzie pojedyncze origami
+	<section class="origami">
+		<div class="image">
+			<img src="{{ item.photo1.url }}" />
+		</div>
+		<div>
+			<h2>{{ item.name }}</h2>
+			{% if item.diagram_url or item.diagram_file %}
+				<p>Link do diagramu znajdziesz <a href="{% if item.diagram_url %}{{ item.diagram_url }}{% else %}{{ item.diagram_file.url }}{% endif %}" target="_blank">TU</a>.
+			{% endif %}
+			{% if item.video_url %}
+				<p>Link do video znajdziesz <a href="{{ item.video_url }}" target="_blank">TU</a>.
+			{% endif %}
+		</div>
 	</section>
+	{% if item.photo2 %}
+		<section class="origami">
+			<div class="image">
+				<img src="{{ item.photo2.url }}" />
+			</div>
+		</section>
+	{% endif %}
 {% endblock %}
