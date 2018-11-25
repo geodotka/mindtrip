@@ -13,6 +13,10 @@ ul {
 	padding: 0;
 }
 
+h3 {
+	text-align: justify;
+}
+
 body {
 	margin: 0 auto;
 	padding: 0;
@@ -130,10 +134,6 @@ footer {
 		font-size: 15px;
 	}
 
-	h3 {
-		margin: 5px 0;
-	}
-
 	header {
 		padding: 8px;
 		box-shadow: 6px 2px 6px #585858;
@@ -173,6 +173,10 @@ footer {
 @media (max-width: 480px) {
 	p {
 		margin: 5px 0;
+	}
+
+	h3 {
+		text-align: left;
 	}
 
 	body {

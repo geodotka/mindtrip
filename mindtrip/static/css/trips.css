@@ -68,11 +68,11 @@ nav a {
 	border-bottom: solid 1px;
 }
 
-.capitals_counter, .home_page_icon {
+.capitals_counter, .home_page_icon, .origami_icon {
 	position: relative;
 }
 
-.capitals_counter .material-icons, .home_page_icon .material-icons {
+.capitals_counter .material-icons, .home_page_icon .material-icons, .origami_icon .material-icons {
 	font-size: 20px;
 	position: absolute;
 }
