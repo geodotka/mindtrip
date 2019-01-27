@@ -1,8 +1,7 @@
 {% extends "origami/base.html" %}
 
-
 {% block content %}
-	<h3>Dawno, dawno temu, gdy jeszcze nie umiałam zrobić nic swojego na Internetach, składałam papierowe gwiazdki i inne układanki. Oto i one:</h3>
+	<h3>Dawno, dawno temu, podróżowałam w świecie papierowych gwiazdek i innych układanek.</h3>
 	<section class="origami">
 		{% for item in origami %}
 			<a href="{% url 'origami_item' item.id %}" class="polaroid-item">
@@ -11,6 +10,8 @@
 					<div class="container">{{ item.name }}</div>
 				</div>
 			</a>
+		{% empty %}
+			<h4>Strona w opracowaniu.</h4>
 		{% endfor %}
 	</section>
 {% endblock %}
