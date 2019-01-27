@@ -2,10 +2,13 @@
 # encoding: utf-8
 
 import json
+import os
 
 from annoying.decorators import render_to
+from django.conf import settings
 from django.http.response import JsonResponse, Http404
 from django.shortcuts import get_object_or_404
+from django.views.generic.base import TemplateView
 
 from .models import Trip, News, Country
 from .forms import AddPost
@@ -66,3 +69,19 @@ def get_statistics(request):
     return JsonResponse(
         [u'{}: {}'.format(t.destination, t.views_counter) for t
          in Trip.objects.all().order_by('-views_counter')], safe=False)
+
+
+class AboutMeTemplateView(TemplateView):
+    template_name = 'trips/about_me.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs = super(AboutMeTemplateView, self).get_context_data(**kwargs)
+        capitals = sorted(os.listdir(os.path.join(
+            settings.STATIC_ROOT, 'img', 'trips', 'capitals')))
+        kwargs.update({
+            'capitals': [
+                [file_name, '{}. {}'.format(file_name[:2], file_name[2:-4])]
+                for file_name in capitals]})
+        return kwargs
+
+

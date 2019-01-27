@@ -376,16 +376,27 @@ form button {
 
 /*about me page*/
 
-.about-me-header {
-	display: flex;
+.polaroid-item {
+	width: 25%;
+	margin: 20px;
 }
 
-.about-me-header img {
-	width: auto;
-	height: 200px;
-	box-shadow: 5px 5px 5px rgba(88, 88, 88, 0.7);
-	margin-right: 30px;
-	margin-top: 20px;
+.polaroid {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.polaroid img {
+	width: 100%;
+	border: 2px solid #ffffff;
+	box-sizing: border-box;
+}
+
+.polaroid .container {
+    text-align: center;
+	padding-bottom: 15px;
+	padding-top: 5px;
+	font-size: 16px;
 }
 
 .leonardo-sentence {
@@ -399,10 +410,28 @@ form button {
 	text-align: right;
 }
 
+.about-me-with-polaroid {
+	display: flex;
+}
+
+.about-me-with-polaroid .polaroid-item {
+	width: 65%;
+}
+
 .backpack {
 	color: #660033;
 }
 
+.i-was-here {
+	width: 80%;
+	margin: 20px auto;
+}
+
+.capitals {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
 
 /* error page */
 
@@ -735,18 +764,22 @@ form button {
 		font-size: 14px;
 	}
 
+	/* about me page */
 
-	/*about me page*/
-	.about-me-header img {
-		height: 140px;
-		margin-right: 15px;
-		box-shadow: 4px 4px 4px rgba(88, 88, 88, 0.7);
+	.polaroid .container {
+		padding-bottom: 12px;
+		padding-top: 4px;
+		font-size: 14px;
 	}
 
 	.leonardo-sentence {
 		font-size: 25px;
 		margin-top: 3px;
 		margin-bottom: 1px;
+	}
+
+	.about-me-with-polaroid .polaroid-item {
+		width: 60%;
 	}
 
 	/* error page */
@@ -1094,15 +1127,16 @@ form button {
 
 
 	/*about me page*/
-	.about-me-header {
-		text-align: center;
-		display: block;
+
+	.polaroid-item {
+		width: 80%;
+		margin: 10px auto;
 	}
 
-	.about-me-header img {
-		height: 80px;
-		margin-right: 10px;
-		box-shadow: 3px 3px 3px rgba(88, 88, 88, 0.7);
+	.polaroid .container {
+		padding-bottom: 10px;
+		padding-top: 2px;
+		font-size: 14px;
 	}
 
 	.leonardo-sentence {
@@ -1114,6 +1148,28 @@ form button {
 	.leonardo-author {
 		font-size: 11px;
 		margin: 0 0;
+	}
+
+	.about-me-with-polaroid {
+		display: block;
+		text-align: center;
+	}
+
+	.about-me-with-polaroid .polaroid-item {
+		width: 50%;
+		margin: 10px auto;
+	}
+
+	.about-me-with-polaroid .container {
+		padding-bottom: 10px;
+		padding-top: 2px;
+		font-size: 12px;
+	}
+
+	.capitals {
+		margin-top: 10px;
+		padding: 10px;
+		display: block;
 	}
 
 	/* error page */

@@ -6,13 +6,12 @@
 	<section>
 		<section>
 			<p class="leonardo-sentence">"I gdy już poznasz smak lotu,
-				będziesz chodzić po Ziemi ze wzrokiem skierowanym w&nbsp;niebo,
+				będziesz chodzić po ziemi ze wzrokiem skierowanym w&nbsp;niebo,
 				gdzie byłeś, dokąd tęsknisz i&nbsp;pragniesz wrócić..."</p>
 			<p class="leonardo-author">Leonardo da Vinci</p>
 		</section>
 
-		<section class="about-me-header">
-			<img src="{{ STATIC_URL }}img/geodotka2.jpg">
+		<section class="about-me-with-polaroid">
 			<div>
 				<p>Moje świadome podróżowanie zaczęło się w&nbsp;podstawówce, były to
 					wycieczki po Polsce, później z&nbsp;jednodniowymi wypadami do
@@ -20,25 +19,35 @@
 					chociażby, do którego wróciłam jeszcze dwukrotnie już
 					samodzielnie.</p>
 				<p>Po studiach byłam na trzech autokarowych wycieczkach
-					zorganizowanych: do Chorwacji, Hiszpanii i&nbsp;Włoch.</p>
+					zorganizowanych: do Chorwacji, Hiszpanii i&nbsp;Włoch.
+				</p>
+			</div>
+			<div class="polaroid-item">
+				<div class="polaroid">
+					<img src="{{ STATIC_URL }}img/geodotka2.jpg">
+					<div class="container">geodotka w Chorwacji</div>
+				</div>
 			</div>
 		</section>
 
-		<section class="about-me-header">
-			<img src="{{ STATIC_URL }}img/geodotka.jpg">
+		<section class="about-me-with-polaroid">
 			<div>
 				<p>
 					Pierwszy raz do samolotu wsiadłam w&nbsp;sierpniu 2014 r.
-					Była to wycieczka na Sycylię, której nie opiszę na
-					tej stronie, bo moim założeniem jest przedstawić tu wyjazdy
-					zorganizowane samodzielnie. Jedyny ślad po niej to zdjęcie, na
-					którym patrzę na Etnę.
+					Była to zorganizowana wycieczka na Sycylię.
 				</p>
 				<p>Po tym wyjeździe stwierdziłam, że chcę samodzielnie organizować
 					swój czas, w zwiazku z czym zaczęłam kombinować gdzie, jak,
 					kiedy i za ile. Odwiedziłam Cambridge i Londyn (2015 r.),
 					Budapeszt, Hanover i Amsterdam (2016 r.). A reszta jest już
-					tutaj.</p>
+					tutaj.
+				</p>
+			</div>
+			<div class="polaroid-item">
+				<div class="polaroid">
+					<img src="{{ STATIC_URL }}img/geodotka.jpg">
+					<div class="container">geodotka na Etnie</div>
+				</div>
 			</div>
 		</section>
 
@@ -88,35 +97,27 @@
 			</p>
 		</section>
 		<section>
-			<strong>Stolice, w których byłam:</strong>
-			<ul>
-				<li>1. Warszawa</li>
-				<li>2. Praga (2 razy)</li>
-				<li>3. Wiedeń (3 razy)</li>
-				<li>4. Berlin (2 razy)</li>
-				<li>5. Wilno</li>
-				<li>6. Zagrzeb</li>
-				<li>7. Rzym (3 razy)</li>
-				<li>8. Watykan (3 razy)</li>
-				<li>9. Paryż (2 razy)</li>
-				<li>10. Monako</li>
-				<li>11. Londyn</li>
-				<li>12. Amsterdam</li>
-				<li>13. Budapeszt</li>
-				<li>14. Ateny (2 razy)</li>
-				<li>15. Oslo</li>
-				<li>16. Sztokholm</li>
-				<li>17. Madryt</li>
-				<li>18. Lizbona</li>
-				<li>19. Kopenhaga</li>
-				<li>20. Ryga</li>
-				<li>21. Tallin</li>
-				<li>22. Helsinki</li>
-				<li>23. Bratysława</li>
-				<li>24. Valletta</li>
-			</ul>
-			<strong>Kraje, w których byłam:</strong>
-			<ul>
+			<strong>Tu już byłam:</strong>
+			<div class="i-was-here">
+				<div class="polaroid">
+					<img src="{{ STATIC_URL }}img/eurotrip.png">
+				</div>
+			</div>
+		</section>
+		<section>
+			<strong>Odwiedzone stolice:</strong>
+			<section class="capitals">
+				{% for capital in capitals %}
+					<div class="polaroid-item">
+						<div class="polaroid">
+							<img src="{{ STATIC_URL }}img/trips/capitals/{{ capital.0 }}">
+							<div class="container">{{ capital.1 }}</div>
+						</div>
+					</div>
+				{% endfor %}
+			</section>
+			<strong style="display: none">Odwiedzone kraje:</strong>
+			<ul style="display: none">
 				<li>1. Polska</li>
 				<li>2. Czechy</li>
 				<li>3. Austria</li>
