@@ -416,6 +416,7 @@ form button {
 
 .about-me-with-polaroid .polaroid-item {
 	width: 65%;
+	margin-right: 0;
 }
 
 .backpack {
@@ -1266,5 +1267,9 @@ form button {
 
 	main {
 		width: 60%;
+	}
+
+	.about-me-with-polaroid .polaroid-item {
+		width: 100%;
 	}
 }
