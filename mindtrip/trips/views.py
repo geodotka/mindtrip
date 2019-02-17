@@ -78,10 +78,16 @@ class AboutMeTemplateView(TemplateView):
         kwargs = super(AboutMeTemplateView, self).get_context_data(**kwargs)
         capitals = sorted(os.listdir(os.path.join(
             settings.STATIC_ROOT, 'img', 'trips', 'capitals')))
+        countries = sorted(os.listdir(os.path.join(
+            settings.STATIC_ROOT, 'img', 'trips', 'countries')))
         kwargs.update({
             'capitals': [
                 [file_name, '{}. {}'.format(file_name[:2], file_name[2:-4])]
-                for file_name in capitals]})
+                for file_name in capitals],
+            'countries': [
+                [file_name, '{}. {}'.format(file_name[:2], file_name[2:-4])]
+                for file_name in countries]
+        }),
         return kwargs
 
 

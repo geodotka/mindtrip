@@ -105,7 +105,7 @@
 		</section>
 		<section>
 			<strong>Odwiedzone stolice:</strong>
-			<section class="capitals">
+			<div class="capitals">
 				{% for capital in capitals %}
 					<div class="polaroid-item">
 						<div class="polaroid">
@@ -114,35 +114,20 @@
 						</div>
 					</div>
 				{% endfor %}
-			</section>
-			<strong style="display: none">Odwiedzone kraje:</strong>
-			<ul style="display: none">
-				<li>1. Polska</li>
-				<li>2. Czechy</li>
-				<li>3. Austria</li>
-				<li>4. Niemcy</li>
-				<li>5. Litwa</li>
-				<li>6. Chorwacja</li>
-				<li>7. Włochy</li>
-				<li>8. Watykan</li>
-				<li>9. Francja</li>
-				<li>10. Monako</li>
-				<li>11. Wielka Brytania</li>
-				<li>12. Holandia</li>
-				<li>13. Węgry</li>
-				<li>14. Grecja</li>
-				<li>15. Norwegia</li>
-				<li>16. Szwecja</li>
-				<li>17. Hiszpania</li>
-				<li>18. Portugalia</li>
-				<li>19. Dania</li>
-				<li>20. Łotwa</li>
-				<li>21. Estonia</li>
-				<li>22. Finlandia</li>
-				<li>23. Słowacja</li>
-				<li>24. Malta</li>
-				<li>25. Szwajcaria</li>
-			</ul>
+			</div>
+		</section>
+		<section>
+			<strong>Odwiedzone kraje:</strong>
+			<div class="capitals">
+				{% for country in countries %}
+					<div class="polaroid-item">
+						<div class="polaroid">
+							<img src="{{ STATIC_URL }}img/trips/countries/{{ country.0 }}">
+							<div class="container">{{ country.1 }}</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
 		</section>
 	</section>
 {% endblock %}
