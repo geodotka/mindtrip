@@ -85,7 +85,8 @@ class AboutMeTemplateView(TemplateView):
                 [file_name, '{}. {}'.format(file_name[:2], file_name[2:-4])]
                 for file_name in capitals],
             'countries': [
-                [file_name, '{}. {}'.format(file_name[:2], file_name[2:-4])]
+                [file_name, '{}. {}'.format(
+                    file_name[:2], file_name[2:-4].replace('_', ' '))]
                 for file_name in countries]
         }),
         return kwargs
