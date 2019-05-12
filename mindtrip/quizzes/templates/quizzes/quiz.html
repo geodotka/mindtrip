@@ -11,7 +11,7 @@
 				{% for photo in quiz.photos.all %}
 					<div class="photo">
 						<img src="{{ photo.photo.url }}">
-						<p>{{ photo.description }}</p>
+						<p>{{ photo.description or '' }}</p>
 					</div>
 				{% endfor %}
 			</section>
