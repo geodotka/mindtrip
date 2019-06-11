@@ -82,7 +82,8 @@ class AboutMeTemplateView(TemplateView):
             settings.STATIC_ROOT, 'img', 'trips', 'countries')))
         kwargs.update({
             'capitals': [
-                [file_name, '{}. {}'.format(file_name[:2], file_name[2:-4])]
+                [file_name, '{}. {}'.format(
+                    file_name[:2], file_name[2:-4].replace('_', ' '))]
                 for file_name in capitals],
             'countries': [
                 [file_name, '{}. {}'.format(
