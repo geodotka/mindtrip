@@ -119,31 +119,6 @@
 			{% endfor %}
 		</section>
 	{% endif %}
-	<section>
-		<hr>
-		<form method="post" action="{% url 'trip' trip.id %}#last-post">
-			{% csrf_token %}
-			<div class="form-row">
-				<label for="id_author">Autor</label>
-				<input id="id_author" type="text" required="" name="author" maxlength="255">
-			</div>
-			<div class="form-row">
-				<label for="id_content">Treść</label>
-				<textarea id="id_content" required="" rows="6" name="content" cols="40"></textarea>
-			</div>
-			<button type="submit">Wyślij</button>
-		</form>
-		{% for post in trip.posts.all %}
-			<div class="post" {% if forloop.last %} id="last-post"{% endif %}>
-				<div class="post-info">
-					<p class="post-author">{{ post.author }}</p>
-					<p class="post-date">{{ post.created_at	 }}</p>
-				</div>
-				<div class="post-content">{{ post.content }}</div>
-			</div>
-		{% empty %}
-			<p>Nikt jeszcze nie skomentował tej wycieczki. Zachęcam do dodania komentarza.</p>
-		{% endfor %}
-	</section>
+
 	<script src="{{ STATIC_URL }}js/trips/days.js"></script>
 {% endblock %}

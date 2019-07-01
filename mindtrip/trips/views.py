@@ -28,14 +28,10 @@ def home(request):
 
 @render_to('trips/trip.html')
 def get_trip(request, trip_id):
-    trip_ = get_object_or_404(Trip.objects, id=trip_id)
+    trip_ = get_object_or_404(Trip, id=trip_id)
     if not request.user.is_superuser:
         trip_.views_counter += 1
         trip_.save()
-    add_post_form = AddPost(request.POST or None)
-    if add_post_form.is_valid():
-        add_post_form.trip_id = trip_.id
-        add_post_form.save()
 
     prev_trip = Trip.objects.filter(start_at__gt=trip_.start_at) \
         .order_by('start_at').first()
@@ -44,7 +40,6 @@ def get_trip(request, trip_id):
     return {
         'trip': trip_,
         'countries': ', '.join([t.name for t in trip_.country.all()]),
-        'form': add_post_form,
         'prev_trip': {
             'id': prev_trip.id,
             'destination': prev_trip.destination,
