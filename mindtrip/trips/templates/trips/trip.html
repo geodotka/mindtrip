@@ -25,7 +25,7 @@
 {% block content %}
 	<section class="trip-header">
 		<div class="trip-photo-mobile">
-			<img src="{{ trip.picture.url }}">
+			<img src="" data-src="{{ trip.picture.url }}">
 		</div>
 		<div>
 			<p class="trip-destination">{{ trip.destination }}{% if trip.destination not in countries %} ({{ countries }}){% endif %}</p>
@@ -103,7 +103,7 @@
 							<section class="photos">
 								{% for photo in day.photos.all %}
 									<div class="photo">
-										<img src="{{ photo.photo.url }}">
+										<img src="" data-src="{{ photo.photo.url }}">
 										<p>{{ photo.description }}</p>
 									</div>
 								{% endfor %}

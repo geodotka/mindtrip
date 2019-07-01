@@ -6,7 +6,7 @@
 		{% for item in origami %}
 			<a href="{% url 'origami_item' item.id %}" class="polaroid-item">
 				<div class="polaroid">
-					<img src="{{ item.photo1.url }}" />
+					<img src="" data-src="{{ item.photo1.url }}" />
 					<div class="container">{{ item.name }}</div>
 				</div>
 			</a>

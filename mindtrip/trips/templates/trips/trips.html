@@ -11,7 +11,7 @@
 					<article>
 						<a href="{% url 'trip' trip.id %}">
 							<div class="country-photo{% if not trip.is_complete %} not-complete{% endif %}">
-								<img src="{{ trip.picture.url }}" />
+								<img src="" data-src="{{ trip.picture.url }}" />
 								{% if not trip.is_complete %}
 									<span class="under-construction">W opracowaniu</span>
 								{% endif %}

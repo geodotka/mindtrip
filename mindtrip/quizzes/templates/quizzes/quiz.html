@@ -10,7 +10,7 @@
 			<section class="photos">
 				{% for photo in quiz.photos.all %}
 					<div class="photo">
-						<img src="{{ photo.photo.url }}">
+						<img src="" data-src="{{ photo.photo.url }}">
 						{% if photo.description %}
 							<p>{{ photo.description }}</p>
 						{% endif %}

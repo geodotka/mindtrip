@@ -12,7 +12,7 @@
 			{% for trip in trips %}
 				<a href="{% url 'trip' trip.id %}" id="{{ trip.id }}"{% if forloop.counter > 3 %} class="hidden"{% endif %}>
 					<div>
-						<img src="{{ MEDIA_URL }}{{ trip.picture }}">
+						<img src="" data-src="{{ MEDIA_URL }}{{ trip.picture }}">
 						<span class="destination">{{ trip.destination }}</span>
 						<span class="dates">{{ trip.dates }}</span>
 						{% if not trip.is_complete %}
