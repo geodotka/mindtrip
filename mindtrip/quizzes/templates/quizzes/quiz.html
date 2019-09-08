@@ -12,7 +12,7 @@
 					<div class="photo">
 						<img src="" data-src="{{ photo.photo.url }}">
 						{% if photo.description %}
-							<p>{{ photo.description }}</p>
+							<p>{{ photo.description|default_if_none:'' }}</p>
 						{% endif %}
 					</div>
 				{% endfor %}

@@ -104,7 +104,7 @@
 								{% for photo in day.photos.all %}
 									<div class="photo">
 										<img src="" data-src="{{ photo.photo.url }}">
-										<p>{{ photo.description }}</p>
+										<p>{{ photo.description|default_if_none:'' }}</p>
 									</div>
 								{% endfor %}
 							</section>
