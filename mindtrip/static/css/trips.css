@@ -72,6 +72,10 @@ nav a {
 	position: relative;
 }
 
+.origami_icon {
+	display: none;
+}
+
 .capitals_counter .material-icons, .home_page_icon .material-icons, .origami_icon .material-icons {
 	font-size: 20px;
 	position: absolute;
