@@ -17,6 +17,7 @@ body {
 	padding: 0;
 	font-family: 'Quicksand', sans-serif;
 	font-size: 18px;
+	font-weight: bold;
 	color: rgba(56, 9, 53, 0.71);
 	background-color: #fff;
 	position: relative;
@@ -105,6 +106,7 @@ footer {
 .banner {
 	font-size: 70px;
 	font-family: 'Caveat', cursive;
+	font-weight: normal;
 	text-align: center;
 	margin-bottom: 10px;
 	position: relative;
@@ -215,6 +217,7 @@ footer {
 	display: flex;
 	font-family: 'Caveat', cursive;
 	font-size: 30px;
+	font-weight: normal;
 	margin-bottom: 20px;
 }
 
@@ -415,6 +418,7 @@ form button {
 .leonardo-sentence {
 	font-family: 'Caveat', cursive;
 	font-size: 32px;
+	font-weight: normal;
 	text-align: justify;
 	margin-bottom: 5px;
 }
@@ -524,6 +528,7 @@ form button {
 .hp-gallery div span {
 	color: #fff;
 	font-family: 'Caveat', cursive;
+	font-weight: normal;
 	position: absolute;
 }
 
@@ -561,6 +566,7 @@ form button {
 .news label {
 	font-family: 'Caveat', cursive;
 	font-size: 32px;
+	font-weight: normal;
 	margin-left: 5px;
 	color: rgba(56, 9, 53, 0.71);
 }
@@ -696,6 +702,7 @@ form button {
 		display: flex;
 		font-family: 'Caveat', cursive;
 		font-size: 20px;
+		font-weight: normal;
 		margin-bottom: 10px;
 	}
 
@@ -1004,6 +1011,7 @@ form button {
 		display: block;
 		font-family: 'Caveat', cursive;
 		font-size: 20px;
+		font-weight: normal;
 		margin-bottom: 10px;
 	}
 
