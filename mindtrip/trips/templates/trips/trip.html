@@ -104,12 +104,7 @@
 				</div>
 			</div>
 		{% endif %}
-		</div>
 	</div>
-
-	<section>
-
-	</section>
 
 	{% for day in trip.days.all %}
 		<div class="card-panel col s12 m12 12">
@@ -130,9 +125,11 @@
 			{% if day.photos.count %}
 				<section class="js-day-photos photos day-container hidden">
 					{% for photo in day.photos.all %}
-						<div class="photo">
-							<img src="" data-src="{{ photo.photo.url }}">
-							<p>{{ photo.description|default_if_none:'' }}</p>
+						<div class="polaroid-item{% if photo.photo.width > photo.photo.height %}-wide{% endif %}">
+							<div class="polaroid">
+								<img src="" data-src="{{ photo.photo.url }}">
+								<div class="container">{{ photo.description|default_if_none:'' }}</div>
+							</div>
 						</div>
 					{% endfor %}
 				</section>
