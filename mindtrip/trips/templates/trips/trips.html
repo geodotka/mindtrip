@@ -4,8 +4,9 @@
 
 {% block content %}
 	{% for country in countries %}
-		<section>
-			<h3>{{ country.name }}</h3>
+		<div class="card-panel center-align">
+			<h4>{{ country.name }}</h4>
+			<hr />
 			<section class="country">
 				{% for trip in country.trips.all %}
 					<article>
@@ -25,6 +26,6 @@
 					</article>
 				{% endfor %}
 			</section>
-		</section>
+		</div>
 	{% endfor %}
 {% endblock %}

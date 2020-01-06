@@ -6,17 +6,17 @@
 
 {% block prev_trip %}
 	{% if prev_trip %}
-		<a href="{% url 'trip' prev_trip.id %}" class="trip-link prev-trip-link">
+		<a href="{% url 'trip' prev_trip.id %}" class="trip-link prev-trip-link" title="{{ prev_trip.destination }}">
 			<div class="trip-link-arrow prev-trip-link-arrow"></div>
-			{{ prev_trip.destination }}
+			Poprzednia
 		</a>
 	{% endif %}
 {% endblock %}
 
 {% block next_trip %}
 	{% if next_trip %}
-		<a href="{% url 'trip' next_trip.id %}" class="trip-link next-trip-link">
-			{{ next_trip.destination }}
+		<a href="{% url 'trip' next_trip.id %}" class="trip-link next-trip-link" title="{{ next_trip.destination }}">
+			Następna
 			<div class="trip-link-arrow next-trip-link-arrow"></div>
 		</a>
 	{% endif %}
@@ -33,92 +33,118 @@
 			<p class="trip-summary">{{ trip.summary }}</p>
 		</div>
 	</section>
-	<section>
-		<div class="trip-info">
-			<div class="trip-icons">
-				<i class="material-icons" title="Dojazd">directions_bus</i>
-			</div>
-			<div class="trip-info-description">{{ trip.travel }}</div>
-		</div>
-		<div class="trip-info">
-			<div class="trip-icons">
-				<i class="material-icons">euro_symbol</i>
-				<i class="material-icons" title="Koszty dojazdu">directions_bus</i>
-			</div>
-			<div class="trip-info-description">{{ trip.travel_price }}</div>
-		</div>
-		<div class="trip-info">
-			<div class="trip-icons">
-				<i class="material-icons" title="Noclegi">local_hotel</i>
-			</div>
-			<div class="trip-info-description">{{ trip.hotel }}</div>
-		</div>
-		<div class="trip-info">
-			<div class="trip-icons">
-				<i class="material-icons">euro_symbol</i>
-				<i class="material-icons" title="Koszty noclegów">local_hotel</i>
-			</div>
-			<div class="trip-info-description">{{ trip.hotel_price }}</div>
-		</div>
-		{% if trip.planned_at %}
-			<div class="trip-info">
-				<div class="trip-icons">
-					<i class="material-icons" title="Wyjazd planowany">watch_later</i>
+
+	<div class="card">
+		<div class="row">
+			<div class="col s12 m6 6">
+				<div class="trip-info">
+					<div class="trip-icons">
+						<i class="material-icons" title="Dojazd">directions_bus</i>
+					</div>
+					<div class="trip-info-description">{{ trip.travel }}</div>
 				</div>
-				<div class="trip-info-description">{{ trip.planned_at }}</div>
 			</div>
-		{% endif %}
-		{% if trip.guidebook %}
-			<div class="trip-info">
-				<div class="trip-icons">
-					<i class="material-icons" title="Przwodniki, mapy">map</i>
+			<div class="col s12 m6 6">
+				<div class="trip-info">
+					<div class="trip-icons">
+						<i class="material-icons">euro_symbol</i>
+						<i class="material-icons" title="Koszty dojazdu">directions_bus</i>
+					</div>
+					<div class="trip-info-description">{{ trip.travel_price }}</div>
 				</div>
-				<div class="trip-info-description">{{ trip.guidebook }}</div>
 			</div>
-		{% endif %}
+		</div>
+		<div class="row">
+			<div class="col s12 m6 6">
+				<div class="trip-info">
+					<div class="trip-icons">
+						<i class="material-icons" title="Noclegi">local_hotel</i>
+					</div>
+					<div class="trip-info-description">{{ trip.hotel }}</div>
+				</div>
+			</div>
+			<div class="col s12 m6 6">
+				<div class="trip-info">
+					<div class="trip-icons">
+						<i class="material-icons">euro_symbol</i>
+						<i class="material-icons" title="Koszty noclegów">local_hotel</i>
+					</div>
+					<div class="trip-info-description">{{ trip.hotel_price }}</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			{% if trip.planned_at %}
+				<div class="col s12 m6 6">
+					<div class="trip-info">
+						<div class="trip-icons">
+							<i class="material-icons" title="Wyjazd planowany">watch_later</i>
+						</div>
+						<div class="trip-info-description">{{ trip.planned_at }}</div>
+					</div>
+				</div>
+			{% endif %}
+			{% if trip.guidebook %}
+				<div class="col s12 m6 6">
+					<div class="trip-info">
+						<div class="trip-icons">
+							<i class="material-icons" title="Przwodniki, mapy">map</i>
+						</div>
+						<div class="trip-info-description">{{ trip.guidebook }}</div>
+					</div>
+				</div>
+			{% endif %}
+		</div>
 		{% if trip.tips %}
-			<div class="trip-info">
-				<div class="trip-icons">
-					<i class="material-icons" title="Wskazówki">warning</i>
+			<div class="row">
+				<div class="col s12 m12 12">
+					<div class="trip-info">
+						<div class="trip-info-tips">{{ trip.tips|linebreaks }}</div>
+					</div>
 				</div>
-				<div class="trip-info-description">{{ trip.tips|linebreaks }}</div>
 			</div>
 		{% endif %}
+		</div>
+	</div>
+
+	<section>
+
 	</section>
-	{% if trip.days.all %}
-		<section>
-			{% for day in trip.days.all %}
-				<section class="trip-day">
-					<h3 class="js-show-more">
-						{{ day.name }}{% if day.date %} ({{ day.date|date:'d-m-Y' }}){% endif %}
-					{% if day.photos.count %}<i class="material-icons">photo_library</i>{% endif %}
-						<span class="js-show-more-info">
-							Rozwiń<i class="material-icons">keyboard_arrow_down</i>
-						</span>
-					</h3>
-					<article class="js-day-description">
-						{{ day.description|linebreaks }}
 
-						{% if day.photos.count %}
-							<section class="photos">
-								{% for photo in day.photos.all %}
-									<div class="photo">
-										<img src="" data-src="{{ photo.photo.url }}">
-										<p>{{ photo.description|default_if_none:'' }}</p>
-									</div>
-								{% endfor %}
-							</section>
-						{% endif %}
+	{% for day in trip.days.all %}
+		<div class="card-panel col s12 m12 12">
+			<div class="row">
+				<div class="col s12 m6">
+					{{ day.name }}{% if day.date %} ({{ day.date|date:'d-m-Y' }}){% endif %}
+				</div>
+				<div class="col s12 m6">
+					<a class="waves-effect waves-light btn js-description">Opis</a>
+					<a class="waves-effect waves-light btn js-photos"{% if not day.photos.count %} disabled{% endif %}>Zdjęcia</a>
+					<a class="waves-effect waves-light btn js-tips"{% if not day.tips %} disabled{% endif %}>Wskazówki</a>
+				</div>
+			</div>
+			<article class="js-day-description day-container hidden">
+				{{ day.description|linebreaks }}
+			</article>
 
-						{% if day.tips %}
-							<p class="trip-day-tips"><i class="material-icons" title="Wskazówki">warning</i></p>
-							{{ day.tips|linebreaks }}
-						{% endif %}
-					</article>
+			{% if day.photos.count %}
+				<section class="js-day-photos photos day-container hidden">
+					{% for photo in day.photos.all %}
+						<div class="photo">
+							<img src="" data-src="{{ photo.photo.url }}">
+							<p>{{ photo.description|default_if_none:'' }}</p>
+						</div>
+					{% endfor %}
 				</section>
-			{% endfor %}
-		</section>
-	{% endif %}
+			{% endif %}
+
+			{% if day.tips %}
+				<div class="js-day-tips day-container hidden">
+					{{ day.tips|linebreaks }}
+				</div>
+			{% endif %}
+		</div>
+	{% endfor %}
 
 	<script src="{{ STATIC_URL }}js/trips/days.js"></script>
 {% endblock %}

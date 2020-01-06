@@ -8,23 +8,6 @@ p {
 	text-align: justify;
 }
 
-hr {
-	border: 0;
-	border-top: 1px dashed rgba(56, 9, 53, 0.71);
-	text-align:center;
-}
-
-hr:after {
-	content: '\1F5E3';
-	display: inline-block;
-	position: relative;
-	top: -13px;
-	padding: 0 3px;
-	background: #fff;
-	color: rgba(56, 9, 53, 0.71);
-	font-size: 18px;
-}
-
 ul {
 	list-style-type: none;
 }
@@ -35,7 +18,7 @@ body {
 	font-family: 'Quicksand', sans-serif;
 	font-size: 18px;
 	color: rgba(56, 9, 53, 0.71);
-	background-color: #fcfcfc;
+	background-color: #fff;
 	position: relative;
 }
 
@@ -45,11 +28,16 @@ header {
 	height: auto;
 	width: 100%;
 	position: fixed;
+	display: flex;
+	box-shadow: 10px 5px 10px #585858;
+}
+
+nav {
+	background-color: #fff;
+	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 9999;
-	display: flex;
-	box-shadow: 10px 5px 10px #585858;
 }
 
 nav a:hover {
@@ -57,19 +45,37 @@ nav a:hover {
 	text-shadow: 1px 1px #c0c0c0;
 }
 
-nav a {
+nav ul a, nav a, .capitals_counter {
+	color: rgba(56, 9, 53, 0.71);
 	font-size: 18px;
 	text-transform: uppercase;
 	min-width: 200px;
 	margin: 0 3vw;
 }
 
-.nav-selected, .home_page_icon .nav-selected {
-	border-bottom: solid 1px;
+.nav-selected {
+	background-color: rgba(56, 9, 53, 0.71);
+	color: #fff;
 }
 
-.capitals_counter, .home_page_icon, .origami_icon {
+.home-page-icon .material-icons {
+	width: 100%;
+	padding: 0 15px;
+}
+
+.home-page-icon .nav-selected .material-icons {
+	background-color: rgba(56, 9, 53, 0.71);
+	width: 100%;
+	padding: 0 15px;
+}
+
+.home-page-icon  .material-icons:hover {
+	background-color: rgba(0,0,0,0.1);
+}
+
+.capitals_counter, .origami_icon {
 	position: relative;
+	margin-right: 0;
 }
 
 .origami_icon {
@@ -78,12 +84,11 @@ nav a {
 
 .capitals_counter .material-icons, .home_page_icon .material-icons, .origami_icon .material-icons {
 	font-size: 20px;
-	position: absolute;
 }
 
 main {
 	width: 80%;
-	margin: 45px auto 0 auto;
+	margin: 64px auto 0 auto;
 }
 
 footer {
@@ -243,33 +248,41 @@ footer {
 }
 
 .trip-icons {
-	width: 10vw;
-	margin-right: 20px;
+	width: 15vw;
+	margin-right: 15px;
 	text-align: right;
 }
 
 .trip-info-description {
-	width: 90vw;
+	width: 85vw;
 }
 
-.trip-day h3 {
-	cursor: pointer;
+.trip-info-tips {
+	margin: 0 1vw;
 }
 
-.trip-day span {
-	margin-left: 7px;
-	font-size: 15px;
-	position: relative;
+.day-container {
+	border-top: solid 1px lightgray;
 }
 
-.trip-day span i {
-	position: absolute;
-	bottom: -4px;
-	right: -20px;
+.btn {
+	color: #fff;
+	background-color: rgba(56, 9, 53, 0.5);
 }
 
-.trip-day article {
-	display: none;
+.btn:hover {
+	background-color: rgba(0,0,0,0.1);
+	color: #000;
+}
+
+.btn-active {
+	color: #fff;
+	background-color: rgba(56, 9, 53, 0.71);
+}
+
+.btn-active:after {
+	content: "x";
+	margin-left: 20px;
 }
 
 .photos {
@@ -296,10 +309,6 @@ footer {
 	font-size: 15px;
 	text-align: center;
 	margin: 0;
-}
-
-.trip-day-tips {
-	text-align: center;
 }
 
 .hidden {
@@ -386,8 +395,8 @@ form button {
 }
 
 .polaroid {
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .polaroid img {
@@ -397,7 +406,7 @@ form button {
 }
 
 .polaroid .container {
-    text-align: center;
+	text-align: center;
 	padding-bottom: 15px;
 	padding-top: 5px;
 	font-size: 16px;
@@ -496,7 +505,7 @@ form button {
 .hp-gallery {
 	height: 200px;
 	display: inline-flex;
-    justify-content: center;
+	justify-content: center;
 	position: relative;
 }
 
@@ -549,15 +558,11 @@ form button {
 	transform: rotate(33deg);
 }
 
-.news {
-	text-align: center;
-}
-
 .news label {
 	font-family: 'Caveat', cursive;
 	font-size: 32px;
 	margin-left: 5px;
-
+	color: rgba(56, 9, 53, 0.71);
 }
 
 .news p {
@@ -593,7 +598,7 @@ form button {
 		box-shadow: 6px 2px 6px #585858;
 	}
 
-	nav a {
+	nav ul a, .capitals_counter {
 		font-size: 16px;
 		min-width: 120px;
 	}
@@ -604,7 +609,7 @@ form button {
 
 	main {
 		width: 90%;
-		margin: 35px auto 0 auto;
+		margin: 70px auto 0 auto;
 	}
 
 	footer {
@@ -704,12 +709,6 @@ form button {
 	.trip-summary{
 		font-size: 20px;
 		margin-top: 15px;
-	}
-
-	.trip-day span i {
-		position: absolute;
-		bottom: 0;
-		right: -15px;
 	}
 
 	.photo {
@@ -886,11 +885,6 @@ form button {
 		margin-top: 30px;
 	}
 
-	hr:after {
-		content: ':-)';
-		font-size: 14px;
-	}
-
 	body {
 		font-size: 14px;
 	}
@@ -900,17 +894,15 @@ form button {
 		box-shadow: 5px 2px 8px #585858;
 	}
 
-	nav {
-		padding: 3px;
-	}
-
-	nav a {
+	nav ul a {
 		font-size: 13px;
-		min-width: 70px;
+		min-width: 60px;
+		margin: 0
 	}
 
-	.home_page_icon {
-		margin-right: 10vw;
+	.home-page-icon {
+		font-size: 13px;
+		width: 80px;
 	}
 
 	.capitals_counter {
@@ -919,7 +911,7 @@ form button {
 
 	main {
 		width: 90%;
-		margin: 33px auto 0 auto;
+		margin: 60px auto 0 auto;
 	}
 
 	footer {
@@ -1046,20 +1038,6 @@ form button {
 		padding-right: 0;
 		margin-right: 8px;
 		text-align: right;
-	}
-
-	.trip-day h3 {
-		font-size: 15px;
-	}
-
-	.trip-day span {
-		margin-left: 5px;
-		font-size: 10px;
-	}
-
-	.trip-day span i {
-		font-size: 16px;
-		right: -16px;
 	}
 
 	.photo {
@@ -1264,13 +1242,9 @@ form button {
 
 
 @media (min-width: 1281px) {
-	nav {
-		width: 60%;
-		margin: 0 auto;
-	}
 
 	main {
-		width: 60%;
+		width: 80%;
 	}
 
 	.about-me-with-polaroid .polaroid-item {
