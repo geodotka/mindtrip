@@ -12,6 +12,11 @@ ul {
 	list-style-type: none;
 }
 
+hr {
+	border: 0;
+	border-top: 1px solid #eee;
+}
+
 body {
 	margin: 0 auto;
 	padding: 0;
