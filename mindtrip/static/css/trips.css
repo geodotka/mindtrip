@@ -375,7 +375,7 @@ form button {
 	padding: 10px;
 }
 
-/*about me page*/
+/* polaroids */
 
 .polaroid-item {
 	width: 19%;
@@ -404,6 +404,12 @@ form button {
 	padding-bottom: 15px;
 	padding-top: 5px;
 	font-size: 16px;
+}
+
+/* about me page */
+
+.capitals .polaroid-item {
+	width: 25%;
 }
 
 .leonardo-sentence {
@@ -1218,9 +1224,5 @@ form button {
 
 	main {
 		width: 80%;
-	}
-
-	.about-me-with-polaroid .polaroid-item {
-		width: 100%;
 	}
 }
