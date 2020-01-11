@@ -1036,6 +1036,17 @@ form button {
 		width: 300px;
 	}
 
+	.polaroid-item, .polaroid-item-wide {
+		width: 80%;
+		margin: 10px auto;
+	}
+
+	.polaroid .container {
+		padding-bottom: 10px;
+		padding-top: 2px;
+		font-size: 14px;
+	}
+
 	/*post form*/
 
 	form {
@@ -1090,17 +1101,6 @@ form button {
 
 	/*about me page*/
 
-	.polaroid-item, .polaroid-item-wide {
-		width: 80%;
-		margin: 10px auto;
-	}
-
-	.polaroid .container {
-		padding-bottom: 10px;
-		padding-top: 2px;
-		font-size: 14px;
-	}
-
 	.leonardo-sentence {
 		font-size: 14px;
 		margin-top: 0;
@@ -1118,7 +1118,7 @@ form button {
 	}
 
 	.about-me-with-polaroid .polaroid-item {
-		width: 50%;
+		width: 60%;
 		margin: 10px auto;
 	}
 
@@ -1132,6 +1132,10 @@ form button {
 		margin-top: 10px;
 		padding: 10px;
 		display: block;
+	}
+
+	.capitals .polaroid-item {
+		width: 100%;
 	}
 
 	/* error page */
