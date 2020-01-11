@@ -128,44 +128,36 @@ footer {
 	flex-wrap: wrap;
 }
 
-.country article {
-	margin: 20px;
+.country a {
+	width: 25%;
 }
 
-.country img {
-	width: 300px;
-	height: auto;
-	box-shadow: 5px 5px 5px rgba(88, 88, 88, 0.7);
-	margin-bottom: 10px;
+.country a .polaroid-item {
+	width: 90%;
 }
 
-.country a:hover img {
+.country a:hover .polaroid {
 	box-shadow: 8px 8px 8px rgba(88, 88, 88, 0.7);
 }
 
-.country-photo {
+.country a .polaroid-photo {
 	position: relative;
 }
 
-.country div .under-construction {
+.country div .build {
 	position: absolute;
-	font-size: 35px;
-	color: #fff;
-	left: 24px;
-	top: 93px;
-	-webkit-transform: rotate(35deg);
-	-moz-transform: rotate(35deg);
-	-ms-transform: rotate(35deg);
-	-o-transform: rotate(35deg);
-	transform: rotate(35deg);
+	font-size: 25px;
+	color: #ffffff;
+	left: 10px;
+	top: 10px;
 }
 
 .country div .capital {
 	position: absolute;
 	font-size: 25px;
 	color: #ffffff;
-	left: 5px;
-	bottom: 20px;
+	left: 10px;
+	bottom: 15px;
 }
 
 .not-complete img {
@@ -550,7 +542,7 @@ form button {
 }
 
 .hp-gallery div .under-construction {
-	font-size: 30px;
+	font-size: 20px;
 	left: 35px;
 	top: 60px;
 	-webkit-transform: rotate(33deg);
@@ -634,30 +626,8 @@ form button {
 	}
 
 	/*countries page*/
-	.country article {
-		margin: 12px;
-	}
-
-	.country img {
-		width: 220px;
-		height: auto;
-		box-shadow: 4px 4px 4px rgba(88, 88, 88, 0.7);
-		margin-bottom: 6px;
-	}
-
-	.country a:hover img {
-		box-shadow: 7px 7px 7px rgba(88, 88, 88, 0.7);
-	}
-
-	.country div .under-construction {
-		font-size: 24px;
-		left: 26px;
-		top: 64px;
-	}
-
-	.country div .capital {
-		font-size: 20px;
-		bottom: 15px;
+	.country a {
+		width: 33%;
 	}
 
 	.country p {
@@ -923,26 +893,8 @@ form button {
 	}
 
 	/*countries page*/
-	.country article {
-		margin: 5px;
-	}
-
-	.country img {
-		width: 140px;
-		height: auto;
-		box-shadow: 3px 3px 3px rgba(88, 88, 88, 0.7);
-		margin-bottom: 4px;
-	}
-
-	.country div .under-construction {
-		font-size: 15px;
-		left: 15px;
-		top: 47px;
-	}
-
-	.country div .capital {
-		font-size: 16px;
-		bottom: 12px;
+	.country a {
+		width: 100%;
 	}
 
 	.country p {

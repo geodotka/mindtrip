@@ -9,21 +9,25 @@
 			<hr />
 			<section class="country">
 				{% for trip in country.trips.all %}
-					<article>
-						<a href="{% url 'trip' trip.id %}">
-							<div class="country-photo{% if not trip.is_complete %} not-complete{% endif %}">
-								<img src="" data-src="{{ trip.picture.url }}" />
-								{% if not trip.is_complete %}
-									<span class="under-construction">W opracowaniu</span>
-								{% endif %}
-								{% if trip.describe_capital %}
-									<i class="material-icons capital" title="stolica">account_balance</i>
-								{% endif %}
+					<a href="{% url 'trip' trip.id %}">
+						<div class="polaroid-item{% if not trip.is_complete %} not-complete{% endif %}">
+							<div class="polaroid">
+								<div class="polaroid-photo">
+									<img src="" data-src="{{ trip.picture.url }}" />
+									{% if not trip.is_complete %}
+										<i class="material-icons build" title="W opracowaniu">build</i>
+									{% endif %}
+									{% if trip.describe_capital %}
+										<i class="material-icons capital" title="stolica">account_balance</i>
+									{% endif %}
+								</div>
+								<div class="container">
+									<div>{{ trip.destination }}</div>
+									<div>{{ trip.dates }}</div>
+								</div>
 							</div>
-							<p>{{ trip.destination }}</p>
-							<p class="dates">{{ trip.dates }}</p>
-						</a>
-					</article>
+						</div>
+					</a>
 				{% endfor %}
 			</section>
 		</div>
