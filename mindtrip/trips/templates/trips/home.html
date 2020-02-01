@@ -13,11 +13,11 @@
 				<a href="{% url 'trip' trip.id %}" id="{{ trip.id }}"{% if forloop.counter > 3 %} class="hidden"{% endif %}>
 					<div>
 						<img src="" data-src="{{ MEDIA_URL }}{{ trip.picture }}">
+						{% if not trip.is_complete %}
+						<span class="under-construction"><i class="material-icons build" title="W opracowaniu">build</i></span>
+						{% endif %}
 						<span class="destination">{{ trip.destination }}</span>
 						<span class="dates">{{ trip.dates }}</span>
-						{% if not trip.is_complete %}
-							<span class="under-construction">W opracowaniu</span>
-						{% endif %}
 					</div>
 				</a>
 			{% endfor %}

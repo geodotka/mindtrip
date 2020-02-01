@@ -541,14 +541,10 @@ form button {
 }
 
 .hp-gallery div .under-construction {
-	font-size: 20px;
-	left: 35px;
-	top: 60px;
-	-webkit-transform: rotate(33deg);
-	-moz-transform: rotate(33deg);
-	-ms-transform: rotate(33deg);
-	-o-transform: rotate(33deg);
-	transform: rotate(33deg);
+	font-size: 32px;
+	left: 12px;
+	top: 2px;
+	color: #fff;
 }
 
 .news label {
@@ -812,13 +808,6 @@ form button {
 
 	.hp-gallery div .under-construction {
 		font-size: 24px;
-		left: 15px;
-		top: 42px;
-		-webkit-transform: rotate(33deg);
-		-moz-transform: rotate(33deg);
-		-ms-transform: rotate(33deg);
-		-o-transform: rotate(33deg);
-		transform: rotate(33deg);
 	}
 
 	.news label {
@@ -1164,13 +1153,8 @@ form button {
 
 	.hp-gallery div .under-construction {
 		font-size: 13px;
-		left: 12px;
-		top: 30px;
-		-webkit-transform: rotate(33deg);
-		-moz-transform: rotate(33deg);
-		-ms-transform: rotate(33deg);
-		-o-transform: rotate(33deg);
-		transform: rotate(33deg);
+		left: 4px;
+		top: 4px;
 	}
 
 	.news label {
