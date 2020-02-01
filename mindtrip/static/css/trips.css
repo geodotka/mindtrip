@@ -1002,6 +1002,10 @@ form button {
 		padding: 10px;
 	}
 
+	.btn {
+		padding: 0 10px;
+	}
+
 	/*post form*/
 
 	form {
