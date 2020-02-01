@@ -998,6 +998,10 @@ form button {
 		font-size: 14px;
 	}
 
+	.card-panel {
+		padding: 10px;
+	}
+
 	/*post form*/
 
 	form {
