@@ -7,28 +7,33 @@
     };
 
     const showSection = ($section, $button) => {
-        if ($section.classList.contains('hidden')) {
-            $section.classList.remove('hidden');
-            $button.classList.add('btn-active');
-        } else {
-            $section.classList.add('hidden');
-            $button.classList.remove('btn-active');
-        }
+        $section.classList.remove('hidden');
+        $button.classList.add('btn-active');
+    };
+
+    const hideSection = ($section, $button) => {
+        $section.classList.add('hidden');
+        $button.classList.remove('btn-active');
     };
 
     document.querySelectorAll('.js-description').forEach(($button) => {
         $button.addEventListener('click', (ev) => {
             const $parent = $button.parentNode.parentNode.parentNode;
             uncolorButtons($button, $parent);
-            showSection($parent.querySelector('.js-day-description'), $button);
+            const $section = $parent.querySelector('.js-day-description');
+            if ($section.classList.contains('hidden')) {
+                showSection($section, $button);
 
-            const $photos = $parent.querySelector('.js-day-photos');
-            if ($photos) {
-                $photos.classList.add('hidden');
-            }
-            const $tips = $parent.querySelector('.js-day-tips');
-            if ($tips) {
-                $tips.classList.add('hidden');
+                const $photos = $parent.querySelector('.js-day-photos');
+                if ($photos) {
+                    $photos.classList.add('hidden');
+                }
+                const $tips = $parent.querySelector('.js-day-tips');
+                if ($tips) {
+                    $tips.classList.add('hidden');
+                }
+            } else {
+                hideSection($section, $button);
             }
         });
     });
@@ -37,15 +42,20 @@
         $button.addEventListener('click', (ev) => {
             const $parent = $button.parentNode.parentNode.parentNode;
             uncolorButtons($button, $parent);
-            showSection($parent.querySelector('.js-day-photos'), $button);
+            const $section = $parent.querySelector('.js-day-photos');
+            if ($section.classList.contains('hidden')) {
+                showSection($section, $button);
 
-            const $description = $parent.querySelector('.js-day-description');
-            if ($description) {
-                $description.classList.add('hidden');
-            }
-            const $tips = $parent.querySelector('.js-day-tips');
-            if ($tips) {
-                $tips.classList.add('hidden');
+                const $description = $parent.querySelector('.js-day-description');
+                if ($description) {
+                    $description.classList.add('hidden');
+                }
+                const $tips = $parent.querySelector('.js-day-tips');
+                if ($tips) {
+                    $tips.classList.add('hidden');
+                }
+            } else {
+                hideSection($section, $button);
             }
         });
     });
@@ -54,15 +64,20 @@
         $button.addEventListener('click', (ev) => {
             const $parent = $button.parentNode.parentNode.parentNode;
             uncolorButtons($button, $parent);
-            showSection($parent.querySelector('.js-day-tips'), $button);
+            const $section = $parent.querySelector('.js-day-tips');
+            if ($section.classList.contains('hidden')) {
+                showSection($section, $button);
 
-            const $description = $parent.querySelector('.js-day-description');
-            if ($description) {
-                $description.classList.add('hidden');
-            }
-            const $photos = $parent.querySelector('.js-day-photos');
-            if ($photos) {
-                $photos.classList.add('hidden');
+                const $description = $parent.querySelector('.js-day-description');
+                if ($description) {
+                    $description.classList.add('hidden');
+                }
+                const $photos = $parent.querySelector('.js-day-photos');
+                if ($photos) {
+                    $photos.classList.add('hidden');
+                }
+            } else {
+                hideSection($section, $button);
             }
         });
     });
