@@ -11,23 +11,23 @@ def photo_upload_to(instance, filename):
 
 
 class Item(models.Model):
-    name = models.CharField(max_length=255, verbose_name=u'Nazwa')
-    description = models.TextField(null=True, blank=True, verbose_name=u'Opis')
+    name = models.CharField(max_length=255, verbose_name='Nazwa')
+    description = models.TextField(null=True, blank=True, verbose_name='Opis')
     photo1 = models.ImageField(
-        upload_to=photo_upload_to, verbose_name=u'Zdjęcie 1')
+        upload_to=photo_upload_to, verbose_name='Zdjęcie 1')
     photo2 = models.ImageField(
         upload_to=photo_upload_to, null=True, blank=True,
-        verbose_name=u'Zdjęcie 2')
+        verbose_name='Zdjęcie 2')
     diagram_url = models.URLField(
-        null=True, blank=True, verbose_name=u'Adres diagramu')
+        null=True, blank=True, verbose_name='Adres diagramu')
     diagram_file = models.FileField(
-        null=True, blank=True, verbose_name=u'Plik diagramu')
+        null=True, blank=True, verbose_name='Plik diagramu')
     video_url = models.URLField(
-        null=True, blank=True, verbose_name=u'Adres video')
+        null=True, blank=True, verbose_name='Adres video')
 
     class Meta:
-        verbose_name = u'Origami'
-        verbose_name_plural = u'Origami'
+        verbose_name = 'Origami'
+        verbose_name_plural = 'Origami'
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name

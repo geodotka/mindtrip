@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from django.conf.urls import url
+from django.urls import path
 
 from . import views
 
 
+app_name = 'origami'
+
 urlpatterns = [
-    url(r'^origami$', views.index, name='origami'),
-    url(r'^origami/(?P<item_id>\d+)$', views.get_item, name='origami_item'),
+    path('origami', views.index, name='origami'),
+    path('origami/(?P<item_id>\d+)', views.get_item, name='origami_item'),
 ]

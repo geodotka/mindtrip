@@ -3,7 +3,7 @@
 
 import os
 from PIL import Image
-import StringIO
+from io import StringIO
 
 from django.db import models
 
@@ -28,46 +28,46 @@ def photo_upload_to(instance, filename):
 
 
 class Trip(models.Model):
-    destination = models.CharField(max_length=255, verbose_name=u'Cel podróży')
+    destination = models.CharField(max_length=255, verbose_name='Cel podróży')
     picture = models.ImageField(upload_to=upload_to, null=True, blank=True)
     country = models.ManyToManyField(
-        'Country', verbose_name=u'Kraj', related_name='trips')
-    summary = models.TextField(verbose_name=u'Podsumowanie')
-    start_at = models.DateField(verbose_name=u'Data początku')
-    end_at = models.DateField(verbose_name=u'Data końca')
-    hotel = models.CharField(max_length=500, verbose_name=u'Noclegi')
+        'Country', verbose_name='Kraj', related_name='trips')
+    summary = models.TextField(verbose_name='Podsumowanie')
+    start_at = models.DateField(verbose_name='Data początku')
+    end_at = models.DateField(verbose_name='Data końca')
+    hotel = models.CharField(max_length=500, verbose_name='Noclegi')
     hotel_price = models.CharField(
-        max_length=255, verbose_name=u'Cena noclegów')
-    travel = models.CharField(max_length=500, verbose_name=u'Dojazd')
+        max_length=255, verbose_name='Cena noclegów')
+    travel = models.CharField(max_length=500, verbose_name='Dojazd')
     travel_price = models.CharField(
-        max_length=255, verbose_name=u'Cena dojazdu')
-    tips = models.TextField(blank=True, null=True, verbose_name=u'Wskazówki')
+        max_length=255, verbose_name='Cena dojazdu')
+    tips = models.TextField(blank=True, null=True, verbose_name='Wskazówki')
     views_counter = models.IntegerField(
-        default=0, verbose_name=u'Licznik odwiedzin')
+        default=0, verbose_name='Licznik odwiedzin')
     guidebook = models.CharField(
-        max_length=500, null=True, blank=True, verbose_name=u'Przewodniki/mapy')
+        max_length=500, null=True, blank=True, verbose_name='Przewodniki/mapy')
     planned_at = models.CharField(
-        max_length=500, null=True, blank=True, verbose_name=u'Planowana w')
-    is_complete = models.BooleanField(default=False, verbose_name=u'Gotowa')
+        max_length=500, null=True, blank=True, verbose_name='Planowana w')
+    is_complete = models.BooleanField(default=False, verbose_name='Gotowa')
     describe_capital = models.BooleanField(
-        default=False, verbose_name=u'Opisuje stolicę')
+        default=False, verbose_name='Opisuje stolicę')
 
-    tags = models.ManyToManyField('Tag', blank=True, verbose_name=u'Tagi')
+    tags = models.ManyToManyField('Tag', blank=True, verbose_name='Tagi')
 
     class Meta:
-        verbose_name = u'Wycieczka'
-        verbose_name_plural = u'Wycieczki'
+        verbose_name = 'Wycieczka'
+        verbose_name_plural = 'Wycieczki'
         ordering = ['start_at', ]
 
-    def __unicode__(self):
-        return u'{0}: {1} - {2}'.format(
+    def __str__(self):
+        return '{0}: {1} - {2}'.format(
             self.destination, self.start_at, self.end_at)
 
     @property
     def dates(self):
         if self.start_at == self.end_at:
             return self.start_at.strftime('%d.%m.%Y')
-        return u'{} - {}'.format(self.start_at.strftime('%d.%m.%Y'),
+        return '{} - {}'.format(self.start_at.strftime('%d.%m.%Y'),
                                  self.end_at.strftime('%d.%m.%Y'))
 
     def get_photo_list_for_gallery(self):
@@ -78,30 +78,31 @@ class Trip(models.Model):
 
 class Day(models.Model):
     name = models.CharField(
-        blank=True, null=True, max_length=255, verbose_name=u'Nazwa')
-    date = models.DateField(blank=True, null=True, verbose_name=u'Data')
-    description = models.TextField(verbose_name=u'Opis')
-    tips = models.TextField(blank=True, null=True, verbose_name=u'Wskazówki')
+        blank=True, null=True, max_length=255, verbose_name='Nazwa')
+    date = models.DateField(blank=True, null=True, verbose_name='Data')
+    description = models.TextField(verbose_name='Opis')
+    tips = models.TextField(blank=True, null=True, verbose_name='Wskazówki')
     trip = models.ForeignKey(
-        Trip, verbose_name=u'Wycieczka', related_name='days')
+        Trip, verbose_name='Wycieczka', related_name='days',
+        on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name = u'Dzień'
-        verbose_name_plural = u'Dni'
+        verbose_name = 'Dzień'
+        verbose_name_plural = 'Dni'
 
-    def __unicode__(self):
-        return u'{0} - {1} ({2})'.format(
+    def __str__(self):
+        return '{0} - {1} ({2})'.format(
             self.trip.destination, self.name, self.date)
 
 
 class SlugifyModel(models.Model):
-    name = models.CharField(unique=True, max_length=255, verbose_name=u'Nazwa')
-    slug = models.CharField(max_length=255, blank=True, verbose_name=u'Slug')
+    name = models.CharField(unique=True, max_length=255, verbose_name='Nazwa')
+    slug = models.CharField(max_length=255, blank=True, verbose_name='Slug')
 
     class Meta:
         abstract = True
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def save(self, force_insert=False, force_update=False, using=None,
@@ -117,16 +118,16 @@ class Tag(SlugifyModel):
 
     class Meta:
         abstract = False
-        verbose_name = u'Tag'
-        verbose_name_plural = u'Tagi'
+        verbose_name = 'Tag'
+        verbose_name_plural = 'Tagi'
 
 
 class Country(SlugifyModel):
 
     class Meta:
         abstract = False
-        verbose_name = u'Kraj'
-        verbose_name_plural = u'Kraje'
+        verbose_name = 'Kraj'
+        verbose_name_plural = 'Kraje'
 
     @property
     def sorted_posts(self):
@@ -135,18 +136,19 @@ class Country(SlugifyModel):
 
 class Photo(models.Model):
     photo = models.ImageField(
-        upload_to=photo_upload_to, verbose_name=u'Zdjęcie')
+        upload_to=photo_upload_to, verbose_name='Zdjęcie')
     trip_day = models.ForeignKey(
-        Day, verbose_name=u'Dzień wycieczki', related_name='photos')
+        Day, verbose_name='Dzień wycieczki', related_name='photos',
+        on_delete=models.CASCADE)
     description = models.CharField(
-        max_length=255, null=True, blank=True, verbose_name=u'Opis')
+        max_length=255, null=True, blank=True, verbose_name='Opis')
 
     class Meta:
-        verbose_name = u'Zdjęcie'
-        verbose_name_plural = u'Zdjęcia'
+        verbose_name = 'Zdjęcie'
+        verbose_name_plural = 'Zdjęcia'
 
-    def __unicode__(self):
-        return u'{0} ({1})'.format(self.trip_day, self.photo.url)
+    def __str__(self):
+        return '{0} ({1})'.format(self.trip_day, self.photo.url)
 
     def get_data_for_trip_gallery(self):
         return {
@@ -168,7 +170,7 @@ class Photo(models.Model):
         return super(Photo, self).save(*args, **kwargs)
 
     def save_photo(self, image, size):
-        image_file = StringIO.StringIO()
+        image_file = StringIO()
         image.thumbnail(size)
         image.save(image_file, 'JPEG')
         self.photo.file = image_file
@@ -176,29 +178,30 @@ class Photo(models.Model):
 
 class News(models.Model):
     title = models.CharField(
-        max_length=255, null=True, blank=True, verbose_name=u'Tytył')
-    text = models.TextField(verbose_name=u'Tekst')
-    created_at = models.DateField(verbose_name=u'Data wpisu')
+        max_length=255, null=True, blank=True, verbose_name='Tytył')
+    text = models.TextField(verbose_name='Tekst')
+    created_at = models.DateField(verbose_name='Data wpisu')
 
     class Meta:
-        verbose_name = u'Wpis'
-        verbose_name_plural = u'Wpisy'
+        verbose_name = 'Wpis'
+        verbose_name_plural = 'Wpisy'
 
-    def __unicode__(self):
-        return u'{} {}'.format(self.created_at.strftime('%F'), self.title)
+    def __str__(self):
+        return '{} {}'.format(self.created_at.strftime('%F'), self.title)
 
 
 class Post(models.Model):
-    author = models.CharField(max_length=255, verbose_name=u'Autor')
+    author = models.CharField(max_length=255, verbose_name='Autor')
     trip = models.ForeignKey(
-        Trip, verbose_name='Wycieczka', related_name='posts')
-    content = models.TextField(verbose_name=u'Treść')
+        Trip, verbose_name='Wycieczka', related_name='posts',
+        on_delete=models.CASCADE)
+    content = models.TextField(verbose_name='Treść')
     created_at = models.DateTimeField(
-        auto_now_add=True, verbose_name=u'Utworzony')
+        auto_now_add=True, verbose_name='Utworzony')
 
     class Meta:
-        verbose_name = u'Komentarz'
-        verbose_name_plural = u'Komentarze'
+        verbose_name = 'Komentarz'
+        verbose_name_plural = 'Komentarze'
 
-    def __unicode__(self):
-        return u'{0} - {1}'.format(self.id, self.author)
+    def __str__(self):
+        return '{0} - {1}'.format(self.id, self.author)

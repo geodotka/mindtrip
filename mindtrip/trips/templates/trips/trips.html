@@ -9,7 +9,7 @@
 			<hr />
 			<section class="country">
 				{% for trip in country.trips.all %}
-					<a href="{% url 'trip' trip.id %}">
+					<a href="{% url 'trips:trip' trip.id %}">
 						<div class="polaroid-item{% if not trip.is_complete %} not-complete{% endif %}">
 							<div class="polaroid">
 								<div class="polaroid-photo">

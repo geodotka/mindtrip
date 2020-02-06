@@ -10,7 +10,7 @@
 		<div class="hp-gallery-arrow left js-hp-left-arrow disabled"></div>
 		<div class="hp-gallery js-hp-gallery">
 			{% for trip in trips %}
-				<a href="{% url 'trip' trip.id %}" id="{{ trip.id }}"{% if forloop.counter > 3 %} class="hidden"{% endif %}>
+				<a href="{% url 'trips:trip' trip.id %}" id="{{ trip.id }}"{% if forloop.counter > 3 %} class="hidden"{% endif %}>
 					<div>
 						<img src="" data-src="{{ MEDIA_URL }}{{ trip.picture }}">
 						{% if not trip.is_complete %}

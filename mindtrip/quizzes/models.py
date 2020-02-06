@@ -12,30 +12,31 @@ def photo_upload_to(instance, filename):
 
 
 class Quiz(models.Model):
-    name = models.CharField(max_length=255, verbose_name=u'Nazwa')
-    short = models.CharField(max_length=255, verbose_name=u'Skrót')
-    description = models.TextField(verbose_name=u'Opis')
-    added_at = models.DateField(verbose_name=u'Data dodania')
+    name = models.CharField(max_length=255, verbose_name='Nazwa')
+    short = models.CharField(max_length=255, verbose_name='Skrót')
+    description = models.TextField(verbose_name='Opis')
+    added_at = models.DateField(verbose_name='Data dodania')
 
     class Meta:
-        verbose_name = u'Konkurs'
-        verbose_name_plural = u'Konkursy'
+        verbose_name = 'Konkurs'
+        verbose_name_plural = 'Konkursy'
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
 class Photo(models.Model):
     photo = models.ImageField(
-        upload_to=photo_upload_to, verbose_name=u'Zdjęcie')
+        upload_to=photo_upload_to, verbose_name='Zdjęcie')
     quiz = models.ForeignKey(
-        Quiz, verbose_name=u'Quiz', related_name='photos')
+        Quiz, verbose_name='Quiz', related_name='photos',
+        on_delete=models.CASCADE)
     description = models.CharField(
-        max_length=255, null=True, blank=True, verbose_name=u'Opis')
+        max_length=255, null=True, blank=True, verbose_name='Opis')
 
     class Meta:
-        verbose_name = u'Zdjęcie'
-        verbose_name_plural = u'Zdjęcia'
+        verbose_name = 'Zdjęcie'
+        verbose_name_plural = 'Zdjęcia'
 
-    def __unicode__(self):
-        return u'{0} ({1})'.format(self.quiz, self.photo.url)
+    def __str__(self):
+        return '{0} ({1})'.format(self.quiz, self.photo.url)

@@ -62,7 +62,7 @@ def get_statistics(request):
     if not request.user.is_superuser:
         raise Http404
     return JsonResponse(
-        [u'{}: {}'.format(t.destination, t.views_counter) for t
+        ['{}: {}'.format(t.destination, t.views_counter) for t
          in Trip.objects.all().order_by('-views_counter')], safe=False)
 
 

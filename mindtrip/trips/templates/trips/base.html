@@ -16,10 +16,10 @@
 	<nav>
 		<div class="nav-wrapper">
 			<ul class="left">
-				<li class="home-page-icon"><a href="{% url 'home' %}" class="home_page_icon{% block home_page %}{% endblock %}"><i class="material-icons left">home</i></a></li>
-				<li><a href="{% url 'trips' %}"{% block trips_page %}{% endblock %}>Podróże</a></li>
-				<li><a href="{% url 'about_me' %}"{% block about_me %}{% endblock %}>O mnie</a></li>
-				<li><a href="{% url 'quizzes' %}">Quizy</a></li>
+				<li class="home-page-icon"><a href="{% url 'trips:home' %}" class="home_page_icon{% block home_page %}{% endblock %}"><i class="material-icons left">home</i></a></li>
+				<li><a href="{% url 'trips:trips' %}"{% block trips_page %}{% endblock %}>Podróże</a></li>
+				<li><a href="{% url 'trips:about_me' %}"{% block about_me %}{% endblock %}>O mnie</a></li>
+				<li><a href="{% url 'quizzes:quizzes' %}">Quizy</a></li>
 				<li><span class="capitals_counter" title="Odwiedzone stolice"><i class="material-icons right">account_balance</i>27 x</span></li>
 			</ul>
 		</div>

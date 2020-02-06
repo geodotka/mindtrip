@@ -15,7 +15,7 @@
 		<h2>Quizy</h2>
 		{% for quiz in quizzes %}
 			<section>
-				<h3><a href="{% url 'quiz' quiz.id %}">{{ quiz.added_at|date:"d.m.Y" }} {{ quiz.name }}</a></h3>
+				<h3><a href="{% url 'quizzes:quiz' quiz.id %}">{{ quiz.added_at|date:"d.m.Y" }} {{ quiz.name }}</a></h3>
 				<article>
 					{{ quiz.short }}
 				</article>

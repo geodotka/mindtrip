@@ -1,15 +1,17 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from django.conf.urls import url
+from django.urls import path
 
 from . import views
 
 
+app_name = 'trips'
+
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
-    url(r'^o-mnie$', views.AboutMeTemplateView.as_view(), name='about_me'),
-    url(r'^podroze$', views.get_trips, name='trips'),
-    url(r'^podroze/(?P<trip_id>\d+)$', views.get_trip, name='trip'),
-    url(r'^statistics$', views.get_statistics, name='statistics'),
+    path('', views.home, name='home'),
+    path('o-mnie', views.AboutMeTemplateView.as_view(), name='about_me'),
+    path('podroze', views.get_trips, name='trips'),
+    path('podroze/<int:trip_id>', views.get_trip, name='trip'),
+    path('statistics', views.get_statistics, name='statistics'),
 ]
