@@ -2,3 +2,8 @@ media
 
 settings_local.py
 db.sqlite3
+
+
+/node_modules
+package-lock.json
+yarn.lock
