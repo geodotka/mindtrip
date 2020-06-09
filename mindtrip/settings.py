@@ -41,8 +41,9 @@ ROOT_URLCONF = 'mindtrip.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [
+            join(CURRENT_DIR, 'react')
+        ],
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -52,7 +53,14 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.media',
             ],
+            'loaders': [
+                ('django.template.loaders.cached.Loader', (
+                    'django.template.loaders.filesystem.Loader',
+                    'django.template.loaders.app_directories.Loader',
+                ))
+            ]
         },
+
     },
 ]
 
@@ -96,8 +104,11 @@ USE_TZ = True
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
+STATICFILES_DIRS = (
+    join(CURRENT_DIR, 'react', 'static'),
+)
+
 
 STATIC_URL = '/static/'
 STATIC_ROOT = join(CURRENT_DIR, 'static')

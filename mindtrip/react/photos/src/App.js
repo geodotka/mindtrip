@@ -1,15 +1,11 @@
 import React from 'react';
-import './App.css';
+import ReactDOM from 'react-dom';
 import PhotoManager from './components/PhotoManager';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <PhotoManager />
-      </header>
-    </div>
-  );
+
+export default function App() {
+    return  <PhotoManager />
 }
 
-export default App;
+const wrapper = document.getElementById('react');
+wrapper ? ReactDOM.render(<App />, wrapper) : null;
