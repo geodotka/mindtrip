@@ -4,7 +4,7 @@
 import json
 import os
 
-from annoying.decorators import render_to
+from annoying.decorators import render_to, ajax_request
 from django.conf import settings
 from django.http.response import JsonResponse, Http404
 from django.shortcuts import get_object_or_404
@@ -39,7 +39,7 @@ def get_trip(request, trip_id):
         .order_by('-start_at').first()
     return {
         'trip': trip_,
-        'countries': ', '.join([t.name for t in trip_.country.all()]),
+        'countries': trip_.countries,
         'prev_trip': {
             'id': prev_trip.id,
             'destination': prev_trip.destination,
@@ -88,3 +88,11 @@ class AboutMeTemplateView(TemplateView):
         return kwargs
 
 
+###############################################################################
+#                                   API                                       #
+###############################################################################
+
+@ajax_request
+def api_trips(request):
+    return [
+        trip.to_dict() for trip in Trip.objects.all().prefetch_related('days')]

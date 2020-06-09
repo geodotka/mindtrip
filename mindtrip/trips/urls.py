@@ -17,4 +17,6 @@ urlpatterns = [
     path('statistics', views.get_statistics, name='statistics'),
     path('photo-manager', TemplateView.as_view(
         template_name='photos/index.html'), name='photo_manager'),
+
+    path('api/trips', views.api_trips, name='api_trips')
 ]

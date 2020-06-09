@@ -75,6 +75,21 @@ class Trip(models.Model):
             trip_day__trip_id=self.id).order_by('trip_day', 'id')
         return [photo.get_data_for_trip_gallery() for photo in photos]
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'destination': self.destination,
+            'country': self.countries,
+            'picture': self.picture.url if self.picture else '',
+            'startAt': self.start_at.strftime('%d.%m.%Y'),
+            'endAt': self.end_at.strftime('%d.%m.%Y'),
+            'days': [day.to_dict() for day in self.days.all().order_by('id')],
+        }
+
+    @property
+    def countries(self):
+        return ', '.join([c.name for c in self.country.all()]),
+
 
 class Day(models.Model):
     name = models.CharField(
@@ -93,6 +108,12 @@ class Day(models.Model):
     def __str__(self):
         return '{0} - {1} ({2})'.format(
             self.trip.destination, self.name, self.date)
+
+    def to_dict(self):
+        return {
+            'name': self.name,
+            'date': self.date.strftime('%d.%m.%Y') if self.date else '',
+        }
 
 
 class SlugifyModel(models.Model):
