@@ -8,9 +8,10 @@ from annoying.decorators import render_to, ajax_request
 from django.conf import settings
 from django.http.response import JsonResponse, Http404
 from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
 
-from .models import Trip, News, Country
+from .models import Trip, News, Country, Day
 
 
 @render_to('trips/home.html')
@@ -95,3 +96,15 @@ class AboutMeTemplateView(TemplateView):
 def api_trips(request):
     return [
         trip.to_dict() for trip in Trip.objects.all().prefetch_related('days')]
+
+
+@csrf_exempt
+@ajax_request
+def api_save_trip(request, trip_id, day_id):
+    day = Day.objects.select_for_update().filter(
+        id=day_id, trip_id=trip_id).first()
+    if day is None:
+        return {'success': False}
+    day.photos_json = json.loads(request.body).get('photos', [])
+    day.save()
+    return {'success': True}

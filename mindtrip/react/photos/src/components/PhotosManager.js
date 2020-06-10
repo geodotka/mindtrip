@@ -24,6 +24,36 @@ export default class PhotoManager extends Component {
             });
     }
 
+    handleSave = (tripId, dayId, photos) => {
+        fetch(`/api/trips/${tripId}/${dayId}/save`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({photos}),
+        }).then(
+            response => response.json()
+        ).then(data => {
+            if (data.success) {
+                this.setState(prevState => ({
+                    trips: prevState.trips.map(t => {
+                        if (t.id === tripId) {
+                            t.days = t.days.map(d => {
+                                if (d.id === dayId) {
+                                    d.photos = photos;
+                                }
+                                return d
+                            })
+                        }
+                        return t
+                    }),
+                }));
+            } else {
+                alert('Stało się coś nieoczekiwanego :(')
+            }
+        }).catch((error) => {
+            alert('Stało się coś nieoczekiwanego :(')
+        });
+    }
+
     render() {
         return (
             <div style={{display: 'flex'}}>
@@ -52,7 +82,7 @@ export default class PhotoManager extends Component {
             <div
                 key={trip.id}
                 style={this.state.selectedTripId === trip.id ? stylesSelected : stylesUnselected}
-                onClick={() => this.setState({selectedTripId: trip.id})}
+                onClick={() => this.setState({selectedTripId: trip.id, selectedDayId: null})}
             >
                 <img src={trip.picture} style={{width: 120, height: 90}} />
                 <div style={{display: 'box', fontSize: 15}}>
@@ -93,7 +123,8 @@ export default class PhotoManager extends Component {
                     <PhotosForm
                         dayId={day.id}
                         photos={day.photos}
-                        tripId={this.state.selectedTripId} />
+                        tripId={this.state.selectedTripId}
+                        onSave={this.handleSave} />
                 )}
             </div>
         )

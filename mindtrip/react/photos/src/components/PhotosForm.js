@@ -10,7 +10,8 @@ export default class PhotosForm extends Component {
         this.urlSuffix = `${this.domain}${props.tripId}/${props.dayId}/`;
 
         this.state = {
-            photos: [...props.photos],
+            photos: [...props.photos.map(
+                (p, i) => Object.assign({}, p, {temporaryId: i + 1}))],
             photoDescription: '',
             photoName: '',
         };
@@ -45,11 +46,24 @@ export default class PhotosForm extends Component {
         }));
     }
 
+    handleSave = () => {
+        // TODO: disable buttons and inputs
+        this.props.onSave(
+            this.props.tripId,
+            this.props.dayId,
+            this.state.photos.map(p => ({
+                url: p.url,
+                description: p.description,
+            }))
+        );
+    }
+
     render() {
         return (
             <div style={{width: '100%'}}>
                 {this.renderPhotos()}
                 {this.renderForm()}
+                <button type="button" onClick={this.handleSave}>Zapisz</button>
             </div>
         )
     }
