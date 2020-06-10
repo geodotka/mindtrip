@@ -337,6 +337,11 @@ form button {
 	width: 100px;
 }
 
+form button:disabled {
+	cursor: default;
+	background: #c0c0c0;
+}
+
 .post {
 	display: flex;
 	margin: 10px 0;

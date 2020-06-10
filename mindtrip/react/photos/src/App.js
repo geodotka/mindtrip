@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PhotoManager from './components/PhotoManager';
+import PhotosManager from './components/PhotosManager';
 
 
 export default function App() {
-    return  <PhotoManager />
+    return  <PhotosManager />
 }
 
 const wrapper = document.getElementById('react');

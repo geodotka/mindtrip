@@ -111,8 +111,10 @@ class Day(models.Model):
 
     def to_dict(self):
         return {
+            'id': self.id,
             'name': self.name,
             'date': self.date.strftime('%d.%m.%Y') if self.date else '',
+            'photos': [],
         }
 
 

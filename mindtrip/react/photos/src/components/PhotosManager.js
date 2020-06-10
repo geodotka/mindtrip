@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PhotosForm from './PhotosForm';
 
 
 export default class PhotoManager extends Component {
@@ -9,6 +10,7 @@ export default class PhotoManager extends Component {
         this.state = {
             trips: [],
             selectedTripId: null,
+            selectedDayId: null,
         };
     }
 
@@ -25,13 +27,13 @@ export default class PhotoManager extends Component {
     render() {
         return (
             <div style={{display: 'flex'}}>
-                <div style={{}}>
+                <div style={{borderRight: '1px dashed', padding: 20}}>
                     <div>Wybierz wycieczkę</div>
                     {this.renderTrips()}
                 </div>
-                <div style={{position: 'relative'}}>
+                <div style={{position: 'relative', width: '70%', padding: 20}}>
                     <div style={{position: 'sticky', top: 100}}>
-                        {this.renderTripForm()}
+                        {this.renderTripDetails()}
                     </div>
                 </div>
             </div>
@@ -39,14 +41,16 @@ export default class PhotoManager extends Component {
     }
 
     renderTrips() {
-        return this.state.trips.map(trip => this.renderTrip(trip))
+        return this.state.trips.map(trip => this.renderTripOnList(trip))
     }
 
-    renderTrip(trip) {
-        const stylesSelected = {color: 'darkgreen', display: 'flex'};
-        const stylesUnselected = {display: 'flex', cursor: 'pointer'};
+    renderTripOnList(trip) {
+        const commonStyles = {display: 'flex', padding: 5};
+        const stylesSelected = Object.assign({}, commonStyles, {color: 'darkgreen'});
+        const stylesUnselected = Object.assign({}, commonStyles, {cursor: 'pointer'});
         return (
-            <p
+            <div
+                key={trip.id}
                 style={this.state.selectedTripId === trip.id ? stylesSelected : stylesUnselected}
                 onClick={() => this.setState({selectedTripId: trip.id})}
             >
@@ -56,11 +60,11 @@ export default class PhotoManager extends Component {
                     <p style={{margin: 4}}>({trip.country})</p>
                     <p style={{margin: 4}}>({trip.startAt} - {trip.endAt})</p>
                 </div>
-            </p>
+            </div>
         )
     }
 
-    renderTripForm() {
+    renderTripDetails() {
         if (!this.state.selectedTripId) {
             return <p>Wybierz wycieczkę z listy</p>
         }
@@ -74,9 +78,24 @@ export default class PhotoManager extends Component {
     }
 
     renderDay(day) {
+        const { selectedDayId } = this.state;
+        const isSelected = day.id === selectedDayId;
         return (
-            <p>{day.name} {day.date.length > 0 && `(${day.date})`}</p>
+            <div key={day.id} className={isSelected ? 'card-panel center-align' : 'center-align'}>
+                <div
+                    className="row"
+                    style={{cursor: 'pointer'}}
+                    onClick={() => this.setState({selectedDayId: day.id})}
+                >
+                    {day.name} {day.date.length > 0 && `(${day.date})`}
+                </div>
+                {isSelected && (
+                    <PhotosForm
+                        dayId={day.id}
+                        photos={day.photos}
+                        tripId={this.state.selectedTripId} />
+                )}
+            </div>
         )
     }
-
 }
