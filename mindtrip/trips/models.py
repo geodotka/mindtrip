@@ -5,6 +5,7 @@ import os
 from PIL import Image
 from io import StringIO
 
+from annoying.fields import JSONField
 from django.db import models
 
 from .helpers import slugify
@@ -100,6 +101,7 @@ class Day(models.Model):
     trip = models.ForeignKey(
         Trip, verbose_name='Wycieczka', related_name='days',
         on_delete=models.CASCADE)
+    photos_json = JSONField(null=True, blank=True)
 
     class Meta:
         verbose_name = 'Dzień'
@@ -114,7 +116,7 @@ class Day(models.Model):
             'id': self.id,
             'name': self.name,
             'date': self.date.strftime('%d.%m.%Y') if self.date else '',
-            'photos': [],
+            'photos': self.photos_json or [],
         }
 
 
