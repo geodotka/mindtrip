@@ -33,9 +33,15 @@ export default class PhotosForm extends Component {
                 {
                     url: `${this.props.tripId}/${this.props.dayId}/${prevState.photoName}`,
                     description: prevState.photoDescription,
-                    temporaryId: Math.max(...(prevState.photos.map(p => p.temporaryId) || [0])) +1,
+                    temporaryId: Math.max(...prevState.photos.map(p => p.temporaryId), 0) +1,
                 }
             ],
+        }));
+    }
+
+    handleDeletePhoto = (temporaryId) => {
+        this.setState(prevState => ({
+            photos: prevState.photos.filter(photo => photo.temporaryId !== temporaryId),
         }));
     }
 
@@ -61,6 +67,11 @@ export default class PhotosForm extends Component {
             <div className="polaroid-item" key={photo.temporaryId}>
                 <div className="polaroid">
                     <img src={this.domain + photo.url} />
+                    <i
+                        className="material-icons delete"
+                        title="Usuń"
+                        onClick={() => this.handleDeletePhoto(photo.temporaryId)}
+                    >delete</i>
                     <div className="container">{photo.description}</div>
                 </div>
             </div>
