@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PhotoForm } from './PhotoForm';
 
 
 export default class PhotosForm extends Component {
@@ -17,11 +18,11 @@ export default class PhotosForm extends Component {
         };
     }
 
-    handleChangePhotoName = (ev) => {
+    handleChangeFormName = (ev) => {
         this.setState({photoName: ev.target.value});
     }
 
-    handleChangePhotoDescription = (ev) => {
+    handleChangeFormDescription = (ev) => {
         this.setState({photoDescription: ev.target.value});
     }
 
@@ -42,7 +43,8 @@ export default class PhotosForm extends Component {
 
     handleDeletePhoto = (temporaryId) => {
         this.setState(prevState => ({
-            photos: prevState.photos.filter(photo => photo.temporaryId !== temporaryId),
+            photos: prevState.photos.filter(
+                photo => photo.temporaryId !== temporaryId),
         }));
     }
 
@@ -58,12 +60,27 @@ export default class PhotosForm extends Component {
         );
     }
 
+    handleChangePhotoDescription = (temporaryId, description, callback) => {
+        this.setState(prevState => ({
+            photos: prevState.photos.map(photo => {
+                if (photo.temporaryId === temporaryId) {
+                    photo.description = description;
+                }
+                return photo
+            })
+        }), callback())
+    }
+
     render() {
         return (
             <div style={{width: '100%'}}>
                 {this.renderPhotos()}
                 {this.renderForm()}
-                <button type="button" onClick={this.handleSave}>Zapisz</button>
+                <button
+                    className="form-button"
+                    type="button"
+                    onClick={this.handleSave}
+                >Zapisz</button>
             </div>
         )
     }
@@ -71,24 +88,16 @@ export default class PhotosForm extends Component {
     renderPhotos() {
         return (
             <section className="photos day-container">
-                {this.state.photos.map(photo => this.renderPhoto(photo))}
+                {this.state.photos.map(photo => (
+                    <PhotoForm
+                        domain={this.domain}
+                        key={photo.temporaryId}
+                        photo={photo}
+                        onDeletePhoto={this.handleDeletePhoto}
+                        onSaveDescription={this.handleChangePhotoDescription}
+                    />
+                ))}
             </section>
-        )
-    }
-
-    renderPhoto(photo) {
-        return (
-            <div className="polaroid-item" key={photo.temporaryId}>
-                <div className="polaroid">
-                    <img src={this.domain + photo.url} />
-                    <i
-                        className="material-icons delete"
-                        title="Usuń"
-                        onClick={() => this.handleDeletePhoto(photo.temporaryId)}
-                    >delete</i>
-                    <div className="container">{photo.description}</div>
-                </div>
-            </div>
         )
     }
 
@@ -102,7 +111,7 @@ export default class PhotosForm extends Component {
                         style={{width: 300}}
                         type="text"
                         value={photoName}
-                        onChange={this.handleChangePhotoName} />
+                        onChange={this.handleChangeFormName} />
                 </div>
                 <div style={{textAlign: 'left'}}>
                     <label>Opis zdjęcia:</label>
@@ -110,7 +119,7 @@ export default class PhotosForm extends Component {
                         style={{width: 300}}
                         type="text"
                         value={photoDescription}
-                        onChange={this.handleChangePhotoDescription} />
+                        onChange={this.handleChangeFormDescription} />
                 </div>
                 <div style={{textAlign: 'left'}}>
                     <button

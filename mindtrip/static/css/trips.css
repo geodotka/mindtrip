@@ -325,7 +325,7 @@ form .form-row input, textarea {
 	width: 520px;
 }
 
-form button {
+form button, .form-button {
 	cursor: pointer;
 	background-color: rgba(56, 9, 53, 0.71);
 	border: none;
@@ -715,7 +715,7 @@ form button:disabled {
 		font-size: 15px;
 	}
 
-	form button {
+	form button, .form-button {
 		cursor: pointer;
 		background-color: rgba(56, 9, 53, 0.71);
 		border: none;
@@ -1030,7 +1030,7 @@ form button:disabled {
 		width: 200px;
 	}
 
-	form button {
+	form button, .form-button {
 		cursor: pointer;
 		background-color: rgba(56, 9, 53, 0.71);
 		border: none;

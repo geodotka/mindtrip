@@ -95,7 +95,8 @@ class AboutMeTemplateView(TemplateView):
 @ajax_request
 def api_trips(request):
     return [
-        trip.to_dict() for trip in Trip.objects.all().prefetch_related('days')]
+        trip.to_dict() for trip in Trip.objects.all().order_by(
+            '-start_at').prefetch_related('days')]
 
 
 @csrf_exempt
