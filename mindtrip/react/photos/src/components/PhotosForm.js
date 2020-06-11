@@ -7,8 +7,7 @@ export default class PhotosForm extends Component {
     constructor(props) {
         super(props);
 
-        this.domain = `http://geodotka.stronazen.pl/`;
-        this.urlSuffix = `${this.domain}${props.tripId}/${props.dayId}/`;
+        this.urlSuffix = `${props.photosDomain}${props.tripId}/${props.dayId}/`;
 
         this.state = {
             photos: [...props.photos.map(
@@ -16,6 +15,7 @@ export default class PhotosForm extends Component {
             photoDescription: '',
             photoName: '',
             draggingPhotoTemporaryId: null,
+            formOn: false,
         };
     }
 
@@ -40,6 +40,7 @@ export default class PhotosForm extends Component {
                     temporaryId: Math.max(...prevState.photos.map(p => p.temporaryId), 0) +1,
                 }
             ],
+            formOn: false,
         }));
     }
 
@@ -101,14 +102,16 @@ export default class PhotosForm extends Component {
 
     render() {
         return (
-            <div style={{width: '100%'}}>
+            <div style={{width: '100%', display: 'block'}}>
                 {this.renderPhotos()}
                 {this.renderForm()}
-                <button
-                    className="form-button"
-                    type="button"
-                    onClick={this.handleSave}
-                >Zapisz</button>
+                <div style={{margin: 20}}>
+                    <button
+                        className="btn"
+                        type="button"
+                        onClick={this.handleSave}
+                    >Zapisz wycieczkę</button>
+                </div>
             </div>
         )
     }
@@ -118,7 +121,7 @@ export default class PhotosForm extends Component {
             <section className="photos day-container">
                 {this.state.photos.map(photo => (
                     <PhotoForm
-                        domain={this.domain}
+                        domain={this.props.photosDomain}
                         key={photo.temporaryId}
                         photo={photo}
                         onDeletePhoto={this.handleDeletePhoto}
@@ -132,43 +135,61 @@ export default class PhotosForm extends Component {
     }
 
     renderForm() {
+        if (!this.state.formOn) {
+            return (
+                <div style={{margin: 20}}>
+                    <button className="btn" style={{width: 160}} onClick={() => this.setState({formOn: true})}>Dodaj zdjęcie</button>
+                </div>
+            )
+        }
         const { photoDescription, photoName } = this.state;
         return (
-            <form>
-                <div style={{textAlign: 'left'}}>
-                    <label>Nazwa pliku:</label>
-                    <input
-                        style={{width: 300}}
-                        type="text"
-                        value={photoName}
-                        onChange={this.handleChangeFormName} />
+            <div style={{position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(0,0,0,0.5)'}}>
+                <div style={{display: 'flex', width: '50%', margin: '500px auto', background: 'white', padding: 20, justifyContent: 'center'}}>
+                    <form style={{width: '60%'}}>
+                        <div style={{textAlign: 'left'}}>
+                            <label>Nazwa pliku:</label>
+                            <input
+                                style={{width: 300}}
+                                type="text"
+                                value={photoName}
+                                onChange={this.handleChangeFormName} />
+                        </div>
+                        <div style={{textAlign: 'left'}}>
+                            <label>Opis zdjęcia:</label>
+                            <input
+                                style={{width: 300}}
+                                type="text"
+                                value={photoDescription}
+                                onChange={this.handleChangeFormDescription} />
+                        </div>
+                        <div style={{textAlign: 'left'}}>
+                            <button
+                                className="btn"
+                                style={{margin: 10}}
+                                type="button"
+                                onClick={() => this.setState({formOn: false})}
+                            >Anuluj</button>
+                            <button
+                                className="btn"
+                                disabled={photoName.length === 0}
+                                style={{margin: 10}}
+                                type="button"
+                                onClick={this.handleAddPhoto}
+                            >Dodaj</button>
+                        </div>
+                    </form>
+                    {photoName.length > 0 && (
+                        <div style={{textAlign: 'left'}}>
+                            <p>Podgląd:</p>
+                            <img
+                                alt="Nie ma takiego zdjęcia"
+                                src={`${this.urlSuffix}${photoName}`}
+                                style={{maxHeight: 100}} />
+                        </div>
+                    )}
                 </div>
-                <div style={{textAlign: 'left'}}>
-                    <label>Opis zdjęcia:</label>
-                    <input
-                        style={{width: 300}}
-                        type="text"
-                        value={photoDescription}
-                        onChange={this.handleChangeFormDescription} />
-                </div>
-                <div style={{textAlign: 'left'}}>
-                    <button
-                        disabled={photoName.length === 0}
-                        style={{margin: 10}}
-                        type="button"
-                        onClick={this.handleAddPhoto}
-                    >Dodaj</button>
-                </div>
-                {photoName.length > 0 && (
-                    <div style={{textAlign: 'left'}}>
-                        <p>Podgląd:</p>
-                        <img
-                            alt="Nie ma takiego zdjęcia"
-                            src={`${this.urlSuffix}${photoName}`}
-                            style={{maxHeight: 100}} />
-                    </div>
-                )}
-            </form>
+            </div>
         )
     }
 

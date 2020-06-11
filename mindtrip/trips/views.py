@@ -94,9 +94,12 @@ class AboutMeTemplateView(TemplateView):
 
 @ajax_request
 def api_trips(request):
-    return [
-        trip.to_dict() for trip in Trip.objects.all().order_by(
-            '-start_at').prefetch_related('days')]
+    return {
+        'trips': [
+            trip.to_dict() for trip in Trip.objects.all().order_by(
+                '-start_at').prefetch_related('days')],
+        'photosDomain': settings.PHOTOS_DOMAIN,
+    }
 
 
 @csrf_exempt

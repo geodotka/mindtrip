@@ -115,6 +115,8 @@ STATIC_ROOT = join(CURRENT_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = join(CURRENT_DIR, 'media')
 
+PHOTOS_DOMAIN = 'http://geodotka.stronazen.pl/'
+
 try:
     from settings_local import *
 except ImportError:

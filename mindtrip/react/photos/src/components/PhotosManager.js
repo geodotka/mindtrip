@@ -8,6 +8,7 @@ export default class PhotoManager extends Component {
         super(props);
 
         this.state = {
+            photosDomain: '',
             trips: [],
             selectedTripId: null,
             selectedDayId: null,
@@ -17,11 +18,10 @@ export default class PhotoManager extends Component {
     componentDidMount() {
         fetch('/api/trips')
             .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    trips: data,
-                });
-            });
+            .then(data => this.setState({
+                photosDomain: data.photosDomain,
+                trips: data.trips,
+            }));
     }
 
     handleSave = (tripId, dayId, photos) => {
@@ -123,6 +123,7 @@ export default class PhotoManager extends Component {
                     <PhotosForm
                         dayId={day.id}
                         photos={day.photos}
+                        photosDomain={this.state.photosDomain}
                         tripId={this.state.selectedTripId}
                         onSave={this.handleSave} />
                 )}
