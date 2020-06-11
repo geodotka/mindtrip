@@ -35,6 +35,7 @@ export default class PhotosForm extends Component {
                 {
                     url: `${this.props.tripId}/${this.props.dayId}/${prevState.photoName}`,
                     description: prevState.photoDescription,
+                    isVertical: false,
                     temporaryId: Math.max(...prevState.photos.map(p => p.temporaryId), 0) +1,
                 }
             ],
@@ -56,19 +57,22 @@ export default class PhotosForm extends Component {
             this.state.photos.map(p => ({
                 url: p.url,
                 description: p.description,
+                isVertical: p.isVertical,
             }))
         );
     }
 
-    handleChangePhotoDescription = (temporaryId, description, callback) => {
-        this.setState(prevState => ({
-            photos: prevState.photos.map(photo => {
-                if (photo.temporaryId === temporaryId) {
-                    photo.description = description;
-                }
-                return photo
-            })
-        }), callback())
+    handleChangePhotoAttribute = (temporaryId, attributeName, value, callback=null) => {
+        this.setState(prevState => (
+            {
+                photos: prevState.photos.map(photo => {
+                    if (photo.temporaryId === temporaryId) {
+                        photo[attributeName] = value;
+                    }
+                    return photo
+                })
+            }
+        ), () => {if (callback) { callback() }});
     }
 
     render() {
@@ -94,7 +98,7 @@ export default class PhotosForm extends Component {
                         key={photo.temporaryId}
                         photo={photo}
                         onDeletePhoto={this.handleDeletePhoto}
-                        onSaveDescription={this.handleChangePhotoDescription}
+                        onSaveAttribute={this.handleChangePhotoAttribute}
                     />
                 ))}
             </section>

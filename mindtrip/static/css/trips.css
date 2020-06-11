@@ -411,6 +411,15 @@ form button:disabled {
     cursor: pointer
 }
 
+.polaroid .is-vertical {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    opacity: 1.0;
+    transform: scale(1.5);
+    pointer-events: auto;
+}
+
 /* about me page */
 
 .capitals .polaroid-item {
