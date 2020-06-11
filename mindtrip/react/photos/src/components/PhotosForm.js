@@ -15,6 +15,7 @@ export default class PhotosForm extends Component {
                 (p, i) => Object.assign({}, p, {temporaryId: i + 1}))],
             photoDescription: '',
             photoName: '',
+            draggingPhotoTemporaryId: null,
         };
     }
 
@@ -75,6 +76,29 @@ export default class PhotosForm extends Component {
         ), () => {if (callback) { callback() }});
     }
 
+    handleDrag = (temporaryId) => {
+        this.setState({draggingPhotoTemporaryId: temporaryId});
+    }
+
+    handleDrop = (temporaryId) => {
+        const { draggingPhotoTemporaryId } = this.state;
+        if (!draggingPhotoTemporaryId || draggingPhotoTemporaryId === temporaryId) { return }
+        this.setState(prevState => {
+            const draggingPhoto = prevState.photos.filter(
+                photo => photo.temporaryId === draggingPhotoTemporaryId)[0];
+            if (!draggingPhoto) {return {}}
+            let photos = [];
+            for (let p of prevState.photos.filter(
+                    photo => photo.temporaryId !== draggingPhotoTemporaryId)) {
+                if (p.temporaryId === temporaryId) {
+                    photos.push(draggingPhoto);
+                }
+                photos.push(p);
+            }
+            return {photos, draggingPhotoTemporaryId: null}
+        });
+    }
+
     render() {
         return (
             <div style={{width: '100%'}}>
@@ -98,6 +122,8 @@ export default class PhotosForm extends Component {
                         key={photo.temporaryId}
                         photo={photo}
                         onDeletePhoto={this.handleDeletePhoto}
+                        onDrag={this.handleDrag}
+                        onDrop={this.handleDrop}
                         onSaveAttribute={this.handleChangePhotoAttribute}
                     />
                 ))}
