@@ -122,7 +122,18 @@
 				{{ day.description|linebreaks }}
 			</article>
 
-			{% if day.photos.count %}
+			{% if day.photos_json %}
+				<section class="js-day-photos photos day-container hidden">
+					{% for photo in day.photos_json %}
+						<div class="polaroid-item{% if not photo.isVertical %}-wide{% endif %}">
+							<div class="polaroid">
+								<img src="" data-src="{{ PHOTOS_DOMAIN }}{{ photo.url }}">
+								<div class="container">{{ photo.description }}</div>
+							</div>
+						</div>
+					{% endfor %}
+				</section>
+			{% elif day.photos.count %}
 				<section class="js-day-photos photos day-container hidden">
 					{% for photo in day.photos.all %}
 						<div class="polaroid-item{% if photo.photo.width > photo.photo.height %}-wide{% endif %}">
