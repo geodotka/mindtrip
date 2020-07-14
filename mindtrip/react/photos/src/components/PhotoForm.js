@@ -4,13 +4,13 @@ import { Draggable, Droppable } from 'react-simple-drag-n-drop';
 
 export const PhotoForm = (props) => {
 
-    const { photo } = props;
+    const { photo, savingOn } = props;
     const [description, setDescription] = useState(photo.description);
     const [descriptionEditionOn, setDescriptionEditionOn] = useState(false);
     const [isVertical, setIsVertical] = useState(photo.isVertical || false);
 
     return (
-        <Droppable onDropCallback={() => props.onDrop(photo.temporaryId)}>
+        <Droppable onDropCallback={() => savingOn ? {} : props.onDrop(photo.temporaryId)}>
             <Draggable
                 isDragAndDropElement
                 onDragCallback={() => props.onDrag(photo.temporaryId)}
@@ -21,20 +21,22 @@ export const PhotoForm = (props) => {
                         <i
                             className="material-icons delete"
                             title="Usuń"
-                            onClick={() => props.onDeletePhoto(photo.temporaryId)}
+                            onClick={() => savingOn ? {} : props.onDeletePhoto(photo.temporaryId)}
                         >delete</i>
                         <input
                             checked={isVertical}
                             className="is-vertical"
+                            disabled={savingOn}
                             title="Pionowe?"
                             type="checkbox"
                             onBlur={() => props.onSaveAttribute(
                                 photo.temporaryId, 'isVertical', isVertical)}
                             onChange={(ev) => setIsVertical(ev.target.checked)}
                         />
-                        <div className="container" onDoubleClick={() => setDescriptionEditionOn(true)}>
+                        <div className="container" onDoubleClick={() => savingOn ? {} : setDescriptionEditionOn(true)}>
                             {descriptionEditionOn ? (
                                     <input
+                                        disabled={savingOn}
                                         type="text"
                                         value={description}
                                         onBlur={() => props.onSaveAttribute(

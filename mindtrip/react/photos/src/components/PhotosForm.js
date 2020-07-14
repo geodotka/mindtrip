@@ -16,7 +16,17 @@ export default class PhotosForm extends Component {
             photoName: '',
             draggingPhotoTemporaryId: null,
             formOn: false,
+            savingOn: false,
+            savingInfo: '',
         };
+
+        this.saveMsgTimeout = null;
+    }
+
+    componentWillUnmount() {
+        if (this.saveMsgTimeout !== null) {
+            clearTimeout(this.saveMsgTimeout);
+        }
     }
 
     handleChangeFormName = (ev) => {
@@ -52,15 +62,23 @@ export default class PhotosForm extends Component {
     }
 
     handleSave = () => {
-        // TODO: disable buttons and inputs
-        this.props.onSave(
-            this.props.tripId,
-            this.props.dayId,
-            this.state.photos.map(p => ({
-                url: p.url,
-                description: p.description,
-                isVertical: p.isVertical,
-            }))
+        this.setState(
+            {savingOn: true, savingInfo: ''},
+            () => this.props.onSave(
+                this.props.tripId,
+                this.props.dayId,
+                this.state.photos.map(p => ({
+                    url: p.url,
+                    description: p.description,
+                    isVertical: p.isVertical,
+                })),
+                () => this.setState(
+                    {savingOn: false, savingInfo: 'Dzień zapisany :)'},
+                    () => this.saveMsgTimeout = setTimeout(() => {
+                        this.setState({savingInfo: ''})
+                    }, 3000)
+                )
+            )
         );
     }
 
@@ -108,10 +126,12 @@ export default class PhotosForm extends Component {
                 <div style={{margin: 20}}>
                     <button
                         className="btn"
+                        disabled={this.state.savingOn}
                         type="button"
                         onClick={this.handleSave}
-                    >Zapisz wycieczkę</button>
+                    >Zapisz dzień</button>
                 </div>
+                {this.state.savingInfo.length > 0 && <div>{this.state.savingInfo}</div>}
             </div>
         )
     }
@@ -124,6 +144,7 @@ export default class PhotosForm extends Component {
                         domain={this.props.photosDomain}
                         key={photo.temporaryId}
                         photo={photo}
+                        savingOn={this.state.savingOn}
                         onDeletePhoto={this.handleDeletePhoto}
                         onDrag={this.handleDrag}
                         onDrop={this.handleDrop}
@@ -138,7 +159,12 @@ export default class PhotosForm extends Component {
         if (!this.state.formOn) {
             return (
                 <div style={{margin: 20}}>
-                    <button className="btn" style={{width: 160}} onClick={() => this.setState({formOn: true})}>Dodaj zdjęcie</button>
+                    <button
+                        className="btn"
+                        disabled={this.state.savingOn}
+                        style={{width: 160}}
+                        onClick={() => this.setState({formOn: true})}>
+                        Dodaj zdjęcie</button>
                 </div>
             )
         }

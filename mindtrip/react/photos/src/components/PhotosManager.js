@@ -24,7 +24,7 @@ export default class PhotoManager extends Component {
             }));
     }
 
-    handleSave = (tripId, dayId, photos) => {
+    handleSave = (tripId, dayId, photos, callback) => {
         fetch(`/api/trips/${tripId}/${dayId}/save`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -33,19 +33,22 @@ export default class PhotoManager extends Component {
             response => response.json()
         ).then(data => {
             if (data.success) {
-                this.setState(prevState => ({
-                    trips: prevState.trips.map(t => {
-                        if (t.id === tripId) {
-                            t.days = t.days.map(d => {
-                                if (d.id === dayId) {
-                                    d.photos = photos;
-                                }
-                                return d
-                            })
-                        }
-                        return t
+                this.setState(
+                    prevState => ({
+                        trips: prevState.trips.map(t => {
+                            if (t.id === tripId) {
+                                t.days = t.days.map(d => {
+                                    if (d.id === dayId) {
+                                        d.photos = photos;
+                                    }
+                                    return d
+                                })
+                            }
+                            return t
+                        }),
                     }),
-                }));
+                    callback
+                );
             } else {
                 alert('Stało się coś nieoczekiwanego :(')
             }
