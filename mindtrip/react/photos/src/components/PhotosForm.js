@@ -118,6 +118,42 @@ export default class PhotosForm extends Component {
         });
     }
 
+    handleLoadPhotos = () => {
+        this.setState(
+            {savingOn: true},
+            () => {
+                fetch(`/api/trips/${this.props.tripId}/${this.props.dayId}/old-photos`, {
+                    method: 'GET',
+                    headers: {'Content-Type': 'application/json'},
+                }).then(
+                    response => response.json()
+                ).then(data => {
+                    if (data.success) {
+                        console.log(data)
+                        const {dayId, tripId} = this.props;
+                        this.setState(prevState => ({
+                            savingOn: false,
+                            photos: data.photos.map((p, i) => {
+                                return {
+                                    url: `${tripId}/${dayId}/${p.name}`,
+                                    description: p.description,
+                                    isVertical: false,
+                                    temporaryId: i + 1,
+                                }
+                            })
+                        }));
+                    } else {
+                        alert('Stało się coś nieoczekiwanego :(');
+                        this.setState({savingOn: false});
+                    }
+                }).catch((error) => {
+                    alert('Stało się coś nieoczekiwanego :(');
+                    this.setState({savingOn: false});
+                });
+            }
+        );
+    }
+
     render() {
         return (
             <div style={{width: '100%', display: 'block'}}>
@@ -132,6 +168,14 @@ export default class PhotosForm extends Component {
                     >Zapisz dzień</button>
                 </div>
                 {this.state.savingInfo.length > 0 && <div>{this.state.savingInfo}</div>}
+                <div style={{margin: 20}}>
+                    <button
+                        className="btn"
+                        disabled={this.state.savingOn}
+                        type="button"
+                        onClick={this.handleLoadPhotos}
+                    >Wczytaj dotychczasowe zdjęcia</button>
+                </div>
             </div>
         )
     }

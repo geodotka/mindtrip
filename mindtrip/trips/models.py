@@ -203,6 +203,12 @@ class Photo(models.Model):
         image.save(image_file, 'JPEG')
         self.photo.file = image_file
 
+    def to_old_data_dict(self):
+        return {
+            'name': self.photo.name.split('/')[-1],
+            'description': self.description,
+        }
+
 
 class News(models.Model):
     title = models.CharField(

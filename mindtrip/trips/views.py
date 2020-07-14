@@ -112,3 +112,16 @@ def api_save_trip(request, trip_id, day_id):
     day.photos_json = json.loads(request.body).get('photos', [])
     day.save()
     return {'success': True}
+
+
+@csrf_exempt
+@ajax_request
+def api_get_old_trip_photos(request, trip_id, day_id):
+    day = Day.objects.filter(
+        id=day_id, trip_id=trip_id).first()
+    if day is None:
+        return {'success': False}
+    return {
+        'photos': [photo.to_old_data_dict() for photo in day.photos.all()],
+        'success': True,
+    }
