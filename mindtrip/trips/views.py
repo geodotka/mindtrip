@@ -88,12 +88,24 @@ class AboutMeTemplateView(TemplateView):
         return kwargs
 
 
+class PhotoManagerTemplateView(TemplateView):
+    template_name = 'photos/index.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_superuser:
+            raise Http404
+        return super().dispatch(request, *args, **kwargs)
+
+
 ###############################################################################
 #                                   API                                       #
 ###############################################################################
 
 @ajax_request
 def api_trips(request):
+    if not request.user.is_superuser:
+        raise Http404
+
     return {
         'trips': [
             trip.to_dict() for trip in Trip.objects.all().order_by(
@@ -105,6 +117,9 @@ def api_trips(request):
 @csrf_exempt
 @ajax_request
 def api_save_trip(request, trip_id, day_id):
+    if not request.user.is_superuser:
+        raise Http404
+
     day = Day.objects.select_for_update().filter(
         id=day_id, trip_id=trip_id).first()
     if day is None:
@@ -117,6 +132,9 @@ def api_save_trip(request, trip_id, day_id):
 @csrf_exempt
 @ajax_request
 def api_get_old_trip_photos(request, trip_id, day_id):
+    if not request.user.is_superuser:
+        raise Http404
+
     day = Day.objects.filter(
         id=day_id, trip_id=trip_id).first()
     if day is None:

@@ -15,8 +15,8 @@ urlpatterns = [
     path('podroze', views.get_trips, name='trips'),
     path('podroze/<int:trip_id>', views.get_trip, name='trip'),
     path('statistics', views.get_statistics, name='statistics'),
-    path('photo-manager', TemplateView.as_view(
-        template_name='photos/index.html'), name='photo_manager'),
+    path('photo-manager', views.PhotoManagerTemplateView.as_view(),
+         name='photo_manager'),
 
     path('api/trips', views.api_trips, name='api_trips'),
     path('api/trips/<int:trip_id>/<int:day_id>/save', views.api_save_trip,
