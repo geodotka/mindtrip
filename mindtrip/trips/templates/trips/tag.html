@@ -1,0 +1,35 @@
+{% extends "trips/base.html" %}
+
+{% block trips_page %} class="nav-selected"{% endblock %}
+
+{% block content %}
+	<div class="card-panel center-align">
+		<h4>{{ tag.name }}</h4>
+		<hr />
+		<section class="country">
+			{% for trip in trips %}
+				<a href="{% url 'trips:trip' trip.id %}">
+					<div class="polaroid-item{% if not trip.is_complete %} not-complete{% endif %}">
+						<div class="polaroid">
+							<div class="polaroid-photo">
+								<img src="" data-src="{{ trip.picture.url }}" />
+								{% if not trip.is_complete %}
+									<i class="material-icons build" title="W opracowaniu">build</i>
+								{% endif %}
+								{% if trip.describe_capital %}
+									<i class="material-icons capital" title="stolica">account_balance</i>
+								{% endif %}
+							</div>
+							<div class="container">
+								<div>{{ trip.destination }}</div>
+								<div>{{ trip.dates }}</div>
+							</div>
+						</div>
+					</div>
+				</a>
+			{% empty %}
+			<p>Nie ma wycieczek z tym tagiem :(</p>
+			{% endfor %}
+		</section>
+	</div>
+{% endblock %}

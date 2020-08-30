@@ -2,7 +2,6 @@
 # encoding: utf-8
 
 from django.urls import path
-from django.views.generic.base import TemplateView
 
 from . import views
 
@@ -17,6 +16,7 @@ urlpatterns = [
     path('statistics', views.get_statistics, name='statistics'),
     path('photo-manager', views.PhotoManagerTemplateView.as_view(),
          name='photo_manager'),
+    path('tagi/<slug:slug>', views.get_trips_by_tag, name='tag'),
 
     path('api/trips', views.api_trips, name='api_trips'),
     path('api/trips/<int:trip_id>/<int:day_id>/save', views.api_save_trip,

@@ -236,7 +236,7 @@ footer {
 
 .trip-info {
 	display: flex;
-	margin: 20px 0;
+	margin: 5px 0;
 }
 
 .trip-info p {
@@ -970,10 +970,6 @@ form button:disabled {
 	.trip-summary{
 		font-size: 18px;
 		margin-top: 10px;
-	}
-
-	.trip-info {
-		margin: 10px 0;
 	}
 
 	.trip-icons {

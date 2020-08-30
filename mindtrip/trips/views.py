@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
 
-from .models import Trip, News, Country, Day
+from .models import Trip, News, Country, Day, Tag
 
 
 @render_to('trips/home.html')
@@ -95,6 +95,15 @@ class PhotoManagerTemplateView(TemplateView):
         if not request.user.is_superuser:
             raise Http404
         return super().dispatch(request, *args, **kwargs)
+
+
+@render_to('trips/tag.html')
+def get_trips_by_tag(request, slug):
+    tag = get_object_or_404(Tag, slug=slug)
+    return {
+        'tag': tag,
+        'trips': Trip.objects.filter(tags__slug=slug).order_by('-start_at'),
+    }
 
 
 ###############################################################################

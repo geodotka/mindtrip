@@ -5,4 +5,4 @@ from django.template.defaultfilters import slugify as original_slugify
 
 
 def slugify(s):
-    return original_slugify(unicode(s).replace('ł', 'l').replace('Ł', 'L'))
+    return original_slugify(s.replace('ł', 'l').replace('Ł', 'L'))
