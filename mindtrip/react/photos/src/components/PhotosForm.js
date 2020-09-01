@@ -22,6 +22,7 @@ export default class PhotosForm extends Component {
         };
 
         this.saveMsgTimeout = null;
+        this.fileInput = React.createRef();
     }
 
     componentWillUnmount() {
@@ -38,15 +39,15 @@ export default class PhotosForm extends Component {
         this.setState({photoDescription: ev.target.value});
     }
 
-    handleAddPhoto = () => {
+    handleAddPhoto = (loadFromDisk=false, photoName='') => {
         this.setState(prevState => ({
             photoDescription: '',
             photoName: '',
             photos: [
                 ...prevState.photos,
                 {
-                    url: `${this.props.tripId}/${this.props.dayId}/${prevState.photoName}`,
-                    description: prevState.photoDescription,
+                    url: `${this.props.tripId}/${this.props.dayId}/${loadFromDisk ? photoName : prevState.photoName}`,
+                    description: loadFromDisk ? '' : prevState.photoDescription,
                     isVertical: false,
                     temporaryId: Math.max(...prevState.photos.map(p => p.temporaryId), 0) +1,
                 }
@@ -166,8 +167,18 @@ export default class PhotosForm extends Component {
         );
     }
 
+    handleLoadPhotosFromDisk = () => {
+        const photos = this.fileInput.current.files;
+        if (!photos.length) {
+            return
+        }
+        for (let photo of photos) {
+            this.handleAddPhoto(true, photo.name);
+        }
+    }
+
     render() {
-        const { loadingInfo, savingInfo } = this.state;
+        const { loadingInfo, savingInfo, savingOn } = this.state;
         return (
             <div style={{width: '100%', display: 'block'}}>
                 {this.renderPhotos()}
@@ -175,7 +186,7 @@ export default class PhotosForm extends Component {
                 <div style={{margin: 20}}>
                     <button
                         className="btn"
-                        disabled={this.state.savingOn}
+                        disabled={savingOn}
                         type="button"
                         onClick={this.handleSave}
                     >Zapisz dzień</button>
@@ -184,10 +195,22 @@ export default class PhotosForm extends Component {
                 <div style={{margin: 20}}>
                     <button
                         className="btn"
-                        disabled={this.state.savingOn}
+                        disabled={savingOn}
                         type="button"
                         onClick={this.handleLoadOldPhotos}
                     >Wczytaj dotychczasowe zdjęcia</button>
+                </div>
+                <div style={{margin: 20}}>
+                    <div className="file-field input-field btn" style={{margin: 0}}>
+                        <span>Wczytaj pliki z dysku</span>
+                        <input
+                            disabled={savingOn}
+                            multiple
+                            type="file"
+                            ref={this.fileInput}
+                            onChange={this.handleLoadPhotosFromDisk}
+                        />
+                    </div>
                 </div>
                 {loadingInfo.length > 0 && <div>{loadingInfo}</div>}
             </div>
