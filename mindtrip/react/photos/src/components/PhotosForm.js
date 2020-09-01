@@ -18,6 +18,7 @@ export default class PhotosForm extends Component {
             formOn: false,
             savingOn: false,
             savingInfo: '',
+            loadingInfo: '',
         };
 
         this.saveMsgTimeout = null;
@@ -118,7 +119,7 @@ export default class PhotosForm extends Component {
         });
     }
 
-    handleLoadPhotos = () => {
+    handleLoadOldPhotos = () => {
         this.setState(
             {savingOn: true},
             () => {
@@ -129,19 +130,30 @@ export default class PhotosForm extends Component {
                     response => response.json()
                 ).then(data => {
                     if (data.success) {
-                        console.log(data)
                         const {dayId, tripId} = this.props;
-                        this.setState(prevState => ({
-                            savingOn: false,
-                            photos: data.photos.map((p, i) => {
-                                return {
-                                    url: `${tripId}/${dayId}/${p.name}`,
-                                    description: p.description,
-                                    isVertical: false,
-                                    temporaryId: i + 1,
-                                }
-                            })
-                        }));
+                        if (!data.photos.length) {
+                            this.setState(
+                                {
+                                    savingOn: false,
+                                    loadingInfo: 'Nie było dotychczasowych zdjęć do wczytania :('
+                                },
+                                () => setTimeout(() => {
+                                    this.setState({loadingInfo: ''})
+                                }, 3000)
+                            )
+                        } else {
+                            this.setState(prevState => ({
+                                savingOn: false,
+                                photos: data.photos.map((p, i) => {
+                                    return {
+                                        url: `${tripId}/${dayId}/${p.name}`,
+                                        description: p.description,
+                                        isVertical: false,
+                                        temporaryId: i + 1,
+                                    }
+                                })
+                            }));
+                        }
                     } else {
                         alert('Stało się coś nieoczekiwanego :(');
                         this.setState({savingOn: false});
@@ -155,6 +167,7 @@ export default class PhotosForm extends Component {
     }
 
     render() {
+        const { loadingInfo, savingInfo } = this.state;
         return (
             <div style={{width: '100%', display: 'block'}}>
                 {this.renderPhotos()}
@@ -167,15 +180,16 @@ export default class PhotosForm extends Component {
                         onClick={this.handleSave}
                     >Zapisz dzień</button>
                 </div>
-                {this.state.savingInfo.length > 0 && <div>{this.state.savingInfo}</div>}
+                {savingInfo.length > 0 && <div>{savingInfo}</div>}
                 <div style={{margin: 20}}>
                     <button
                         className="btn"
                         disabled={this.state.savingOn}
                         type="button"
-                        onClick={this.handleLoadPhotos}
+                        onClick={this.handleLoadOldPhotos}
                     >Wczytaj dotychczasowe zdjęcia</button>
                 </div>
+                {loadingInfo.length > 0 && <div>{loadingInfo}</div>}
             </div>
         )
     }

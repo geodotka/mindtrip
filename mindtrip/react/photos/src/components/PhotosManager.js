@@ -24,6 +24,11 @@ export default class PhotoManager extends Component {
             }));
     }
 
+    handleSelectDay(dayId) {
+        this.setState(prevState => (
+            {selectedDayId: prevState.selectedDayId === dayId ? null : dayId}))
+    }
+
     handleSave = (tripId, dayId, photos, callback) => {
         fetch(`/api/trips/${tripId}/${dayId}/save`, {
             method: 'POST',
@@ -118,7 +123,7 @@ export default class PhotoManager extends Component {
                 <div
                     className="row"
                     style={{cursor: 'pointer'}}
-                    onClick={() => this.setState({selectedDayId: day.id})}
+                    onClick={() => this.handleSelectDay(day.id)}
                 >
                     {day.name} {day.date.length > 0 && `(${day.date})`}
                 </div>
