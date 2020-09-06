@@ -92,7 +92,7 @@ class Trip(models.Model):
         countries = self.country.all()
         if len(countries) == 1:
             return countries[0].name
-        return ', '.join([c.name for c in countries]),
+        return ', '.join([c.name for c in countries])
 
 
 class Day(models.Model):
