@@ -575,6 +575,21 @@ form button:disabled {
 	font-size: 20px;
 }
 
+.trips-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.trips-tab {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.trips-tab-selected {
+    border-bottom: 2px solid rgba(56, 9, 53, 0.71);
+}
+
 
 @media (max-width: 1025px) {
 

@@ -3,10 +3,14 @@
 {% block trips_page %} class="nav-selected"{% endblock %}
 
 {% block content %}
+	<div class="trips-tabs">
+		{% for country in countries %}
+			<div class="trips-tab{% if forloop.counter == 1 %} trips-tab-selected{% endif %} js-trips-tab" data-country-id="{{ country.id }}">{{ country.name }}</div>
+		{% endfor %}
+	</div>
+
 	{% for country in countries %}
-		<div class="card-panel center-align">
-			<h4>{{ country.name }}</h4>
-			<hr />
+		<div id="trips-card-{{ country.id }}" class="card-panel center-align{% if forloop.counter != 1 %} hidden{% endif %} js-trips-card">
 			<section class="country">
 				{% for trip in country.trips.all %}
 					<a href="{% url 'trips:trip' trip.id %}">
@@ -32,4 +36,6 @@
 			</section>
 		</div>
 	{% endfor %}
+
+	<script type="text/javascript" src="{{ STATIC_URL }}js/trips/trips_tabs.js"></script>
 {% endblock %}
