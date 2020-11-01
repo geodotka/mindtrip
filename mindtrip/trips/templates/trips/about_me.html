@@ -3,7 +3,13 @@
 {% block about_me %} class="nav-selected"{% endblock %}
 
 {% block content %}
-	<section>
+	<div class="trips-tabs">
+		<div class="trips-tab trips-tab-selected js-trips-tab" data-country-id="data">Podstawowe informacje</div>
+		<div class="trips-tab js-trips-tab" data-country-id="map">Mapa</div>
+		<div class="trips-tab js-trips-tab" data-country-id="countries">Odwiedzone kraje</div>
+		<div class="trips-tab js-trips-tab" data-country-id="capitals">Odwiedzone stolice</div>
+	</div>
+	<section id="trips-card-data" class="js-trips-card">
 		<section>
 			<p class="leonardo-sentence">"I gdy już poznasz smak lotu,
 				będziesz chodzić po ziemi ze wzrokiem skierowanym w&nbsp;niebo,
@@ -95,39 +101,38 @@
 				w&nbsp;Internecie.
 			</p>
 		</section>
-		<section>
-			Tu już byłam:
-			<div class="i-was-here">
-				<div class="polaroid">
-					<img src="" data-src="{{ STATIC_URL }}img/eurotrip.png?d=06012020">
-				</div>
-			</div>
-		</section>
-		<section>
-			Odwiedzone stolice:
-			<div class="capitals">
-				{% for capital in capitals %}
-					<div class="polaroid-item">
-						<div class="polaroid">
-							<img src="" data-src="{{ STATIC_URL }}img/trips/capitals/{{ capital.0 }}">
-							<div class="container">{{ capital.1 }}</div>
-						</div>
-					</div>
-				{% endfor %}
-			</div>
-		</section>
-		<section>
-			<strong>Odwiedzone kraje:</strong>
-			<div class="capitals">
-				{% for country in countries %}
-					<div class="polaroid-item">
-						<div class="polaroid">
-							<img src="" data-src="{{ STATIC_URL }}img/trips/countries/{{ country.0 }}">
-							<div class="container">{{ country.1 }}</div>
-						</div>
-					</div>
-				{% endfor %}
-			</div>
-		</section>
 	</section>
+	<section id="trips-card-map" class="hidden js-trips-card">
+		<div class="i-was-here">
+			<div class="polaroid">
+				<img src="" data-src="{{ STATIC_URL }}img/eurotrip.png?d=06012020">
+			</div>
+		</div>
+	</section>
+	<section id="trips-card-countries" class="hidden js-trips-card">
+		<div class="capitals">
+			{% for country in countries %}
+				<div class="polaroid-item">
+					<div class="polaroid">
+						<img src="" data-src="{{ STATIC_URL }}img/trips/countries/{{ country.0 }}">
+						<div class="container">{{ country.1 }}</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+	<section id="trips-card-capitals" class="hidden js-trips-card">
+		<div class="capitals">
+			{% for capital in capitals %}
+				<div class="polaroid-item">
+					<div class="polaroid">
+						<img src="" data-src="{{ STATIC_URL }}img/trips/capitals/{{ capital.0 }}">
+						<div class="container">{{ capital.1 }}</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+	<script type="text/javascript" src="{{ STATIC_URL }}js/trips/trips_tabs.js"></script>
 {% endblock %}
