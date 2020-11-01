@@ -10,7 +10,7 @@
 	</div>
 
 	{% for country in countries %}
-		<div id="trips-card-{{ country.id }}" class="card-panel center-align{% if forloop.counter != 1 %} hidden{% endif %} js-trips-card">
+		<div id="trips-card-{{ country.id }}" class="{% if forloop.counter != 1 %} hidden{% endif %} js-trips-card">
 			<section class="country">
 				{% for trip in country.trips.all %}
 					<a href="{% url 'trips:trip' trip.id %}">
