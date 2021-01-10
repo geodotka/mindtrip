@@ -2,6 +2,7 @@
 # encoding: utf-8
 
 from django.urls import path
+from django.views.generic import TemplateView
 
 from . import views
 
@@ -10,6 +11,8 @@ app_name = 'trips'
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('home', TemplateView.as_view(template_name='home/index.html'),
+         name='home_react'),
     path('o-mnie', views.AboutMeTemplateView.as_view(), name='about_me'),
     path('podroze', views.get_trips, name='trips'),
     path('podroze/<int:trip_id>', views.get_trip, name='trip'),
@@ -23,4 +26,5 @@ urlpatterns = [
          name='api_save_trip'),
     path('api/trips/<int:trip_id>/<int:day_id>/old-photos',
          views.api_get_old_trip_photos, name='api_get_old_trip_photos'),
+    path('api/news', views.api_news, name='api_news'),
 ]

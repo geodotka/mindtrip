@@ -219,9 +219,18 @@ class News(models.Model):
     class Meta:
         verbose_name = 'Wpis'
         verbose_name_plural = 'Wpisy'
+        ordering = ['-id', ]
 
     def __str__(self):
         return '{} {}'.format(self.created_at.strftime('%F'), self.title)
+
+    def to_react(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'text': self.text,
+            'createdAt': self.created_at.strftime('%F'),
+        }
 
 
 class Post(models.Model):

@@ -152,3 +152,19 @@ def api_get_old_trip_photos(request, trip_id, day_id):
         'photos': [photo.to_old_data_dict() for photo in day.photos.all()],
         'success': True,
     }
+
+
+@ajax_request
+def api_news(request):
+
+    news = News.objects.all()
+    from_id = request.GET.get('from_id')
+    if from_id is not None:
+        try:
+            from_id = int(from_id)
+        except (TypeError, ValueError):
+            pass
+        else:
+            news = news.filter(id__lt=from_id)
+
+    return {'news': [n.to_react() for n in news[:10]]}
