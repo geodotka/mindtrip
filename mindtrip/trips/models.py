@@ -58,7 +58,7 @@ class Trip(models.Model):
     class Meta:
         verbose_name = 'Wycieczka'
         verbose_name_plural = 'Wycieczki'
-        ordering = ['start_at', ]
+        ordering = ['-start_at', ]
 
     def __str__(self):
         return '{0}: {1} - {2}'.format(

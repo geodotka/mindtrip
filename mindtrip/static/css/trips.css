@@ -590,6 +590,10 @@ form button:disabled {
     border-bottom: 2px solid rgba(56, 9, 53, 0.71);
 }
 
+.email {
+    color: darkviolet;
+}
+
 
 @media (max-width: 1025px) {
 
