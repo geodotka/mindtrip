@@ -432,6 +432,7 @@ form button:disabled {
 
 .about-me-with-polaroid .polaroid-item {
 	width: 65%;
+	max-width: 300px;
 	margin-right: 0;
 }
 
