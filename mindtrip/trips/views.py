@@ -14,18 +14,6 @@ from django.views.generic.base import TemplateView
 from .models import Trip, News, Country, Day, Tag
 
 
-@render_to('trips/home.html')
-def home(request):
-    trips = Trip.objects.all().only(
-        'id', 'destination', 'picture', 'start_at', 'end_at', 'is_complete') \
-        .order_by('-start_at')[:]
-    return {
-        'trips': trips,
-        'trip_id_list': [trip.id for trip in trips],
-        'news': News.objects.all().order_by('-created_at', '-id'),
-    }
-
-
 @render_to('trips/trip.html')
 def get_trip(request, trip_id):
     trip_ = get_object_or_404(Trip, id=trip_id)
@@ -152,6 +140,16 @@ def api_get_old_trip_photos(request, trip_id, day_id):
         'photos': [photo.to_old_data_dict() for photo in day.photos.all()],
         'success': True,
     }
+
+
+@ajax_request
+def api_trips_gallery(request):
+
+    return {'trips': [
+        trip.to_react() for trip in Trip.objects.all().only(
+            'id', 'destination', 'picture', 'start_at', 'end_at',
+            'is_complete').order_by('-start_at')[:]
+    ]}
 
 
 @ajax_request

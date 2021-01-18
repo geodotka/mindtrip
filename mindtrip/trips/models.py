@@ -7,6 +7,7 @@ from io import StringIO
 
 from annoying.fields import JSONField
 from django.db import models
+from django.urls import reverse
 
 from .helpers import slugify
 
@@ -69,7 +70,7 @@ class Trip(models.Model):
         if self.start_at == self.end_at:
             return self.start_at.strftime('%d.%m.%Y')
         return '{} - {}'.format(self.start_at.strftime('%d.%m.%Y'),
-                                 self.end_at.strftime('%d.%m.%Y'))
+                                self.end_at.strftime('%d.%m.%Y'))
 
     def get_photo_list_for_gallery(self):
         photos = Photo.objects.filter(
@@ -93,6 +94,16 @@ class Trip(models.Model):
         if len(countries) == 1:
             return countries[0].name
         return ', '.join([c.name for c in countries])
+
+    def to_react(self):
+        return {
+            'id': self.id,
+            'destination': self.destination,
+            'pictureUrl': self.picture.url if self.picture else None,
+            'dates': self.dates,
+            'isComplete': self.is_complete,
+            'url': reverse('trips:trip', args=[self.id]),
+        }
 
 
 class Day(models.Model):

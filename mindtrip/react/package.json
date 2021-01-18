@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack --mode development ./photos/src/index.js --output ./static/react/photos/main.js",
     "build": "webpack --mode production ./photos/src/index.js --output ./static/react/photos/main.js",
-    "dev_home": "webpack --mode development ./home/src/index.js --output ./static/react/home/main.js"
+    "dev_home": "webpack --mode development ./home/src/index.js --output ./static/react/home/main.js",
+    "build_home": "webpack --mode production ./home/src/index.js --output ./static/react/home/main.js"
   },
   "keywords": [],
   "author": "geodotka",
