@@ -61,7 +61,7 @@ export const Trips = (props) => {
                                 </div>
                                 <div className="container">
                                     <div>{trip.destination}</div>
-                                    <div>{trip.startAt} - {trip.endAt}</div>
+                                    <div>{trip.startAt === trip.endAt ? trip.startAt : `${trip.startAt} - ${trip.endAt}`}</div>
                                 </div>
                             </div>
                         </div>
