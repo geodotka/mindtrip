@@ -40,12 +40,6 @@ def get_trip(request, trip_id):
     }
 
 
-@render_to('trips/trips.html')
-def get_trips(request):
-    countries = Country.objects.all().order_by('name')
-    return {'countries': countries}
-
-
 def get_statistics(request):
     if not request.user.is_superuser:
         raise Http404

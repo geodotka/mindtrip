@@ -86,6 +86,8 @@ class Trip(models.Model):
             'startAt': self.start_at.strftime('%d.%m.%Y'),
             'endAt': self.end_at.strftime('%d.%m.%Y'),
             'days': [day.to_dict() for day in self.days.all().order_by('id')],
+            'isComplete': self.is_complete,
+            'describeCapital': self.describe_capital,
         }
 
     @property
