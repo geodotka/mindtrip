@@ -10,23 +10,11 @@ from . import views
 app_name = 'trips'
 
 urlpatterns = [
-    path('',
-         TemplateView.as_view(
-             template_name='trips/index.html',
-             extra_context={'active_homepage_block': ' nav-selected'}
-         ),
+    path('', TemplateView.as_view(template_name='trips/index.html'),
          name='home'),
-    path('o-mnie',
-         TemplateView.as_view(
-             template_name='trips/index.html',
-             extra_context={'active_about_me_block': ' class=nav-selected'}
-         ),
+    path('o-mnie', TemplateView.as_view(template_name='trips/index.html'),
          name='about_me'),
-    path('podroze',
-         TemplateView.as_view(
-             template_name='trips/index.html',
-             extra_context={'active_trips_block': ' class=nav-selected'}
-         ),
+    path('podroze', TemplateView.as_view(template_name='trips/index.html'),
          name='trips'),
     path('podroze/<int:trip_id>',
          TemplateView.as_view(template_name='trips/index.html'),

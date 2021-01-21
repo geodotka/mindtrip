@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom';
 
 import { TripPolaroid } from './TripPolaroid'
 
-export const Trips = (props) => {
+export const Trips = ({setSelectedMenuLink}) => {
     const [trips, setTrips] = useState([]);
     const [countries, setCountries] = useState([]);
     const [selectedCountry, setSelectedCountry] = useState(null);
+
+    useEffect(() => {
+        setSelectedMenuLink('trips');
+        return () => setSelectedMenuLink(null)
+    }, []);
 
     useEffect(() => {
         fetch('/api/trips')

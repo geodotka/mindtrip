@@ -1,5 +1,33 @@
-{% extends "trips/base.html" %}
+<!DOCTYPE html>
+<html>
+<head lang="pl">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>geodotka w podróży</title>
+	<link href="https://fonts.googleapis.com/css?family=Caveat|Quicksand" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/materialize.min.css">
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/trips.css?d=10012021" charset="utf-8">
 
-{% block content %}
-	<div class="error404"><span>404</span>strona nie istnieje</div>
-{% endblock %}
+</head>
+<body>
+
+	<nav>
+		<div class="nav-wrapper">
+			<ul class="left">
+				<li class="home-page-icon"><a href="{% url 'trips:home' %}" class="home_page_icon"><i class="material-icons left">home</i></a></li>
+				<li><a href="{% url 'trips:trips' %}">Podróże</a></li>
+				<li><a href="{% url 'trips:about_me' %}">O mnie</a></li>
+				<li><span class="capitals_counter" title="Odwiedzone stolice"><i class="material-icons right">account_balance</i>27 x</span></li>
+			</ul>
+		</div>
+	</nav>
+
+	<main>
+		<section class="banner">
+			geodotka w podróży <i class="material-icons flight-takeoff">flight_takeoff</i>
+		</section>
+		<div class="error404"><span>404</span>strona nie istnieje</div>
+	</main>
+</body>
+</html>

@@ -1,18 +1,20 @@
-{% extends "trips/base.html" %}
-
-{% block home_page %}{{ active_homepage_block|default_if_none:'' }}{% endblock %}
-{% block trips_page %}{{ active_trips_block|default_if_none:'' }}{% endblock %}
-{% block about_me_page %}{{ active_about_me_block|default_if_none:'' }}{% endblock %}
-
-{% block content %}
-	<noscript>You need to enable JavaScript to run this app.</noscript>
-	<div id="root"></div>
-{% endblock %}
-
-
-{% block react %}
-	<script>
-		window.staticUrl = '{{ STATIC_URL }}';
-	</script>
-	<script type="text/javascript" src="{{ STATIC_URL }}react/trips/main.js"></script>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+	<head lang="pl">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>geodotka w podróży</title>
+		<link href="https://fonts.googleapis.com/css?family=Caveat|Quicksand" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/materialize.min.css">
+		<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/trips.css?d=10012021" charset="utf-8">
+	</head>
+	<body>
+		<noscript>You need to enable JavaScript to run this app.</noscript>
+		<div id="root"></div>
+		<script>
+			window.staticUrl = '{{ STATIC_URL }}';
+		</script>
+		<script type="text/javascript" src="{{ STATIC_URL }}react/trips/main.js"></script>
+	</body>
+</html>

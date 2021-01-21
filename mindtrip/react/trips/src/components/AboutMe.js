@@ -3,9 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { observeImages } from '../helpers';
 
 
-export const AboutMe = ({trip}) => {
+export const AboutMe = ({setSelectedMenuLink}) => {
     const [selectedTab, setSelectedTab] = useState(null);
     const [data, setData] = useState(null);
+
+    useEffect(() => {
+        setSelectedMenuLink('aboutMe');
+        return () => setSelectedMenuLink(null)
+    }, []);
 
     useEffect(() => {
         setSelectedTab('basic');
@@ -146,6 +151,11 @@ export const AboutMe = ({trip}) => {
                                 <div className="container">geodotka aktualnie</div>
                             </div>
                         </div>
+                    </section>
+                    <section>
+                        <p>
+                            Jeśli masz ochotę zerknąć na podstronę z quizami, zapraszam tu: <a className="email" href="/quizy">quizy</a>.
+                        </p>
                     </section>
                 </section>
             )}

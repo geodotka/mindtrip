@@ -2,9 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
-export const Home = (props) => {
+export const Home = ({ setSelectedMenuLink}) => {
     const [trips, setTrips] = useState([]);
     const [visibleTrips, setVisibleTrips] = useState([]);
+
+    useEffect(() => {
+        setSelectedMenuLink('home');
+        return () => setSelectedMenuLink(null)
+    }, []);
 
     useEffect(() => {
         fetch('/api/trips_gallery')
