@@ -16,7 +16,7 @@ export default class PhotoManager extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/trips')
+        fetch('/api/trips?photo_manager=1')
             .then(response => response.json())
             .then(data => this.setState({
                 photosDomain: data.photosDomain,
@@ -92,11 +92,11 @@ export default class PhotoManager extends Component {
                 style={this.state.selectedTripId === trip.id ? stylesSelected : stylesUnselected}
                 onClick={() => this.setState({selectedTripId: trip.id, selectedDayId: null})}
             >
-                <img src={trip.picture} style={{width: 120, height: 90}} />
+                <img src={trip.pictureUrl} style={{width: 120, height: 90}} />
                 <div style={{display: 'box', fontSize: 15}}>
                     <p style={{margin: 4}}>{trip.destination}</p>
                     <p style={{margin: 4}}>({trip.country})</p>
-                    <p style={{margin: 4}}>({trip.startAt} - {trip.endAt})</p>
+                    <p style={{margin: 4}}>({trip.dates})</p>
                 </div>
             </div>
         )

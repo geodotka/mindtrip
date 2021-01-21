@@ -78,19 +78,6 @@ class Trip(models.Model):
             trip_day__trip_id=self.id).order_by('trip_day', 'id')
         return [photo.get_data_for_trip_gallery() for photo in photos]
 
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'destination': self.destination,
-            'country': self.countries,
-            'picture': self.picture.url if self.picture else '',
-            'startAt': self.start_at.strftime('%d.%m.%Y'),
-            'endAt': self.end_at.strftime('%d.%m.%Y'),
-            'days': [day.to_dict() for day in self.days.all().order_by('id')],
-            'isComplete': self.is_complete,
-            'describeCapital': self.describe_capital,
-        }
-
     @property
     def countries(self):
         countries = self.country.all()
@@ -102,11 +89,19 @@ class Trip(models.Model):
         return {
             'id': self.id,
             'destination': self.destination,
+            'country': self.countries,
             'pictureUrl': self.picture.url if self.picture else None,
             'dates': self.dates,
             'isComplete': self.is_complete,
-            'url': reverse('trips:trip', args=[self.id]),
+            'describeCapital': self.describe_capital,
         }
+
+    def to_react_photos_manager(self):
+        dct = self.to_react()
+        dct.update({
+            'days': [day.to_dict() for day in self.days.all().order_by('id')],
+        })
+        return dct
 
     def to_react_trip_page(self):
         dct = self.to_react()
@@ -193,7 +188,7 @@ class Tag(SlugifyModel):
         return {
             'id': self.id,
             'name': self.name,
-            'url': reverse('trips:tag', args=[self.id]),
+            'url': reverse('trips:tag', args=[self.slug]),
         }
 
 

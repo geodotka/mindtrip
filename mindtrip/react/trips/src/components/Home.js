@@ -66,7 +66,7 @@ export const Home = (props) => {
                             <Link
                                 className={visibleTrips.includes(trip.id) ? '' : 'hidden'}
                                 key={trip.id}
-                                to={trip.url}>
+                                to={`/podroze/${trip.id}`}>
                                 <div>
                                     <img src={trip.pictureUrl} />
                                     {!trip.isComplete && (

@@ -11,6 +11,7 @@ export const Trip = (props) => {
 
     const { id: tripId } = useParams();
     useEffect(() => {
+        setData(null);
         fetch(`/api/trips/${tripId}`)
             .then(response => response.json())
             .then(data => {
@@ -23,7 +24,7 @@ export const Trip = (props) => {
     }, [data]);
 
     if (data === null) {
-        return null
+        return <p>Trwa pobieranie danych...</p>
     }
 
     const {countries, nextTrip, prevTrip, trip} = data;

@@ -4,7 +4,7 @@
 import json
 import os
 
-from annoying.decorators import render_to, ajax_request
+from annoying.decorators import ajax_request
 from django.conf import settings
 from django.http.response import JsonResponse, Http404
 from django.shortcuts import get_object_or_404
@@ -53,30 +53,28 @@ class PhotoManagerTemplateView(TemplateView):
         return super().dispatch(request, *args, **kwargs)
 
 
-@render_to('trips/tag.html')
-def get_trips_by_tag(request, slug):
-    tag = get_object_or_404(Tag, slug=slug)
-    return {
-        'tag': tag,
-        'trips': Trip.objects.filter(tags__slug=slug).order_by('-start_at'),
-    }
-
-
 ###############################################################################
 #                                   API                                       #
 ###############################################################################
 
 @ajax_request
 def api_trips(request):
-    if not request.user.is_superuser:
-        raise Http404
-
-    return {
-        'trips': [
-            trip.to_dict() for trip in Trip.objects.all().order_by(
-                '-start_at').prefetch_related('days')],
-        'photosDomain': settings.PHOTOS_DOMAIN,
-    }
+    tag_slug = request.GET.get('tag')
+    if tag_slug is not None:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        return {
+            'tag': tag.to_react(),
+            'trips': [trip.to_react() for trip in
+                      Trip.objects.filter(tags__slug=tag_slug)],
+        }
+    if request.GET.get('photo_manager') is not None:
+        return {
+            'trips': [
+                trip.to_react_photos_manager() for trip in Trip.objects.all()
+                    .prefetch_related('days')],
+            'photosDomain': settings.PHOTOS_DOMAIN,
+        }
+    return {'trips': [trip.to_react() for trip in Trip.objects.all()]}
 
 
 @ajax_request
@@ -138,7 +136,6 @@ def api_get_old_trip_photos(request, trip_id, day_id):
 
 @ajax_request
 def api_trips_gallery(request):
-
     return {'trips': [
         trip.to_react() for trip in Trip.objects.all().only(
             'id', 'destination', 'picture', 'start_at', 'end_at',
@@ -148,7 +145,6 @@ def api_trips_gallery(request):
 
 @ajax_request
 def api_news(request):
-
     news = News.objects.all()
     from_id = request.GET.get('from_id')
     if from_id is not None:

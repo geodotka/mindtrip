@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 export const TripDetails = ({trip}) => {
@@ -11,12 +12,12 @@ export const TripDetails = ({trip}) => {
                         <div className="trip-info">
                             <div className="trip-info-tips">
                                 {tags.map(tag => (
-                                    <a
+                                    <Link
                                         className="waves-effect waves-light btn"
-                                        href={tag.url}
-                                        key={tag.id}>
+                                        key={tag.id}
+                                        to={tag.url}>
                                         {tag.name}
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                         </div>

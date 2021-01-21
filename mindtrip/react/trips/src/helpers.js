@@ -1,6 +1,7 @@
 
-export const observeImages = () => {
-    document.querySelectorAll('img').forEach($img => {
+export const observeImages = ($img=null) => {
+
+    function observe($img) {
         let observer = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -12,5 +13,13 @@ export const observeImages = () => {
             });
         });
         observer.observe($img);
-    });
+    }
+
+    if ($img === null) {
+        document.querySelectorAll('img').forEach($img => {
+            observe($img);
+        });
+    } else {
+        observe($img);
+    }
 };
