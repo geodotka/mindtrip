@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { PhotoForm } from './PhotoForm';
 
 
-export default class PhotosForm extends Component {
+export class PhotosForm extends Component {
 
     constructor(props) {
         super(props);

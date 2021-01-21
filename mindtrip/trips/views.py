@@ -22,8 +22,8 @@ def get_statistics(request):
          in Trip.objects.all().order_by('-views_counter')], safe=False)
 
 
-class PhotoManagerTemplateView(TemplateView):
-    template_name = 'photos/index.html'
+class PhotosManagerTemplateView(TemplateView):
+    template_name = 'trips/index.html'
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_superuser:
@@ -45,7 +45,7 @@ def api_trips(request):
             'trips': [trip.to_react() for trip in
                       Trip.objects.filter(tags__slug=tag_slug)],
         }
-    if request.GET.get('photo_manager') is not None:
+    if request.GET.get('photos_manager') is not None:
         return {
             'trips': [
                 trip.to_react_photos_manager() for trip in Trip.objects.all()

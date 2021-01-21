@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PhotosForm from './PhotosForm';
+import { PhotosForm } from './PhotosForm';
 
 
-export default class PhotoManager extends Component {
+export class PhotosManager extends Component {
 
     constructor(props) {
         super(props);
@@ -16,7 +16,7 @@ export default class PhotoManager extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/trips?photo_manager=1')
+        fetch('/api/trips?photos_manager=1')
             .then(response => response.json())
             .then(data => this.setState({
                 photosDomain: data.photosDomain,

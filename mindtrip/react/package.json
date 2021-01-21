@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./photos/src/index.js --output ./static/react/photos/main.js",
-    "build": "webpack --mode production ./photos/src/index.js --output ./static/react/photos/main.js",
-    "dev_trips": "webpack --mode development ./trips/src/index.js --output ./static/react/trips/main.js",
-    "build_trips": "webpack --mode production ./trips/src/index.js --output ./static/react/trips/main.js"
+    "dev": "webpack --mode development ./trips/src/index.js --output ./static/react/trips/main.js",
+    "build": "webpack --mode production ./trips/src/index.js --output ./static/react/trips/main.js"
   },
   "keywords": [],
   "author": "geodotka",

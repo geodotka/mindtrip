@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { AboutMe, Home, Tag, Trip, Trips } from './components';
+import { AboutMe, Home, PhotosManager, Tag, Trip, Trips } from './components';
 
 
 export const App = () => (
@@ -22,6 +22,9 @@ export const App = () => (
             </Route>
             <Route exact path="/o-mnie">
                 <AboutMe />
+            </Route>
+            <Route exact path="/photos-manager">
+                <PhotosManager />
             </Route>
         </Switch>
     </Router>
