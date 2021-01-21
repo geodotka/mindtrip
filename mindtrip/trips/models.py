@@ -8,6 +8,7 @@ from io import StringIO
 from annoying.fields import JSONField
 from django.db import models
 from django.urls import reverse
+from django.utils.html import linebreaks
 
 from .helpers import slugify
 
@@ -107,6 +108,22 @@ class Trip(models.Model):
             'url': reverse('trips:trip', args=[self.id]),
         }
 
+    def to_react_trip_page(self):
+        dct = self.to_react()
+        dct.update({
+            'summary': self.summary,
+            'tags': [tag.to_react() for tag in self.tags.all()],
+            'travel': self.travel,
+            'travelPrice': self.travel_price,
+            'hotel': self.hotel,
+            'hotelPrice': self.hotel_price,
+            'plannedAt': self.planned_at,
+            'guidebook': self.guidebook,
+            'tips': linebreaks(self.tips) if len(self.tips) else '',
+            'days': [day.to_react() for day in self.days.all()]
+        })
+        return dct
+
 
 class Day(models.Model):
     name = models.CharField(
@@ -135,6 +152,16 @@ class Day(models.Model):
             'photos': self.photos_json or [],
         }
 
+    def to_react(self):
+        dct = self.to_dict()
+        dct.update({
+            'description': (linebreaks(self.description)
+                            if len(self.description) else ''),
+            'tips': linebreaks(self.tips) if len(self.tips) else '',
+            'photos': self.photos_json or [],
+        })
+        return dct
+
 
 class SlugifyModel(models.Model):
     name = models.CharField(unique=True, max_length=255, verbose_name='Nazwa')
@@ -161,6 +188,13 @@ class Tag(SlugifyModel):
         abstract = False
         verbose_name = 'Tag'
         verbose_name_plural = 'Tagi'
+
+    def to_react(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'url': reverse('trips:tag', args=[self.id]),
+        }
 
 
 class Country(SlugifyModel):

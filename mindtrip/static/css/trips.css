@@ -176,11 +176,17 @@ footer {
 
 /*trip page*/
 
+.trip-prev-next {
+	margin: 20px 0;
+	display: flex;
+	height: 19px;
+	position: relative;
+}
+
 .trip-link {
 	font-size: 25px;
-	width: 200px;
 	position: absolute;
-	bottom: 10px;
+	bottom: 2px;
 	display: flex;
 }
 
@@ -259,6 +265,10 @@ footer {
 
 .trip-info-tips {
 	margin: 0 1vw;
+}
+
+.waves-effect.waves-light.btn {
+	margin: 2px;
 }
 
 .day-container {
@@ -667,12 +677,13 @@ form button:disabled {
 
 	/*trip page*/
 
+	.trip-prev-next {
+		margin: 20px 0;
+		height: 16px;
+	}
+
 	.trip-link {
 		font-size: 20px;
-		width: 140px;
-		position: absolute;
-		bottom: 10px;
-		display: flex;
 	}
 
 	.trip-link-arrow {
@@ -926,13 +937,13 @@ form button:disabled {
 	}
 
 	/*trip page*/
+	.trip-prev-next {
+		margin: 10px 0;
+		height: 12px;
+	}
 
 	.trip-link {
 		font-size: 15px;
-		width: 70px;
-		position: absolute;
-		bottom: -25px;
-		display: flex;
 	}
 
 	.trip-link-arrow {
@@ -941,19 +952,9 @@ form button:disabled {
 		border: 8px solid transparent;
 	}
 
-	.prev-trip-link {
-		left: -8px;
-	}
-
 	.prev-trip-link-arrow {
 		border-right-color: rgba(56, 9, 53, 0.71);
 		margin-right: 5px;
-	}
-
-	.next-trip-link {
-		text-align: right;
-		right: -8px;
-		justify-content: right;
 	}
 
 	.next-trip-link-arrow {

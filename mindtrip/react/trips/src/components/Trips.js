@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { observeImages } from '../helpers'
 
@@ -47,7 +48,7 @@ export const Trips = (props) => {
             <section className="country">
                 {trips.filter(
                     trip => trip.country.includes(selectedCountry)).map(trip => (
-                    <a href={`/podroze/${trip.id}`} key={trip.id}>
+                    <Link key={trip.id} to={`/podroze/${trip.id}`}>
                         <div className={`polaroid-item${!trip.isComplete ? ' not-complete' : ''}`}>
                             <div className="polaroid">
                                 <div className="polaroid-photo">
@@ -65,7 +66,7 @@ export const Trips = (props) => {
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </Link>
                 ))}
             </section>
         </>

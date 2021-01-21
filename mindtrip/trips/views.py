@@ -11,33 +11,7 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
 
-from .models import Trip, News, Country, Day, Tag
-
-
-@render_to('trips/trip.html')
-def get_trip(request, trip_id):
-    trip_ = get_object_or_404(Trip, id=trip_id)
-    if not request.user.is_superuser:
-        trip_.views_counter += 1
-        trip_.save()
-
-    prev_trip = Trip.objects.filter(start_at__gt=trip_.start_at) \
-        .order_by('start_at').first()
-    next_trip = Trip.objects.filter(start_at__lt=trip_.start_at) \
-        .order_by('-start_at').first()
-    return {
-        'trip': trip_,
-        'countries': trip_.countries,
-        'prev_trip': {
-            'id': prev_trip.id,
-            'destination': prev_trip.destination,
-        } if prev_trip is not None else None,
-        'next_trip': {
-            'id': next_trip.id,
-            'destination': next_trip.destination,
-        } if next_trip is not None else None,
-        'PHOTOS_DOMAIN': settings.PHOTOS_DOMAIN,
-    }
+from .models import Trip, News, Day, Tag
 
 
 def get_statistics(request):
@@ -101,6 +75,32 @@ def api_trips(request):
         'trips': [
             trip.to_dict() for trip in Trip.objects.all().order_by(
                 '-start_at').prefetch_related('days')],
+        'photosDomain': settings.PHOTOS_DOMAIN,
+    }
+
+
+@ajax_request
+def api_trip(request, trip_id):
+    trip_ = get_object_or_404(Trip, id=trip_id)
+    if not request.user.is_superuser:
+        trip_.views_counter += 1
+        trip_.save()
+
+    prev_trip = Trip.objects.filter(start_at__gt=trip_.start_at) \
+        .order_by('start_at').first()
+    next_trip = Trip.objects.filter(start_at__lt=trip_.start_at) \
+        .order_by('-start_at').first()
+    return {
+        'trip': trip_.to_react_trip_page(),
+        'countries': trip_.countries,
+        'prevTrip': {
+            'id': prev_trip.id,
+            'destination': prev_trip.destination,
+        } if prev_trip is not None else None,
+        'nextTrip': {
+            'id': next_trip.id,
+            'destination': next_trip.destination,
+        } if next_trip is not None else None,
         'photosDomain': settings.PHOTOS_DOMAIN,
     }
 

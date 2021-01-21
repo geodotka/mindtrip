@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 export const Home = (props) => {
@@ -62,7 +63,10 @@ export const Home = (props) => {
                         onClick={() => firstTripVisible ? {} : handleSetNextTrips(false)} />
                     <div className="hp-gallery">
                         {trips.map(trip => (
-                            <a className={visibleTrips.includes(trip.id) ? '' : 'hidden'} href={trip.url} key={trip.id}>
+                            <Link
+                                className={visibleTrips.includes(trip.id) ? '' : 'hidden'}
+                                key={trip.id}
+                                to={trip.url}>
                                 <div>
                                     <img src={trip.pictureUrl} />
                                     {!trip.isComplete && (
@@ -73,7 +77,7 @@ export const Home = (props) => {
                                     <span className="destination">{trip.destination}</span>
                                     <span className="dates">{trip.dates}</span>
                                 </div>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                     <div
