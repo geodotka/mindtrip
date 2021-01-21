@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { Home, Tag, Trip, Trips } from './components';
+import { AboutMe, Home, Tag, Trip, Trips } from './components';
 
 
 export const App = () => (
@@ -19,6 +19,9 @@ export const App = () => (
             </Route>
             <Route exact path="/tagi/:slug">
                 <Tag />
+            </Route>
+            <Route exact path="/o-mnie">
+                <AboutMe />
             </Route>
         </Switch>
     </Router>

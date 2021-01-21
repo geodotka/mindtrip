@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { observeImages } from '../helpers'
+import { observeImages } from '../helpers';
 
 
 export const TripDay = ({day, photosDomain}) => {

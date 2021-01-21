@@ -21,7 +21,7 @@ export const Tag = (props) => {
     return (
         <div className="card-panel center-align">
             {tag === null
-                ? <p>Trwa pobieranie danych</p>
+                ? <p>Trwa pobieranie danych...</p>
                 : (
                     <>
                         <h4>{tag.name}</h4>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import { observeImages } from '../helpers'
-import { TripDay } from './TripDay'
-import { TripDetails } from './TripDetails'
+import { observeImages } from '../helpers';
+import { TripDay } from './TripDay';
+import { TripDetails } from './TripDetails';
 
 
 export const Trip = (props) => {

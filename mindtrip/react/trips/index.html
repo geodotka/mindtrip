@@ -2,6 +2,7 @@
 
 {% block home_page %}{{ active_homepage_block|default_if_none:'' }}{% endblock %}
 {% block trips_page %}{{ active_trips_block|default_if_none:'' }}{% endblock %}
+{% block about_me_page %}{{ active_about_me_block|default_if_none:'' }}{% endblock %}
 
 {% block content %}
 	<noscript>You need to enable JavaScript to run this app.</noscript>
@@ -10,5 +11,8 @@
 
 
 {% block react %}
+	<script>
+		window.staticUrl = '{{ STATIC_URL }}';
+	</script>
 	<script type="text/javascript" src="{{ STATIC_URL }}react/trips/main.js"></script>
 {% endblock %}

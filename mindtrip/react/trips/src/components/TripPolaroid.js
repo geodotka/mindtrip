@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { observeImages } from '../helpers'
+import { observeImages } from '../helpers';
 
 
 export const TripPolaroid = ({trip}) => {

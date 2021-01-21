@@ -16,7 +16,12 @@ urlpatterns = [
              extra_context={'active_homepage_block': ' nav-selected'}
          ),
          name='home'),
-    path('o-mnie', views.AboutMeTemplateView.as_view(), name='about_me'),
+    path('o-mnie',
+         TemplateView.as_view(
+             template_name='trips/index.html',
+             extra_context={'active_about_me_block': ' class=nav-selected'}
+         ),
+         name='about_me'),
     path('podroze',
          TemplateView.as_view(
              template_name='trips/index.html',
@@ -42,4 +47,5 @@ urlpatterns = [
     path('api/trips_gallery', views.api_trips_gallery,
          name='api_trips_gallery'),
     path('api/news', views.api_news, name='api_news'),
+    path('api/about_me', views.api_about_me, name='api_about_me'),
 ]
