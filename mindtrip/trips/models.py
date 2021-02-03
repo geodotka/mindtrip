@@ -188,7 +188,7 @@ class Tag(SlugifyModel):
         return {
             'id': self.id,
             'name': self.name,
-            'url': reverse('trips:tag', args=[self.slug]),
+            'url': '/tagi/{}'.format(self.slug),
         }
 
 
