@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { TripPolaroid } from './TripPolaroid'
 
@@ -12,6 +12,21 @@ export const Trips = ({setSelectedMenuLink}) => {
         setSelectedMenuLink('trips');
         return () => setSelectedMenuLink(null)
     }, []);
+
+    const history = useHistory();
+    function setCountryInUrl(countryName) {
+        history.push(`${history.location.pathname}?kraj=${countryName}`);
+    }
+
+    useEffect(() => {
+        if (!countries.length) { return }
+        const searchParams = new URLSearchParams(history.location.search);
+        let countryName = searchParams.get('kraj') || '';
+        if (!countries.includes(countryName)) {
+            countryName = countries[0];
+        }
+        setSelectedCountry(countryName);
+    }, [history.location, countries]);
 
     useEffect(() => {
         fetch('/api/trips')
@@ -26,7 +41,6 @@ export const Trips = ({setSelectedMenuLink}) => {
                     (c1, c2) => c1.localeCompare(c2, 'pl'));
                 if (countries_.length) {
                     setCountries(countries_);
-                    setSelectedCountry(countries_[0]);
                 }
             });
     }, []);
@@ -40,7 +54,7 @@ export const Trips = ({setSelectedMenuLink}) => {
                     <div
                         className={`trips-tab${country === selectedCountry ? ' trips-tab-selected' : ''}`}
                         key={country}
-                        onClick={() => setSelectedCountry(country)}>
+                        onClick={() => setCountryInUrl(country)}>
                         {country}
                     </div>
                 ))}
