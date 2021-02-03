@@ -13,7 +13,7 @@ urlpatterns = [
     path('api/', include([
         path('trips', views.api_trips, name='api_trips'),
         path('trips/<int:trip_id>', views.api_trip, name='api_trip'),
-        path('api/trips/<int:trip_id>/<int:day_id>/save', views.api_save_trip,
+        path('trips/<int:trip_id>/<int:day_id>/save', views.api_save_trip,
              name='api_save_trip'),
         path('trips/<int:trip_id>/<int:day_id>/old-photos',
              views.api_get_old_trip_photos, name='api_get_old_trip_photos'),
