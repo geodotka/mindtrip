@@ -51,6 +51,9 @@ export const App = () => {
                     <Route exact path="/photos-manager">
                         <PhotosManager />
                     </Route>
+                    <Route exact path="*">
+                        <div class="error404"><span>404</span>strona nie istnieje</div>
+                    </Route>
                 </Switch>
             </main>
 
