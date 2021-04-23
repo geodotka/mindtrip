@@ -25,5 +25,6 @@ urlpatterns = [
     path('statistics', views.get_statistics, name='statistics'),
     path('photos-manager', views.PhotosManagerTemplateView.as_view(),
          name='photos_manager'),
-    re_path(r'', TemplateView.as_view(template_name='trips/index.html')),
+    re_path(r'', TemplateView.as_view(template_name='trips/index.html'),
+            name='home'),
 ]
